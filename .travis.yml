@@ -1,0 +1,12 @@
+sudo: false
+language: java
+script: mvn test -B
+deploy:
+  provider: heroku
+  api_key:
+    secure: 5AI5OHxQ4f4+ix7csjklzxEw99oo+MCdtqXbLjDBM4wKm1ByJlsWlPcRBOaMXXf2mpLhf17bsQdFIbTaiLqXZ8b2pqIrs9CgCc7gpsnwxehUgoBRO1C9emFJP0C6hOerzHcaCN+UAiWXKIsCjt9VH15ZsWIUCY4Up7nf7v+PbwuuVabXMAvDAPAuvMIBpsyMzSW11rU/6PsNUXALJMrkc+rU3XYJhTtw2Y/spUgk07LeHe8skAeK5OcgHZoNAtRmU7gtdIm+88vS5q0lsTwRyIblRywzItAmx7zqroomkcvUAXSEfi6UWvgGTO2jobgoIFs2dOvIFMeV43g3xHaGE1/nOQrJQSX44QZOl3t0rD9HMjT7EJ5ny0FuXoPhjQgtLR/PVkL/sJKb/9rf9T9C6DRB1hESi4PxywnlhdTXPBbkzWGGNxn2W3UydUCdjybR3kYAgBDXvqz562tSWuQW1vNnYr3buwidUJvtKj+VYaUizAfYnMfC4N2veBSYGf9iMU86bzX3DJJw8at4ukLoefMgoMhKKZF1R5Yrnxo+/7AbKvE8zYjwRqJic4GqS27us9Ra5alCMrIkK6iEqufQhNkdWlmgSNSARkFrmg8e8sOhJJAFCvIf0xVNJedBQO3GDSF1O7T/kqrDkjApH/8fWKORKh8DLnp6hVyrPeSUl18=
+  app: avengerslive
+  on:
+    repo: RubenPerez95/AvengersLive
+notifications:
+  slack: e3-avengerslive:uzLr8FFBLr3hOUnrBLNto2I6
