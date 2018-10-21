@@ -11,12 +11,12 @@ public class DBBroker {
 
 	public DBBroker() {
 
-		if(cliente != null) {
+		if(cliente == null) {
 			String acceso = "mongodb://usuarioGeneral:usuarioGeneral2018@ds233763.mlab.com:33763/avengerslive";
 			MongoClientURI uri = new MongoClientURI(acceso);
 			cliente = new MongoClient(uri);
 		}	
-			bd = cliente.getDatabase("avengerslive");
+		bd = cliente.getDatabase("avengerslive");
 	}
 
 }
