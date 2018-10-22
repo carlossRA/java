@@ -1,6 +1,6 @@
-package com.avengerslive.model;
+package com.avengers.model;
 
-public class persona {
+public class empleado {
      private  String nombre;
      private String apellido;
    

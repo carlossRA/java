@@ -1,4 +1,4 @@
-package com.avengerslive.myapp;
+package com.avengers.proyecto;
 
 
 import java.util.Map;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 
-import com.avengerslive.model.persona;
+import com.avengers.model.empleado;
 @Controller
 public class FormularioController {
 	ModelAndView MV;
@@ -35,13 +35,13 @@ public class FormularioController {
 	public ModelAndView irFormulario() {
 		
 		
-	 MV=new ModelAndView("formulario","cmdForm",new persona());
+	 MV=new ModelAndView("formulario","cmdForm",new empleado());
 	
 		return MV;
 	}
 	
 	@RequestMapping(value="/agregar",method= {RequestMethod.GET,RequestMethod.POST})
-	public String agregar(persona per, ModelMap model) {
+	public String agregar(empleado per, ModelMap model) {
         
 		model.addAttribute("nombreModel",per.getNombre());
 		model.addAttribute("apellidoModel",per.getApellido());

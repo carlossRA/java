@@ -1,4 +1,4 @@
-package com.avengerslive.myapp;
+package com.avengers.proyecto;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
