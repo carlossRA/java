@@ -4,12 +4,23 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
-<meta http-equiv="content-Type" content="text/html; charset=ISO-8859-1">
+
+  <script src = " https://code.jquery.com/jquery.js ">
+  </script>
+  <script src =" https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
+  </script>
+  <link rel = "stylesheet" href =" https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <meta http-equiv="content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login</title>
 </head>
 <body>
 
-<h1>UCLM </h1>
+</body>
+</html>
+
+<!--  
+
+<h1></h1>
 
 
 <form:form action="agregar.html" method="POST" commandName="cmdForm">
@@ -25,25 +36,8 @@
 
 <input type="submit" value="Acceder"/>
 </form:form>
-<div class="vid-container">
-  <video class="bgvid" autoplay="autoplay" muted="muted" preload="auto" loop>
-      <!--<source src="css/images/background_video.webm" type="video/webm">-->
-       
-        <source src="css/images/videoplayback.mp4" type="video/mp4">
-  </video>
-  <div class="inner-container">
-    <div class="box">
-      <h1>UCLM BlackJack</h1>
-      <a href="#" class="btn-3d red">Crear una partida</a>
 
-
-      <a href="#" class="btn-3d green">Únete a la partida</a>
-      <!--
-        //TODO: BOTÓN ACCEDER
-      -->
-    </div>
-  </div>
 </div>
 </body>
 </html>
-
+-->
