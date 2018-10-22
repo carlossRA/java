@@ -19,4 +19,39 @@ public class DBBroker {
 		bd = cliente.getDatabase("avengerslive");
 	}
 
+	public boolean crearEmpleado(Empleado p) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean existeEmail(String email) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean existeContraseña(String contraseña) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean login(Empleado e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean borrarEmpleado(Empleado e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean actualizarEmpleado(Empleado e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public Empleado getEmpleado(String nombre) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
