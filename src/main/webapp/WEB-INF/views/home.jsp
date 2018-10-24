@@ -61,9 +61,9 @@
         <input type="text" class="form-control" id="formGroupExampleInput2" 
         placeholder="introduzca su contraseña">
       </div>
-    </form>
+    
   </div>
-</div>
+
 
 <div class="row">
   <div class="col-md-8">
@@ -74,10 +74,12 @@
     <button type="button" class="btn btn-primary btn-lg">
      Acceder</button>
   </div>
+  </form>
 </div>
 
 <div class="row">
   <br>
+</div>
 </div>
 
 <div class="row">
