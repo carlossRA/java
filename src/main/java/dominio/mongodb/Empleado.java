@@ -8,13 +8,13 @@ public class Empleado {
 	    	
 	    }
 	    
-	    public Empleado (String email, String contraseña) {
+	    public Empleado (String email, String contrasena) {
 	    	this.email=email;
-	    	this.contrasena=contraseña;
+	    	this.contrasena=contrasena;
 	    }
 	    
-	    public Empleado (String contraseña) {
-	    	this.contrasenaOriginal=contraseña;
+	    public Empleado (String contrasena) {
+	    	this.contrasenaOriginal=contrasena;
 	    }
 
 	    public Empleado(String n, String e, String c, String rol) {
@@ -80,12 +80,12 @@ public class Empleado {
 			this.email = email;
 		}
 		
-		public String getContraseña() {
+		public String getContrasena() {
 			return contrasena;
 		}
 		
-		public void setContrasesña(String contraseña) {
-			this.contrasena = contraseña;
+		public void setContrasena(String contrasena) {
+			this.contrasena = contrasena;
 		}
 	
 		public String getRol() {

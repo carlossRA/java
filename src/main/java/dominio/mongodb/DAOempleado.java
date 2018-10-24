@@ -16,8 +16,8 @@ public class DAOempleado {
 		return db.existeEmail(email);
 	}
 
-	public boolean existeContraseña(String contraseña) {
-		return db.existeContraseña(contraseña);
+	public boolean existeContrasena(String contrasena) {
+		return db.existeContraseña(contrasena);
 	}
 
 	public boolean login(Empleado e) throws Exception {
