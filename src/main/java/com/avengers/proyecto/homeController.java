@@ -1,6 +1,7 @@
 package com.avengers.proyecto;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,13 +28,13 @@ public ModelAndView redireccion() {
 public ModelAndView login(HttpServletRequest request)throws Exception{
 	String email, contrasena;
 	email = request.getParameter("inputEmail");
-	contrasena = request.getParameter("inputContrasena");
+	contrasena = request.getParameter("inputPassword");
 	DAOempleado dao = new DAOempleado();
 	Empleado e1,e2;
 	e1 = new Empleado(email, contrasena);
 	
-	if(dao.existeEmail(e1.getEmail()) && dao.existeContrasena(e1.getContrasena())) {
-		//e2 = dao.getEmpleado(email);
+	if(dao.login(e1)) {
+		e2 = dao.getEmpleado(email);
 		return new ModelAndView("exito", "persona", e1);
 	}else {
 		return new ModelAndView("home", "aviso", "El usuario y/o clave son incorrectos.");

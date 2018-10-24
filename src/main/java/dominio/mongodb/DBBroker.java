@@ -62,8 +62,20 @@ public class DBBroker {
 	}
 
 	public boolean login(Empleado e) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean logueado = false;
+		bd = cliente.getDatabase("avengerslive");
+		Empleado empleado=new Empleado();
+		bdUsuarios = bd.getCollection("usuarios");
+		elementos = bdUsuarios.find().iterator();
+		while(elementos.hasNext()) {
+			documento=elementos.next();
+			empleado.setContrasena(documento.get("clave").toString());
+			if((documento.get("username").toString().equalsIgnoreCase(e.getEmail()))&&
+			   (empleado.getContrasena().equalsIgnoreCase(e.getContrasena()))) {
+				logueado=true;
+			}
+		}
+		return logueado;
 	}
 
 	public boolean borrarEmpleado(Empleado e) {
