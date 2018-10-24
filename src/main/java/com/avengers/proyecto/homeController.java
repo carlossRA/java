@@ -35,7 +35,7 @@ public ModelAndView login(HttpServletRequest request)throws Exception{
 	
 	if(dao.login(e1)) {
 		e2 = dao.getEmpleado(email);
-		return new ModelAndView("exito", "persona", e1);
+		return new ModelAndView("exito", "empleado", e1);
 	}else {
 		return new ModelAndView("home", "aviso", "El usuario y/o clave son incorrectos.");
 	}

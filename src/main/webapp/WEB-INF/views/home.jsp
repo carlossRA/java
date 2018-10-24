@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,12 +52,12 @@
 			<form action="loginUsuario" method="post" class="form-signin">
 				<span id="reauth-email" class="reauth-email"></span> <input
 					type="text" name="inputEmail" class="form-control"
-					placeholder="Username" required autofocus> <input
+					placeholder="Email" required autofocus> <input
 					type="password" name="inputPassword" class="form-control"
-					placeholder="Password" required>
+					placeholder="Contraseña" required>
 				<div id="remember" class="checkbox"></div>
 				<button class="btn btn-lg btn-primary btn-block btn-signin"
-					type="submit">Sign in</button>
+					type="submit">Acceder</button>
 			</form>
 			<!-- /form -->
 			<div>
