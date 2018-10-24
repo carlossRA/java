@@ -69,8 +69,8 @@ public class DBBroker {
 		elementos = bdUsuarios.find().iterator();
 		while(elementos.hasNext()) {
 			documento=elementos.next();
-			empleado.setContrasena(documento.get("clave").toString());
-			if((documento.get("username").toString().equalsIgnoreCase(e.getEmail()))&&
+			empleado.setContrasena(documento.get("contrasena").toString());
+			if((documento.get("email").toString().equalsIgnoreCase(e.getEmail()))&&
 			   (empleado.getContrasena().equalsIgnoreCase(e.getContrasena()))) {
 				logueado=true;
 			}
