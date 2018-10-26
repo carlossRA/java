@@ -20,7 +20,8 @@
         <property name="mappings">
             <props>
                 <prop key="index.htm">indexController</prop>
-                <prop key="form.htm">formController</prop>
+                <prop key="formulario.htm">formController</prop>
+                <prop key="login.htm">loginController</prop>
             </props>
         </property>
     </bean>
@@ -33,7 +34,8 @@
     <!--
     The index controller.
     -->
-    <bean name="formController" class="com.manosenelcodigo.controller.FormController" />
+    <bean name="loginController" class="com.avengers.proyecto.loginController" />
+    <bean name="formController" class="com.avengers.proyecto.FormController" />
     <bean name="indexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="index" />
