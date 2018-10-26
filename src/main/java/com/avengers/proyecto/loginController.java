@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import dominio.mongodb.DAOempleado;
 import dominio.mongodb.Empleado;
 
 
@@ -35,7 +36,7 @@ public String login(HttpServletRequest request,ModelMap model)throws Exception{
 	String email, contrasena;
 	email = request.getParameter("inputEmail");
 	contrasena = request.getParameter("inputPassword");
-	//DAOempleado dao = new DAOempleado();
+	DAOempleado dao = new DAOempleado();
 	Empleado e1;
 	e1 = new Empleado(email, contrasena);
 	System.out.println(email+" "+contrasena);
