@@ -57,7 +57,7 @@ public class DBBroker {
 	public boolean existeEmail(String email) {
 		boolean existe=false;
 		bd=cliente.getDatabase("avengerslive");
-		bdUsuarios = bd.getCollection("usuarios");
+		bdUsuarios = bd.getCollection("Empleados");
 		elementos = bdUsuarios.find().iterator();
 		while(elementos.hasNext()) {
 			documento = elementos.next();

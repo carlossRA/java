@@ -31,20 +31,25 @@ public ModelAndView redireccion() {
 
 
 @RequestMapping(value = "login.htm", method = RequestMethod.POST)
-public String login(HttpServletRequest request,ModelMap model)throws Exception{
+public ModelAndView login(HttpServletRequest request,ModelMap model)throws Exception{
+	/* con este metodo solo obtengo los datos de un formulario*/
 	/* con este metodo solo obtengo los datos de un formulario*/
 	String email, contrasena;
 	email = request.getParameter("inputEmail");
 	contrasena = request.getParameter("inputPassword");
 	DAOempleado dao = new DAOempleado();
 	Empleado e1;
-	e1 = new Empleado(email, contrasena);
+	e1 = new Empleado(email, contrasena,dao);
 	System.out.println(email+" "+contrasena);
-	 model.addAttribute("correo",e1.getEmail());
-     model.addAttribute("contrasena",e1.getContrasena());
-    
-	
-	return "home";
+	 model.addAttribute("correo",email);
+     model.addAttribute("contrasena",contrasena);
+     if(e1.credencialesCorrectas(email,contrasena,dao)) {
+    	 return new ModelAndView("home");
+    	
+    	}else {
+    		
+    		return new ModelAndView("login","error","usuario o contraseña incorrectos");
+    	} 
 /* Código a añadir para trabajar con  la base de datos
 if(dao.login(e1)) {
 	e2 = dao.getEmpleado(email);

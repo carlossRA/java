@@ -8,6 +8,11 @@ public class Empleado {
 	    public Empleado(){
 	    	
 	    }
+	    public Empleado(String email, String contrasena, DAOempleado dao) {
+			this.email=email;
+			this.contrasena=contrasena;
+			this.dao=dao;
+		}
 	    
 	    public Empleado (String email, String contrasena) {
 	    	this.email=email;
@@ -30,14 +35,17 @@ public class Empleado {
 	    	}
 	    }
 	    
-	    public boolean credencialesCorrectas(String emailEmpleado, String contrasenaIntroducida) {
-	    	String contrasenaReal = dao.contrasenaDeEmpleado(emailEmpleado);
-	    	if(contrasenaReal == contrasenaIntroducida)
+public boolean credencialesCorrectas(String emailEmpleado, String contrasenaIntroducida,DAOempleado dao) {
+	    	
+			boolean email = dao.existeEmail(emailEmpleado);
+	    	boolean contra = dao.existeContrasena(contrasenaIntroducida);
+	    	System.out.println("email"+email);
+	    	System.out.println("contrasena"+contra);
+	    	if(email&&contra)
 	    		return true;    	
 	    	
 	    	return false;
 	    }
-	    
 	    public String rolEmpleado(String emailEmpleado) {
 	    	return dao.rolEmpleado(emailEmpleado);
 	    }

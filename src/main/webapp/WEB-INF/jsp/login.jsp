@@ -60,17 +60,18 @@
 					type="submit">Acceder</button>
 			</form>
 			<!-- /form -->
-			<div>
+			
 
-				<form action="formulario.htm" method="get">
-					<button
-						style="align-content: center; margin: auto; display: table;"
-						class="btn btn-warning" type="submit" value="forgotPassword"
-						name="forgotPassword">¿Olvidó la Contraseña?</button>
-				</form>
+				<div class="row">
 
-
+			<div class="col-md-3"></div>
+			<div class="col-md-7">
+				<h1>Acceso usuarios</h1>
 			</div>
+		</div>
+
+
+			
 		</div>
 	</div>
 	<!--  fin de acceso de prueba -->
