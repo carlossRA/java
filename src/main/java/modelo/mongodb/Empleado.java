@@ -1,4 +1,4 @@
-package dominio.mongodb;
+package modelo.mongodb;
 
 public class Empleado {
 

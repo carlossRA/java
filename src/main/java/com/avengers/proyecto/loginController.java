@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import dominio.mongodb.DAOEmpleado;
-import dominio.mongodb.Empleado;
+import modelo.mongodb.DAOEmpleado;
+import modelo.mongodb.Empleado;
 
 
 
@@ -33,11 +33,11 @@ public class loginController {
 	@RequestMapping(value = "login.htm", method = RequestMethod.POST)
 	public ModelAndView login(HttpServletRequest request, ModelMap model)throws Exception{
 		String email, contrasena;
-		Empleado e1 = new Empleado();
+		Empleado empleado = new Empleado();
 		email = request.getParameter("inputEmail");
 		contrasena = request.getParameter("inputPassword");
-		if(e1.credencialesCorrectas(email, contrasena)) {
-			e1 = new Empleado(email, contrasena);
+		if(empleado.credencialesCorrectas(email, contrasena)) {
+			empleado = new Empleado(email, contrasena);
 			return new ModelAndView("home");
 
 		}else {

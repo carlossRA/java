@@ -1,4 +1,4 @@
-package dominio.mongodb;
+package modelo.mongodb;
 
 import org.bson.Document;
 
@@ -7,20 +7,23 @@ import com.mongodb.client.MongoCollection;
 public class DAOEmpleado {
 
 	DBBroker db;
+	MongoCollection<Document> coleccion;
 
 	public DAOEmpleado() {
+		
 		db = new DBBroker();
+		coleccion = db.devolverColeccion("Empleados");
 	}
 
 	/******************************LYDIA************************************/
 
 	public String contrasenaDeEmpleado(String emailEmpleado) {
 		Document documentoEmail = null;
-		String contrasenaEmpleado = null;
+		String contrasenaEmpleado = "";
 		documentoEmail = documentoEmpleado(emailEmpleado);
 		if(documentoEmail != null)
-			return contrasenaEmpleado = documentoEmail.get("contrasena").toString();
-		return "";
+			contrasenaEmpleado = documentoEmail.get("contrasena").toString();
+		return contrasenaEmpleado;
 	}
 	
 	public String rolEmpleado(String emailEmpleado) {
@@ -35,7 +38,6 @@ public class DAOEmpleado {
 	}
 	
 	public Document documentoEmpleado(String emailEmpleado) {
-		MongoCollection<Document> coleccion= db.devolverColeccion("Empleados");
 		return db.devolverDocumento(coleccion, "email", emailEmpleado);
 	}
 
