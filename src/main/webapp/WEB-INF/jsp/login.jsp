@@ -44,7 +44,6 @@
 			</div>
 		</div>
 
-<!-- Acceso de prueba -->
 		<div class="card card-container">
 
 			<p
@@ -70,7 +69,6 @@
 			
 		</div>
 	</div>
-	<!--  fin de acceso de prueba -->
 	
 	
 	
