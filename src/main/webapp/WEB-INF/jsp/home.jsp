@@ -9,7 +9,7 @@
     <body>
         <h1>Bienvenido a AvengersLive Web</h1>
         <ul>
-            <li>Usuario : <c:out value="${correo}" /></li>
+            <li>Usuario : <c:out value="${email}" /></li>
             <li>Contraseña : <c:out value="${contrasena}" /></li>
             
         </ul>

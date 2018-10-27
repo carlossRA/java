@@ -4,11 +4,11 @@ import org.bson.Document;
 
 import com.mongodb.client.MongoCollection;
 
-public class DAOempleado {
+public class DAOEmpleado {
 
 	DBBroker db;
 
-	public DAOempleado() {
+	public DAOEmpleado() {
 		db = new DBBroker();
 	}
 
@@ -19,14 +19,19 @@ public class DAOempleado {
 		String contrasenaEmpleado = null;
 		documentoEmail = documentoEmpleado(emailEmpleado);
 		if(documentoEmail != null)
-			contrasenaEmpleado = documentoEmail.get("contrasena").toString();
-		return contrasenaEmpleado;
+			return contrasenaEmpleado = documentoEmail.get("contrasena").toString();
+		return "";
 	}
 	
 	public String rolEmpleado(String emailEmpleado) {
 		Document documentoEmail = null;
 		documentoEmail = documentoEmpleado(emailEmpleado);	
 		return documentoEmail.get("rol").toString();
+	}	
+	
+	public String nombreEmpleado(String emailEmpleado) {
+		Document documentoEmail = documentoEmpleado(emailEmpleado);
+		return documentoEmail.get("nombre").toString();
 	}
 	
 	public Document documentoEmpleado(String emailEmpleado) {
