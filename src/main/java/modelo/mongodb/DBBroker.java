@@ -1,4 +1,4 @@
-package dominio.mongodb;
+package modelo.mongodb;
 
 import org.bson.Document;
 
@@ -44,6 +44,10 @@ public class DBBroker {
 		}
 		
 		return null;
+	}
+	
+	public void insertarDocumento(MongoCollection<Document> coleccion, Document documento, String campo, String parametro) {
+		coleccion.insertOne(documento.append(campo, parametro));
 	}
 	
 	/*****************************************ANA*****************************************/
