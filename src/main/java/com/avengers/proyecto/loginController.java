@@ -41,8 +41,8 @@ public ModelAndView login(HttpServletRequest request,ModelMap model)throws Excep
 	Empleado e1;
 	e1 = new Empleado(email, contrasena,dao);
 	System.out.println(email+" "+contrasena);
-	 model.addAttribute("correo",email);
-     model.addAttribute("contrasena",contrasena);
+	 model.addAttribute("correo",e1.getEmail());
+     model.addAttribute("contrasena",e1.getContrasena());
      if(e1.credencialesCorrectas(email,contrasena,dao)) {
     	 return new ModelAndView("home");
     	
