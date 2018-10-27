@@ -61,16 +61,12 @@
 			</form>
 			<!-- /form -->
 			
+<div>
+				
+				 <li>Estado : <c:out value="${error}" /></li>
+		
 
-				<div class="row">
-
-			<div class="col-md-3"></div>
-			<div class="col-md-7">
-				<h1>Acceso usuarios</h1>
-			</div>
-		</div>
-
-
+</div>
 			
 		</div>
 	</div>
