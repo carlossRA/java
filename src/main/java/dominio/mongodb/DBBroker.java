@@ -61,6 +61,7 @@ public class DBBroker {
 		elementos = bdUsuarios.find().iterator();
 		while(elementos.hasNext()) {
 			documento = elementos.next();
+			
 			if(documento.get("email").toString().equalsIgnoreCase(email)) {
 				existe = true;
 			}
@@ -71,11 +72,13 @@ public class DBBroker {
 	public boolean existeContrasena(String contrasena) {
 		boolean existe=false;
 		bd=cliente.getDatabase("avengerslive");
-		bdUsuarios = bd.getCollection("usuarios");
+		bdUsuarios = bd.getCollection("Empleados");
 		elementos = bdUsuarios.find().iterator();
+		System.out.println("Jose");
 		while(elementos.hasNext()) {
 			documento = elementos.next();
-			if(documento.get("contraseña").toString().equalsIgnoreCase(contrasena)) {
+			System.out.println(documento.get("contrasena"));
+			if(documento.get("contrasena").toString().equalsIgnoreCase(contrasena)) {
 				existe = true;
 			}
 		}
