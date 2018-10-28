@@ -26,6 +26,12 @@ public class DAOEmpleado {
 		return contrasenaEmpleado;
 	}
 	
+	public String dniEmpleado(String emailEmpleado) {
+		Document documentoEmail = null;
+		documentoEmail = documentoEmpleado(emailEmpleado);	
+		return documentoEmail.get("_id").toString();
+	}
+	
 	public String rolEmpleado(String emailEmpleado) {
 		Document documentoEmail = null;
 		documentoEmail = documentoEmpleado(emailEmpleado);	
@@ -70,5 +76,7 @@ public class DAOEmpleado {
 	public Empleado getEmpleado(String nombre) {
 		return db.getEmpleado(nombre);
 	}
+
+	
 
 }

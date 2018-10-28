@@ -12,12 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 import modelo.mongodb.DAOEmpleado;
 import modelo.mongodb.Empleado;
 
-
-
-
-
-
-
 public class loginController {
 
 	@RequestMapping("login.htm")
@@ -35,23 +29,15 @@ public class loginController {
 		String email, contrasena;
 		Empleado empleado = new Empleado();
 		email = request.getParameter("inputEmail");
-		contrasena = request.getParameter("inputPassword");
+		contrasena = request.getParameter("inputPassword");		
 		if(empleado.credencialesCorrectas(email, contrasena)) {
 			empleado = new Empleado(email, contrasena);
+			model.addAttribute("email", empleado.getEmail());
 			return new ModelAndView("home");
 
 		}else {
 
 			return new ModelAndView("login","error","usuario o contraseña incorrectos");
-		} 
-		/* Código a añadir para trabajar con  la base de datos
-if(dao.login(e1)) {
-	e2 = dao.getEmpleado(email);
-	return new ModelAndView("exito", "empleado", e1);
-}else {
-	return new ModelAndView("home", "aviso", "El usuario y/o clave son incorrectos.");
-} 
-		 */
+		} 	
 	}
-
 }
