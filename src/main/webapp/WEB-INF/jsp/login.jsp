@@ -3,8 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src=" https://code.jquery.com/jquery.js ">
-	
+<script src=" https://code.jquery.com/jquery.js">	
 </script>
 <script
 	src=" https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
