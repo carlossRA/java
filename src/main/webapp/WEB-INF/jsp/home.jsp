@@ -20,12 +20,12 @@
 <body>
 
 	<h1 align="center">Bienvenido a AvengersLive Web</h1>
-	<h2 align="right">
+	<h3 align="right">
 		Usuario:
 		<c:out value="${email}" />
-	</h2>
+	</h3>
 	</br>
-	<form action="home.htm" method="post">
+	<form action="login/home.htm" method="post">
 		<input value="Abrir Fichaje" type="submit" name="BtnAbrir">
 	</form>	
 
@@ -33,7 +33,7 @@
 	
 	<li>Estado: <c:out value="${mensaje}" /></li>
 	<form action="login.htm" method="post">
-		<input value="Salir" type="submit" name="BtnAbrir">
+		<input value="Salir" type="submit" name="BtnSalir">
 	</form>
 </body>
 </html>

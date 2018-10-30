@@ -47,7 +47,7 @@
 		<div class="card card-container">
 			<p
 				style="align-content: center; margin: auto; display: table; font-size: 20px; color: grey;">Login</p>
-			<form action="login.htm" method="post" class="form-signin">
+			<form action="login/home.htm" method="post" class="form-signin">
 				<span id="reauth-email" class="reauth-email"></span> <input
 					type="text" name="inputEmail" class="form-control"
 					placeholder="Email" required autofocus> <input
