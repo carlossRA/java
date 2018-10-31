@@ -18,16 +18,17 @@ public class DAOFichaje {
 
 	public void abrirFichaje(Fichaje fichaje) {
 		Document documento = new Document();
-		db.insertarDocumento(coleccion, documento, "_id", fichaje.getIdFichaje());
-		db.insertarDocumento(coleccion, documento, "idEmpleado", fichaje.getIdEmpleado());
-		db.insertarDocumento(coleccion, documento, "fechaFichaje", fichaje.getFechaFichaje());
-		db.insertarDocumento(coleccion, documento, "horaEntrada", fichaje.getHoraFichaje());		
+		coleccion.insertOne(documento
+				.append("_id", fichaje.getIdFichaje())
+				.append("idEmpleado", fichaje.getIdEmpleado())
+				.append("fechaFichaje", fichaje.getFechaFichaje())
+				.append("horaEntrada", fichaje.getHoraFichaje()));	
 	}
 
 	public void cerrarFichaje(Fichaje fichaje) {
 		Document documento = new Document();
 		documento = db.devolverDocumento(coleccion, "_id", fichaje.getIdFichaje());
-		db.insertarDocumento(coleccion, documento, "horaCierre", fichaje.getHoraCierre());
+		//db.insertarDocumento(coleccion, documento, "horaCierre", fichaje.getHoraCierre());
 	}
 
 }
