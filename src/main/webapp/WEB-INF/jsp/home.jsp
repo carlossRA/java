@@ -1,5 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page contentType="text/html; charset=utf-8" import="com.avengers.proyecto.HomeController"%>
+<%@ page contentType="text/html; charset=utf-8"
+	import="com.avengers.proyecto.loginController"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,13 +26,17 @@
 		<c:out value="${email}" />
 	</h3>
 	</br>
-	<form action="login/home.htm" method="post">
-		<input value="Abrir Fichaje" type="submit" name="BtnAbrir">
-	</form>	
+	<form action="abrirFichaje.htm" method="post">
+		<input type="submit" name="abrirFichaje" value="Abrir Fichaje" />
+	</form>
 
-	<button type="submit">Cerrar Fichaje</button>
+	<form action="cerrarFichaje.htm" method="post">
+		<input type="submit" name="cerrarFichaje" value="Cerrar Fichaje" />
+	</form>
 	
+
 	<li>Estado: <c:out value="${mensaje}" /></li>
+	
 	<form action="login.htm" method="post">
 		<input value="Salir" type="submit" name="BtnSalir">
 	</form>

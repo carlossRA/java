@@ -31,7 +31,7 @@ public class loginController {
 		return MV;
 	}
 
-	@RequestMapping(value = "login/home.htm", method = RequestMethod.POST)
+	@RequestMapping(value = "home.htm", method = RequestMethod.POST)
 	public ModelAndView login(HttpServletRequest request, ModelMap model)throws Exception{
 		String email, contrasena;
 		email = request.getParameter("inputEmail");
@@ -41,11 +41,39 @@ public class loginController {
 			model.addAttribute("email", empleado.getEmail());
 			if (empleado.getRol().equals("usuario"))
 				return new ModelAndView("home");
-			else return new ModelAndView("login","error","Eres administrador");
+			else return new ModelAndView("admin");
 
 		}else {
 
 			return new ModelAndView("login","error","usuario o contraseña incorrectos");
 		} 	
 	}
+	
+	@RequestMapping(method = RequestMethod.POST, value = "abrirFichaje.htm")
+	public ModelAndView abrirFichaje(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String dia, mes, año, hora, mensaje;
+		String fecha;		
+		dia = Integer.toString(calendario.get(Calendar.DATE));
+		mes = Integer.toString(calendario.get(Calendar.MONTH));
+		año = Integer.toString(calendario.get(Calendar.YEAR));
+		hora = Integer.toString(calendario.get(Calendar.HOUR_OF_DAY));
+		fecha = dia + "/" + mes + "/" + año;	
+		mensaje = "Fichaje Abierto";
+		fichaje = new Fichaje(empleado.getDni(), fecha, hora);
+		return new ModelAndView("home", "mensaje", mensaje);
+	} 
+	
+	@RequestMapping(method = RequestMethod.POST, value = "cerrarFichaje.htm")
+	public ModelAndView cerrarFichaje(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String dia, mes, año, hora, mensaje;
+		String fecha;		
+		dia = Integer.toString(calendario.get(Calendar.DATE));
+		mes = Integer.toString(calendario.get(Calendar.MONTH));
+		año = Integer.toString(calendario.get(Calendar.YEAR));
+		hora = Integer.toString(calendario.get(Calendar.HOUR_OF_DAY));
+		fecha = dia + "/" + mes + "/" + año;	
+		mensaje = "Fichaje Cerrado";
+		fichaje = new Fichaje(empleado.getDni(), fecha, hora);
+		return new ModelAndView("home", "mensaje", mensaje);
+	} 
 }
