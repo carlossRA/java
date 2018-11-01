@@ -1,35 +1,21 @@
 package modelo.mongodb;
 
-import java.util.Random;
-
 public class Fichaje {
 
-	private String idFichaje, idEmpleado, fechaFichaje, horaFichaje, horaCierre;
+	private String idEmpleado, fechaFichaje, horaFichaje, horaCierre, estado;
 	DAOFichaje dao = new DAOFichaje();
-	Random aleatorio = new Random(System.currentTimeMillis());
-	String [] abecedario = {"A", "B", "C", "D", "E", "F", "G", "H","I", "J", "K", "L", "M",
-			"N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
 	
 	public Fichaje(String idEmpleado, String fechaFichaje, String horaFichaje) {
-		this.idFichaje = abecedario[(int) Math.round(Math.random() * 26 )] + Integer.toString(aleatorio.nextInt(1000))
-		+ abecedario[(int) Math.round(Math.random() * 26 )] + Integer.toString(aleatorio.nextInt(1000));
 		this.idEmpleado = idEmpleado;
 		this.fechaFichaje = fechaFichaje;
 		this.horaFichaje = horaFichaje;
+		this.estado = "Abierto";
 		dao.abrirFichaje(this);		
 	}
 	
-	public void cerrarFichaje(String horaCierre) {
+	public void cerrarFichaje(String horaCierre, Empleado empleado) {
 		this.horaCierre = horaCierre;
-		dao.cerrarFichaje(this);
-	}
-
-	public String getIdFichaje() {
-		return idFichaje;
-	}
-
-	public void setIdFichaje(String idFichaje) {
-		this.idFichaje = idFichaje;
+		dao.cerrarFichaje(empleado, this);
 	}
 	
 	public String getIdEmpleado() {
@@ -57,6 +43,14 @@ public class Fichaje {
 	}
 	public void setHoraCierre(String horaCierre) {
 		this.horaCierre = horaCierre;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 
