@@ -27,7 +27,6 @@ public class DBBroker {
 		}	
 		bd = cliente.getDatabase("avengerslive");
 	}
-	/*************************************LYDIA****************************************/
 	
 	public MongoCollection<Document> devolverColeccion(String nombreColeccion) {
 		MongoCollection<Document> coleccion = bd.getCollection(nombreColeccion);
@@ -46,68 +45,14 @@ public class DBBroker {
 		return null;
 	}
 	
-	/*public void insertarDocumento(MongoCollection<Document> coleccion, Document documento, String campo, String parametro) {
-		coleccion.insertOne(documento.append(campo, parametro));
-	}*/
+	public void insertarDocumento(MongoCollection<Document> coleccion, Document documento) {
+		coleccion.insertOne(documento);
+	}
 	
-	/*****************************************ANA*****************************************/
-	
-
-	public boolean crearEmpleado(Empleado p) {
-		// TODO Auto-generated method stub
-		return false;
+	public void actualizarDocumento(MongoCollection<Document> coleccion, Document filtro, Document documento) {
+		coleccion.updateOne(filtro, documento);
 	}
 
-	public boolean existeEmail(String email) {
-		boolean existe=false;
-		bd=cliente.getDatabase("avengerslive");
-		bdUsuarios = bd.getCollection("Empleados");
-		elementos = bdUsuarios.find().iterator();
-		while(elementos.hasNext()) {
-			documento = elementos.next();
-			
-			if(documento.get("email").toString().equalsIgnoreCase(email)) {
-				existe = true;
-			}
-		}
-		return existe;
-	}
-
-	public boolean existeContrasena(String contrasena) {
-		boolean existe=false;
-		bd=cliente.getDatabase("avengerslive");
-		bdUsuarios = bd.getCollection("Empleados");
-		elementos = bdUsuarios.find().iterator();
-		System.out.println("Jose");
-		while(elementos.hasNext()) {
-			documento = elementos.next();
-			System.out.println(documento.get("contrasena"));
-			if(documento.get("contrasena").toString().equalsIgnoreCase(contrasena)) {
-				existe = true;
-			}
-		}
-		return existe;
-	}
-
-	public boolean login(Empleado e) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean borrarEmpleado(Empleado e) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean actualizarEmpleado(Empleado e) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public Empleado getEmpleado(String nombre) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 }
