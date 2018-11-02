@@ -12,10 +12,21 @@ public class Fichaje {
 		this.estado = "Abierto";
 		dao.abrirFichaje(this);		
 	}
+	public Fichaje() {
+		
+	}
 	
 	public void cerrarFichaje(String horaCierre, Empleado empleado) {
 		this.horaCierre = horaCierre;
 		dao.cerrarFichaje(empleado, this);
+	}
+	
+	public boolean comprobarFichaje(String idEmpleado, String fecha) {		
+		return dao.fichajeRealizable(idEmpleado, fecha);
+	}
+	
+	public boolean comprobarCierre(String idEmpleado, String fecha, String estado) {
+		return dao.fichajeCerrable(idEmpleado, fecha, estado);
 	}
 	
 	public String getIdEmpleado() {
