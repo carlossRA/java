@@ -3,6 +3,7 @@ package modelo.mongodb;
 import org.bson.Document;
 
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 
 public class DAOFichaje {
 
@@ -37,6 +38,33 @@ public class DAOFichaje {
 		documento.put("$set", cambio);
 		db.actualizarDocumento(coleccion, filtro, documento);
 		fichaje.setEstado("Cerrado");
+	}
+
+	public boolean fichajeRealizable(String idEmpleado, String fecha) {
+		Document documento = new Document();
+		MongoCursor<Document> elementos = coleccion.find().iterator();
+		while(elementos.hasNext()) {
+			documento = elementos.next();
+			if(documento.get("idEmpleado").toString().equalsIgnoreCase(idEmpleado))
+				if(documento.get("fechaFichaje").toString().equals(fecha))
+					return false;
+
+		}
+		return true;
+	}
+
+	public boolean fichajeCerrable(String idEmpleado, String fecha, String estado) {
+		Document documento = new Document();
+		MongoCursor<Document> elementos = coleccion.find().iterator();
+		while(elementos.hasNext()) {
+			documento = elementos.next();
+			if(documento.get("idEmpleado").toString().equalsIgnoreCase(idEmpleado))
+				if(documento.get("fechaFichaje").toString().equals(fecha))
+					if(documento.get("estado").toString().equals(estado))
+						return true;
+
+		}
+		return false;
 	}
 
 }
