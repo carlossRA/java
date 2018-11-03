@@ -40,7 +40,7 @@
 
 			<div class="col-md-3"></div>
 			<div class="col-md-7">
-				<h1>Acceso usuarios</h1>
+				<h1 align="center">Acceso usuarios</h1>
 			</div>
 		</div>
 

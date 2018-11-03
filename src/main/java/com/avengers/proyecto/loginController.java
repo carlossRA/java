@@ -1,11 +1,15 @@
 package com.avengers.proyecto;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.bson.Document;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -65,8 +69,8 @@ public class loginController {
 	@RequestMapping(method = RequestMethod.POST, value = "cerrarFichaje.htm")
 	public ModelAndView cerrarFichaje(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
 		String hora, mensaje, fecha;
-		hora = Integer.toString(calendario.get(Calendar.HOUR_OF_DAY)) + ":" + Integer.toString(calendario.get(Calendar.MINUTE));
-		fecha = Integer.toString(calendario.get(Calendar.DATE)) + "/" + Integer.toString(calendario.get(Calendar.MONTH))
+		hora = Integer.toString(calendario.get(Calendar.HOUR_OF_DAY)) + ":" + Integer.toString(calendario.get(Calendar.MINUTE)) + Integer.toString(calendario.get(Calendar.AM_PM)); 
+		fecha = Integer.toString(calendario.get(Calendar.DATE)) + "/" + new SimpleDateFormat("MMM").format(calendario.getTime())
 		+ "/" + Integer.toString(calendario.get(Calendar.YEAR));
 		model.addAttribute("email", empleado.getEmail());
 		if(!fichaje.comprobarCierre(empleado.getDni(), fecha, "Abierto"))
@@ -80,6 +84,11 @@ public class loginController {
 	
 	@RequestMapping(method = RequestMethod.POST, value = "consulta.htm")
 	public ModelAndView consulta(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
-		return new ModelAndView("consulta");
+		String idEmpleado = empleado.getDni();
+		List<Document> listaFichajes = new ArrayList<Document>();
+		listaFichajes = fichaje.fichajesEmpleado(idEmpleado);
+		model.addAttribute("fichajes", listaFichajes);
+		
+		return new ModelAndView("consulta", "fichajes", listaFichajes);
 	} 
 }
