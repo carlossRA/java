@@ -77,4 +77,9 @@ public class loginController {
 		}
 		return new ModelAndView("home", "mensaje", mensaje);
 	} 
+	
+	@RequestMapping(method = RequestMethod.POST, value = "consulta.htm")
+	public ModelAndView consulta(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
+		return new ModelAndView("consulta");
+	} 
 }
