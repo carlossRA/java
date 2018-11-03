@@ -18,11 +18,12 @@
 		<property name="mappings">
 			<props>
 				<prop key="index.htm">indexController</prop>
-				<prop key="formulario.htm">formController</prop>
 				<prop key="login.htm">loginController</prop>
 				<prop key="home.htm">loginController</prop>
 				<prop key="abrirFichaje.htm">loginController</prop>
-				<prop key="cerrarFichaje.htm">loginController</prop>
+				<prop key="cerrarFichaje.htm">loginController</prop>				
+				<prop key="consulta.htm">loginController</prop>
+				
 			</props>
 		</property>
 	</bean>
@@ -33,7 +34,6 @@
 
 	<!-- The index controller. -->
 	<bean name="loginController" class="com.avengers.proyecto.loginController" />
-	<bean name="formController" class="com.avengers.proyecto.FormController" />
 	<bean name="indexController"
 		class="org.springframework.web.servlet.mvc.ParameterizableViewController"
 		p:viewName="index" />
