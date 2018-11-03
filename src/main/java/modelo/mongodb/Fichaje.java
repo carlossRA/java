@@ -1,19 +1,23 @@
 package modelo.mongodb;
 
+import java.util.List;
+
+import org.bson.Document;
+
 public class Fichaje {
 
-	private String idEmpleado, fechaFichaje, horaFichaje, horaCierre, estado;
+	private String idEmpleado, fechaFichaje, horaEntrada, horaCierre, estado;
 	DAOFichaje dao = new DAOFichaje();
 	
-	public Fichaje(String idEmpleado, String fechaFichaje, String horaFichaje) {
-		this.idEmpleado = idEmpleado;
-		this.fechaFichaje = fechaFichaje;
-		this.horaFichaje = horaFichaje;
-		this.estado = "Abierto";
-		dao.abrirFichaje(this);		
-	}
 	public Fichaje() {
 		
+	}
+	public Fichaje(String idEmpleado, String fechaFichaje, String horaEntrada) {
+		this.idEmpleado = idEmpleado;
+		this.fechaFichaje = fechaFichaje;
+		this.horaEntrada = horaEntrada;
+		this.estado = "Abierto";
+		dao.abrirFichaje(this);		
 	}
 	
 	public void cerrarFichaje(String horaCierre, Empleado empleado) {
@@ -27,6 +31,10 @@ public class Fichaje {
 	
 	public boolean comprobarCierre(String idEmpleado, String fecha, String estado) {
 		return dao.fichajeCerrable(idEmpleado, fecha, estado);
+	}
+	
+	public List<Document> fichajesEmpleado(String idEmpleado){
+		return dao.fichajesEmpleado(idEmpleado);
 	}
 	
 	public String getIdEmpleado() {
@@ -43,11 +51,11 @@ public class Fichaje {
 	public void setFechaFichaje(String fechaFichaje) {
 		this.fechaFichaje = fechaFichaje;
 	}
-	public String getHoraFichaje() {
-		return horaFichaje;
+	public String getHoraEntrada() {
+		return horaEntrada;
 	}
-	public void setHoraFichaje(String horaFichaje) {
-		this.horaFichaje = horaFichaje;
+	public void setHoraEntrada(String horaFichaje) {
+		this.horaEntrada = horaFichaje;
 	}
 	public String getHoraCierre() {
 		return horaCierre;
