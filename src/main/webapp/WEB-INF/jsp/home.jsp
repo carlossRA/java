@@ -26,12 +26,16 @@
 		<c:out value="${email}" />
 	</h3>
 	</br>
-	<form action="abrirFichaje.htm" method="post">
+	<form action="abrirFichaje.htm" method="post" align="center">
 		<input type="submit" name="abrirFichaje" value="Abrir Fichaje" />
 	</form>
 
-	<form action="cerrarFichaje.htm" method="post">
-		<input type="submit" name="cerrarFichaje" value="Cerrar Fichaje" />
+	<form action="cerrarFichaje.htm" method="post" align="center">
+		<input type="submit" name="cerrarFichaje" value="Cerrar Fichaje" / align="center">
+	</form>
+	
+	<form action="consulta.htm" method="post">
+		<input type="submit" name="consulta" value="Consulta de Fichajes" />
 	</form>
 	
 
