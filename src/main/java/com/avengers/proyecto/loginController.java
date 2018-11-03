@@ -1,8 +1,10 @@
 package com.avengers.proyecto;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -52,32 +54,30 @@ public class loginController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "abrirFichaje.htm")
 	public ModelAndView abrirFichaje(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
-		String hora, mensaje, fecha;
-		hora = Integer.toString(calendario.get(Calendar.HOUR_OF_DAY)) + ":" + Integer.toString(calendario.get(Calendar.MINUTE));
-		fecha = Integer.toString(calendario.get(Calendar.DATE)) + "/" + Integer.toString(calendario.get(Calendar.MONTH))
-		+ "/" + Integer.toString(calendario.get(Calendar.YEAR));
+		String mensaje;
+		DateFormat hora = new SimpleDateFormat("HH:mm:ss");
+		DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
 		model.addAttribute("email", empleado.getEmail());
-		if(!fichaje.comprobarFichaje(empleado.getDni(), fecha) == true)
+		if(!fichaje.comprobarFichaje(empleado.getDni(), fecha.format(new Date())) == true)
 			mensaje = "Ya tienes un fichaje abierto hoy";
 		else {
 			mensaje = "Fichaje Abierto";
-			fichaje = new Fichaje(empleado.getDni(), fecha, hora);
+			fichaje = new Fichaje(empleado.getDni(), fecha.format(new Date()), hora.format(new Date()));
 		}
 		return new ModelAndView("home", "mensaje", mensaje);
 	} 
 
 	@RequestMapping(method = RequestMethod.POST, value = "cerrarFichaje.htm")
 	public ModelAndView cerrarFichaje(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
-		String hora, mensaje, fecha;
-		hora = Integer.toString(calendario.get(Calendar.HOUR_OF_DAY)) + ":" + Integer.toString(calendario.get(Calendar.MINUTE)) + Integer.toString(calendario.get(Calendar.AM_PM)); 
-		fecha = Integer.toString(calendario.get(Calendar.DATE)) + "/" + new SimpleDateFormat("MMM").format(calendario.getTime())
-		+ "/" + Integer.toString(calendario.get(Calendar.YEAR));
+		String mensaje;
+		DateFormat hora = new SimpleDateFormat("HH:mm:ss");
+		DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
 		model.addAttribute("email", empleado.getEmail());
-		if(!fichaje.comprobarCierre(empleado.getDni(), fecha, "Abierto"))
+		if(!fichaje.comprobarCierre(empleado.getDni(), fecha.format(new Date()), "Abierto"))
 			mensaje = "No puedes cerrar ningún fichaje";
 		else {
 			mensaje = "Fichaje Cerrado";
-			fichaje.cerrarFichaje(hora, empleado);
+			fichaje.cerrarFichaje(hora.format(new Date()), empleado);
 		}
 		return new ModelAndView("home", "mensaje", mensaje);
 	} 
