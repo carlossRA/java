@@ -52,6 +52,10 @@ public class DBBroker {
 	public void actualizarDocumento(MongoCollection<Document> coleccion, Document filtro, Document documento) {
 		coleccion.updateOne(filtro, documento);
 	}
+	
+	public MongoCursor<Document> documentosEnColeccion(MongoCollection<Document> coleccion) {
+		return coleccion.find().iterator();		
+	}
 
 
 

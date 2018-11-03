@@ -1,5 +1,8 @@
 package modelo.mongodb;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bson.Document;
 
 import com.mongodb.client.MongoCollection;
@@ -22,7 +25,7 @@ public class DAOFichaje {
 		db.insertarDocumento(coleccion, documento
 				.append("idEmpleado", fichaje.getIdEmpleado())
 				.append("fechaFichaje", fichaje.getFechaFichaje())
-				.append("horaEntrada", fichaje.getHoraFichaje())
+				.append("horaEntrada", fichaje.getHoraEntrada())
 				.append("horaCierre", null)
 				.append("estado", fichaje.getEstado()));
 	}
@@ -42,7 +45,7 @@ public class DAOFichaje {
 
 	public boolean fichajeRealizable(String idEmpleado, String fecha) {
 		Document documento = new Document();
-		MongoCursor<Document> elementos = coleccion.find().iterator();
+		MongoCursor<Document> elementos = db.documentosEnColeccion(coleccion);
 		while(elementos.hasNext()) {
 			documento = elementos.next();
 			if(documento.get("idEmpleado").toString().equalsIgnoreCase(idEmpleado))
@@ -55,7 +58,7 @@ public class DAOFichaje {
 
 	public boolean fichajeCerrable(String idEmpleado, String fecha, String estado) {
 		Document documento = new Document();
-		MongoCursor<Document> elementos = coleccion.find().iterator();
+		MongoCursor<Document> elementos = db.documentosEnColeccion(coleccion);
 		while(elementos.hasNext()) {
 			documento = elementos.next();
 			if(documento.get("idEmpleado").toString().equalsIgnoreCase(idEmpleado))
@@ -65,6 +68,19 @@ public class DAOFichaje {
 
 		}
 		return false;
+	}
+	
+	public List<Document> fichajesEmpleado(String idEmpleado){
+		List<Document> fichajes = new ArrayList<Document>();
+		Document documento = new Document();
+		MongoCursor<Document> elementos = db.documentosEnColeccion(coleccion);
+		while(elementos.hasNext()) {
+			documento = elementos.next();
+			if(documento.get("idEmpleado").toString().equalsIgnoreCase(idEmpleado))
+				fichajes.add(documento);
+		}
+		
+		return fichajes;
 	}
 
 }
