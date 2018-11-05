@@ -82,6 +82,11 @@ public class loginController {
 		return new ModelAndView("home", "mensaje", mensaje);
 	} 
 
+	@RequestMapping(value = "vistaCambiarContrasena.htm", method = RequestMethod.POST)
+	public ModelAndView redireccionarContrasena() {
+		return new ModelAndView("contraseña");
+	}
+	
 	@RequestMapping(method = RequestMethod.POST, value = "cambiarContrasena.htm")
 	public ModelAndView cambiarContrasena(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
 		String mensaje, email, contrasena, contrasenaNueva1, contrasenaNueva2;
@@ -93,14 +98,14 @@ public class loginController {
 			mensaje = "Error al introducir tu contraseña actual";
 		else if(!empleado.requisitosPassword(contrasenaNueva1))
 			mensaje = "La nueva contraseña introducida debe contener al menos una mayúscula, una minúscula "
-					+ "un número y 8 caractéres";
+					+ "un número y 8 caracteres";
 		else if(!empleado.contrasenaCoincide(contrasenaNueva1, contrasenaNueva2))
 			mensaje = "Las contraseñas no coinciden";
 		else {
 			empleado.cambiarContrasena(empleado, contrasenaNueva1);
 			mensaje = "Contraseña cambiada con éxito";
 		}
-		return new ModelAndView("home", "mensaje", mensaje);
+		return new ModelAndView("contraseña", "mensaje", mensaje);
 	} 
 
 	@RequestMapping(method = RequestMethod.POST, value = "consulta.htm")

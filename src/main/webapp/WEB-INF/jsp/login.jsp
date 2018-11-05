@@ -52,8 +52,7 @@
 					type="text" name="inputEmail" class="form-control"
 					placeholder="Email" required autofocus> <input
 					type="password" name="inputPassword" class="form-control"
-					placeholder="Contraseña" required>
-				<div id="remember" class="checkbox"></div>
+					placeholder="Contraseña" required>				
 				<button class="btn btn-lg btn-primary btn-block btn-signin"
 					type="submit">Acceder</button>
 			</form>

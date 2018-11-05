@@ -23,6 +23,9 @@
 				<prop key="abrirFichaje.htm">loginController</prop>
 				<prop key="cerrarFichaje.htm">loginController</prop>				
 				<prop key="consulta.htm">loginController</prop>
+				<prop key="cambiarContrasena.htm">loginController</prop>
+				<prop key="vistaCambiarContrasena.htm">loginController</prop>
+				
 				
 			</props>
 		</property>
