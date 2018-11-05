@@ -84,7 +84,7 @@ public class loginController {
 
 	@RequestMapping(value = "vistaCambiarContrasena.htm", method = RequestMethod.POST)
 	public ModelAndView redireccionarContrasena() {
-		return new ModelAndView("contraseña");
+		return new ModelAndView("contrasena");
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = "cambiarContrasena.htm")
