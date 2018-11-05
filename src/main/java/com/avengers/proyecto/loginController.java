@@ -105,7 +105,7 @@ public class loginController {
 			empleado.cambiarContrasena(empleado, contrasenaNueva1);
 			mensaje = "Contraseña cambiada con éxito";
 		}
-		return new ModelAndView("contraseña", "mensaje", mensaje);
+		return new ModelAndView("contrasena", "mensaje", mensaje);
 	} 
 
 	@RequestMapping(method = RequestMethod.POST, value = "consulta.htm")
