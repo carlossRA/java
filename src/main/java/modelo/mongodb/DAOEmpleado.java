@@ -6,8 +6,8 @@ import com.mongodb.client.MongoCollection;
 
 public class DAOEmpleado {
 
-	DBBroker db;
-	MongoCollection<Document> coleccion;
+	private DBBroker db;
+	private MongoCollection<Document> coleccion;
 
 	public DAOEmpleado() {
 		
@@ -39,6 +39,18 @@ public class DAOEmpleado {
 	public String nombreEmpleado(String emailEmpleado) {
 		Document documentoEmail = documentoEmpleado(emailEmpleado);
 		return documentoEmail.get("nombre").toString();
+	}
+	
+	public void cambiarContrasena(Empleado empleado, String nuevaContrasena) {
+		Document documento = new Document();
+		Document filtro = new Document();
+		Document cambio = new Document();
+		filtro.put("email", empleado.getEmail());
+		cambio.put("contrasena", nuevaContrasena);
+		documento.put("$set", cambio);
+		db.actualizarDocumento(coleccion, filtro, documento);
+		empleado.setContrasena(nuevaContrasena);		
+		
 	}
 	
 	public Document documentoEmpleado(String emailEmpleado) {

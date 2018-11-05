@@ -10,8 +10,8 @@ import com.mongodb.client.MongoCursor;
 
 public class DAOFichaje {
 
-	DBBroker db;
-	MongoCollection<Document> coleccion;
+	private DBBroker db;
+	private MongoCollection<Document> coleccion;
 
 	public DAOFichaje() {
 

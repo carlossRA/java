@@ -10,12 +10,10 @@ import com.mongodb.client.MongoDatabase;
 
 public class DBBroker {
 
-	MongoClient cliente = null;
-	MongoDatabase bd = null;
-	
-	MongoCollection<Document> bdUsuarios;
-	MongoCursor<Document> elementos;
-	Document documento;
+	private MongoClient cliente = null;
+	private MongoDatabase bd = null;
+	private MongoCursor<Document> elementos;
+	private Document documento;
 	
 
 	public DBBroker() {
@@ -35,7 +33,7 @@ public class DBBroker {
 	}
 	
 	public Document devolverDocumento(MongoCollection<Document> coleccion, String campo, String parametro) {
-		elementos = coleccion.find().iterator();
+		elementos = documentosEnColeccion(coleccion);
 		while(elementos.hasNext()) {
 			documento = elementos.next();
 			if(documento.get(campo).toString().equalsIgnoreCase(parametro))

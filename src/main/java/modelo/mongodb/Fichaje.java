@@ -7,7 +7,7 @@ import org.bson.Document;
 public class Fichaje {
 
 	private String idEmpleado, fechaFichaje, horaEntrada, horaCierre, estado;
-	DAOFichaje dao = new DAOFichaje();
+	private DAOFichaje dao = new DAOFichaje();
 	
 	public Fichaje() {
 		

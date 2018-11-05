@@ -48,7 +48,7 @@ public class loginController {
 
 		}else {
 
-			return new ModelAndView("login","error","usuario o contraseña incorrectos");
+			return new ModelAndView("login","error","Usuario o contraseña incorrectos");
 		} 	
 	}
 
@@ -81,14 +81,35 @@ public class loginController {
 		}
 		return new ModelAndView("home", "mensaje", mensaje);
 	} 
-	
+
+	@RequestMapping(method = RequestMethod.POST, value = "cambiarContrasena.htm")
+	public ModelAndView cambiarContrasena(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
+		String mensaje, email, contrasena, contrasenaNueva1, contrasenaNueva2;
+		email = empleado.getEmail();
+		contrasena = request.getParameter("inputContrasena");	
+		contrasenaNueva1 = request.getParameter("inputContrasenaNueva1");
+		contrasenaNueva2 = request.getParameter("inputContrasenaNueva2");
+		if(!empleado.credencialesCorrectas(email, contrasena))
+			mensaje = "Error al introducir tu contraseña actual";
+		else if(!empleado.requisitosPassword(contrasenaNueva1))
+			mensaje = "La nueva contraseña introducida debe contener al menos una mayúscula, una minúscula "
+					+ "un número y 8 caractéres";
+		else if(!empleado.contrasenaCoincide(contrasenaNueva1, contrasenaNueva2))
+			mensaje = "Las contraseñas no coinciden";
+		else {
+			empleado.cambiarContrasena(empleado, contrasenaNueva1);
+			mensaje = "Contraseña cambiada con éxito";
+		}
+		return new ModelAndView("home", "mensaje", mensaje);
+	} 
+
 	@RequestMapping(method = RequestMethod.POST, value = "consulta.htm")
 	public ModelAndView consulta(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
 		String idEmpleado = empleado.getDni();
 		List<Document> listaFichajes = new ArrayList<Document>();
 		listaFichajes = fichaje.fichajesEmpleado(idEmpleado);
 		model.addAttribute("fichajes", listaFichajes);
-		
+
 		return new ModelAndView("consulta", "fichajes", listaFichajes);
 	} 
 }

@@ -3,22 +3,18 @@ package modelo.mongodb;
 public class Empleado {
 
 	private String dni, email, contrasena, nombre, rol;
-	DAOEmpleado dao = new DAOEmpleado();
+	private DAOEmpleado dao = new DAOEmpleado();
 
 	public Empleado(){
 
 	}
 
 	public Empleado(String email, String contrasena) {
-		try {
 			this.dni = dao.dniEmpleado(email);
 			this.email = email;
 			this.contrasena = contrasena;
 			this.nombre = dao.nombreEmpleado(email);
 			this.rol = dao.rolEmpleado(email);
-		} catch (Exception e1) {
-			e1.printStackTrace();
-		}
 	}
 
 	public boolean credencialesCorrectas(String emailEmpleado, String contrasenaIntroducida) {
@@ -31,41 +27,56 @@ public class Empleado {
 	public String rolEmpleado(String emailEmpleado) {
 		return dao.rolEmpleado(emailEmpleado);
 	}
+	
+	public boolean contrasenaCoincide(String contrasena1, String contrasena2) {
+		if(contrasena1.equals(contrasena2))
+			return true;
+		
+		return false;
+	}
+	public void cambiarContrasena(Empleado empleado, String contrasena) {
+		dao.cambiarContrasena(empleado, contrasena);
+	}
 
-
-/*	private boolean esNumero(char n) {
-		return (n>='0'&&n<='9');
+	public boolean requisitosPassword(String contrasenaNueva) {
+		boolean size = false, numeros = false, minuscula = false, mayuscula = false;
+		if(contrasenaNueva.length() >= 8) {
+			size = true;
+		}
+		for(int j = 0; j < contrasenaNueva.length(); j++) {
+			if(esNumero(contrasenaNueva.charAt(j)))
+				numeros = true;
+		}
+		for(int j = 0; j < contrasenaNueva.length(); j++) {
+			if(esMayuscula(contrasenaNueva.charAt(j)))
+				mayuscula = true;
+		}
+		for(int j = 0; j < contrasenaNueva.length(); j++) {
+			if(esMinuscula(contrasenaNueva.charAt(j)))
+				minuscula = true;
+		}
+		return size && numeros && mayuscula && minuscula;
+	}
+	
+	private boolean esNumero(char n) {
+		return (n >= '0' && n <= '9');
 	}
 
 	private boolean esMayuscula(char n) {
 		boolean check = false;
-		if(n>='A'&&n<='Z')
+		if(n >= 'A' && n <= 'Z')
 			check = true;
 
 		return check;
 	}
 
 	private boolean esMinuscula(char n) {
-		if(n>='a'&&n<='z')return true;
-		else return false;
-	}*/
+		if(n >= 'a' && n <= 'z')
+			return true;
+		
+		return false;
+	}
 
-/*	public boolean requisitosPassword() {
-		boolean size=false, numeros=false, minuscula=false, mayuscula=false;
-		if(this.contrasenaOriginal.length()>=8) {
-			size=true;
-		}
-		for(int j=0; j<this.contrasenaOriginal.length(); j++) {
-			if(esNumero(this.contrasenaOriginal.charAt(j)))numeros=true;
-		}
-		for(int j=0; j<this.contrasenaOriginal.length(); j++) {
-			if(esMayuscula(this.contrasenaOriginal.charAt(j)))mayuscula=true;
-		}
-		for(int j=0; j<this.contrasenaOriginal.length(); j++) {
-			if(esMinuscula(this.contrasenaOriginal.charAt(j)))minuscula=true;
-		}
-		return size&&numeros&&mayuscula&&minuscula;
-	}*/
 	
 	public String getDni() {
 		return dni;

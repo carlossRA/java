@@ -46,7 +46,7 @@
 	table {
 		font-size: 15px;
 		width: 50%;
-		height: 300px;
+		height: 150px;
 		text-align: center;
 	}
 </style>
@@ -59,26 +59,26 @@
 		<table align="center" border="1" width: 100%>
 			<thead bgcolor="#FFFD86">
 				<tr>
-					<th>HoraApertura</th>
-					<th>HoraCierre</th>
 					<th>Fecha</th>
-					<th>EstadoFichaje</th>
+					<th>Apertura</th>
+					<th>Cierre</th>
+					<th>Estado</th>
 				</tr>
 			</thead>
 			<tbody bgcolor="#FFD27D">
 				<c:forEach var="fich" items="${fichajes}">
 					<tr>
+						<td>${fich.fechaFichaje}</td>
 						<td>${fich.horaEntrada}</td>
 						<td>${fich.horaCierre}</td>
-						<td>${fich.fechaFichaje}</td>
 						<td>${fich.estado}</td>
 				</c:forEach>
 			</tbody>
 		</table>
 	</form>
 	</p>
-	<form style="padding-left: 20px;" action="login.htm" method="post">
-		<input class="btn boton-salir" value="Salir" type="submit" name="BtnSalir">
+	<form style="padding-left: 20px;" action="home.htm" method="post">
+		<input class="btn boton-salir" value="Atrás" type="submit" name="BtnSalir">
 	</form>
 
 </body>
