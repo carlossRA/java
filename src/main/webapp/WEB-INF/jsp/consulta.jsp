@@ -77,9 +77,10 @@
 		</table>
 	</form>
 	</p>
+	<!-- 
 	<form style="padding-left: 20px;" action="home.htm" method="post">
 		<input class="btn boton-salir" value="Atrás" type="submit" name="BtnSalir">
 	</form>
-
+	 -->
 </body>
 </html>

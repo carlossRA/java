@@ -18,68 +18,83 @@
 	rel="stylesheet" media="screen">
 <title>Home</title>
 </head>
-<style>	
-	html,body {
-	  height: 100%;
-	  width: 100%;
-	  margin: 0;
-	  display: flex;
-	  flex-direction: column;
-	  flex-wrap: wrap;	  
-	}
-	
-	
-	.boton-personalizado-4::before, ..boton-personalizado-4::after {
-	  content: '';
-	  position: absolute;
-	  width: 100%;
-		height: 100%;
-	  bottom: 0;
-		left: 0;
-		z-index: 1;
-	  transition: all 0.3s;
-	  border: 1px solid rgba(255, 255, 255, 0.5);
-	  color: black;
-	}	
-	
-	.boton-personalizado-4:hover::after, .boton-personalizado-4:hover::before {
-	  left: 96px;
-	  width: 64px;
-	  color: black;
-	  animation-iteration-count: infinite;
-	  animation-timing-function: linear;
-	}
-	
-	.boton-personalizado-4 {
-	text-decoration:none;
+<style>
+html, body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+.boton-personalizado::before, ..boton-personalizado::after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	transition: all 0.3s;
+	border: 1px solid rgba(255, 255, 255, 0.5);
+	color: black;
+}
+
+.boton-personalizado:hover::after, .boton-personalizado:hover::before {
+	left: 96px;
+	width: 64px;
+	color: black;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+.boton-personalizado {
+	text-decoration: none;
 	font-weight: 600;
 	font-size: 20px;
 	color: white;
-	padding-top:15px;
-	padding-bottom:15px;
-	padding-left:40px;
-	padding-right:40px;
-	background-color:#FFD27D;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 40px;
+	padding-right: 40px;
+	background-color: #FFD27D;
 	border-color: #d8d8d8;
 	border-width: 3px;
 	border-style: solid;
-	border-radius:35px;
-	}
-	.boton-salir{
-	text-decoration:none;
+	border-radius: 35px;
+}
+.boton-contrasena {
+	text-decoration: none;
 	font-weight: 600;
 	font-size: 20px;
 	color: white;
-	padding-top:15px;
-	padding-bottom:15px;
-	padding-left:40px;
-	padding-right:40px;
-	background-color:red;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 40px;
+	padding-right: 40px;
+	background-color: #5DE7DA;
 	border-color: #d8d8d8;
 	border-width: 3px;
 	border-style: solid;
-	border-radius:35px;	
-	}
+	border-radius: 35px;
+}
+
+.boton-salir {
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 20px;
+	color: white;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 40px;
+	padding-right: 40px;
+	background-color: red;
+	border-color: #d8d8d8;
+	border-width: 3px;
+	border-style: solid;
+	border-radius: 35px;
+}
 </style>
 <body>
 
@@ -91,20 +106,27 @@
 	</br>
 
 	<p>
+	<form style="padding-left: 20px;" action="vistaCambiarContrasena.htm" method="post" align="left">
+		<input class="btn boton-contrasena" type="submit"
+			name="cambiarContraseña" value="Cambiar Contraseña" />
+	</form>
+	</p>
+
+	<p>
 	<form action="abrirFichaje.htm" method="post" align="center">
-		<input class="btn boton-personalizado-4" type="submit" name="abrirFichaje"
-			value="Abrir Fichaje" />
+		<input class="btn boton-personalizado" type="submit"
+			name="abrirFichaje" value="Abrir Fichaje" />
 	</form>
 	</p>
 	<p>
 	<form action="cerrarFichaje.htm" method="post" align="center">
-		<input class="btn boton-personalizado-4" type="submit" name="cerrarFichaje"
-			value="Cerrar Fichaje" / align="center">
+		<input class="btn boton-personalizado" type="submit"
+			name="cerrarFichaje" value="Cerrar Fichaje" / align="center">
 	</form>
 	</p>
 	<p>
 	<form action="consulta.htm" method="post" align="center">
-		<input class="btn boton-personalizado-4" type="submit" name="consulta"
+		<input class="btn boton-personalizado" type="submit" name="consulta"
 			value="Consulta de Fichajes" />
 	</form>
 	</p>
@@ -117,7 +139,8 @@
 	</h4>
 	</p>
 	<form style="padding-left: 20px;" action="login.htm" method="post">
-		<input class="btn boton-salir" value="Salir" type="submit" name="BtnSalir">
+		<input class="btn boton-salir" value="Logout" type="submit"
+			name="BtnSalir">
 	</form>
 </body>
 </html>
