@@ -130,6 +130,13 @@ html, body {
 			value="Consulta de Fichajes" />
 	</form>
 	</p>
+	
+	<p>
+	<form action="crearIncidencia.htm" method="post" align="center">
+		<input class="btn boton-personalizado" type="submit" name="crearIncidencia"
+			value="Crear incidencia" />
+	</form>
+	</p>
 
 	<br></br>
 	<p>
