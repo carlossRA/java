@@ -117,4 +117,11 @@ public class loginController {
 
 		return new ModelAndView("consulta", "fichajes", listaFichajes);
 	} 
+	
+	@RequestMapping(method = RequestMethod.POST, value = "crearIncidencia.htm")
+	public ModelAndView crearIncidencia(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
+	
+		return new ModelAndView("crearIncidencia");
+	} 
+	
 }
