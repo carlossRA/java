@@ -26,6 +26,8 @@
 				<prop key="cambiarContrasena.htm">loginController</prop>
 				<prop key="vistaCambiarContrasena.htm">loginController</prop>
 				<prop key="crearIncidencia.htm">loginController</prop>
+				<prop key="recuperarContrasena.htm">loginController</prop>
+				<prop key="enviarPeticionContrasena.htm">loginController</prop>
 				
 				
 			</props>
