@@ -51,6 +51,23 @@ public class loginController {
 			return new ModelAndView("login","error","Usuario o contraseña incorrectos");
 		} 	
 	}
+	
+	@RequestMapping(value = "recuperarContrasena.htm", method = RequestMethod.POST)
+	public ModelAndView recuperarContrasena() {
+		return new ModelAndView("recuperarContrasena");
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value = "enviarPeticionContrasena.htm")
+	public ModelAndView enviarPeticionContrasena(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
+		String mensaje, email;
+		email = request.getParameter("inputEmail");
+		if(empleado.recuperarContrasena(email))
+			mensaje = "Te hemos enviado una nueva contraseña al correo introducido";
+		else
+			mensaje = "No existe un usuario con el correo introducido";
+
+		return new ModelAndView("recuperarContrasena", "mensaje", mensaje);
+	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "abrirFichaje.htm")
 	public ModelAndView abrirFichaje(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
@@ -96,13 +113,13 @@ public class loginController {
 		contrasenaNueva2 = request.getParameter("inputContrasenaNueva2");
 		if(!empleado.credencialesCorrectas(email, contrasena))
 			mensaje = "Error al introducir tu contraseña actual";
-		else if(!empleado.requisitosPassword(contrasenaNueva1))
+		else if(!empleado.requisitosContrasena(contrasenaNueva1))
 			mensaje = "La nueva contraseña introducida debe contener al menos una mayúscula, una minúscula "
 					+ "un número y 8 caracteres";
 		else if(!empleado.contrasenaCoincide(contrasenaNueva1, contrasenaNueva2))
 			mensaje = "Las contraseñas no coinciden";
 		else {
-			empleado.cambiarContrasena(empleado, contrasenaNueva1);
+			empleado.cambiarContrasena(email, contrasenaNueva1);
 			mensaje = "Contraseña cambiada con éxito";
 		}
 		return new ModelAndView("contrasena", "mensaje", mensaje);
