@@ -11,6 +11,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.bson.Document;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -38,7 +39,7 @@ public class loginController {
 	public ModelAndView login(HttpServletRequest request, ModelMap model)throws Exception{
 		String email, contrasena;
 		email = request.getParameter("inputEmail");
-		contrasena = request.getParameter("inputPassword");		
+		contrasena = DigestUtils.md5Hex(request.getParameter("inputPassword"));		
 		if(empleado.credencialesCorrectas(email, contrasena)) {
 			empleado = new Empleado(email, contrasena);
 			model.addAttribute("email", empleado.getEmail());
@@ -108,7 +109,7 @@ public class loginController {
 	public ModelAndView cambiarContrasena(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
 		String mensaje, email, contrasena, contrasenaNueva1, contrasenaNueva2;
 		email = empleado.getEmail();
-		contrasena = request.getParameter("inputContrasena");	
+		contrasena = DigestUtils.md5Hex(request.getParameter("inputContrasena"));	
 		contrasenaNueva1 = request.getParameter("inputContrasenaNueva1");
 		contrasenaNueva2 = request.getParameter("inputContrasenaNueva2");
 		if(!empleado.credencialesCorrectas(email, contrasena))
