@@ -153,6 +153,14 @@ public class loginController {
 		return new ModelAndView("consulta", "fichajes", listaFichajes);
 	} 
 	
+	
+	@RequestMapping(method = RequestMethod.POST, value = "crearIncidencia.htm")
+	public ModelAndView crearIncidencia(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
+		return new ModelAndView("crearIncidencia");
+	} 
+	
+	
+	
 	@RequestMapping(method = RequestMethod.POST, value = "registrarIncidencia.htm")
 	public ModelAndView registrarIncidencia(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
 		String idEmpleado,tipo,fechaInicio, fechaFin, comentario, mensajeEstado,mensaje;
