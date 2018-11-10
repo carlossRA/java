@@ -124,6 +124,16 @@ html, body {
 			name="cerrarFichaje" value="Cerrar Fichaje" / align="center">
 	</form>
 	</p>
+	
+	<script language="JavaScript" type="text/javascript">
+		if ("${estado}" == "Abierto"){
+			abrirFichaje.disabled = true;
+			cerrarFichaje.disabled = false;
+		}else{
+			abrirFichaje.disabled = false;
+			cerrarFichaje.disabled = true;
+		}
+	</script>
 	<p>
 	<form action="consulta.htm" method="post" align="center">
 		<input class="btn boton-personalizado" type="submit" name="consulta"
@@ -137,7 +147,8 @@ html, body {
 			value="Crear incidencia" />
 	</form>
 	</p>
-
+	
+	
 	<br></br>
 	<p>
 	<h4 align="center">

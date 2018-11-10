@@ -1,5 +1,7 @@
 package modelo.mongodb;
 
+import java.util.List;
+
 import org.apache.commons.codec.digest.DigestUtils;
 
 public class Empleado {
@@ -94,6 +96,14 @@ public class Empleado {
 		}
 		cambiarContrasena(emailEmpleado, contrasena);
 		return true;
+	}
+	
+	public List<Fichaje> devolverListaFichajes(String idEmpleado){
+		
+		
+		
+		
+		return null;		
 	}
 
 	private String generarContrasena() {	

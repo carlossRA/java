@@ -37,12 +37,21 @@ public class loginController {
 
 	@RequestMapping(value = "home.htm", method = RequestMethod.POST)
 	public ModelAndView login(HttpServletRequest request, ModelMap model)throws Exception{
-		String email, contrasena;
+		String email, contrasena, estado;
+		Document fich = null;
 		email = request.getParameter("inputEmail");
-		contrasena = DigestUtils.md5Hex(request.getParameter("inputPassword"));		
+		contrasena = DigestUtils.md5Hex(request.getParameter("inputPassword"));	
+		List<Document> listaFichajes = new ArrayList<Document>();
+		
 		if(empleado.credencialesCorrectas(email, contrasena)) {
 			empleado = new Empleado(email, contrasena);
+			listaFichajes = fichaje.fichajesEmpleado(empleado.getDni());
+			for (int i=0; i<listaFichajes.size(); i++) {
+				fich = listaFichajes.get(listaFichajes.size()-1);
+			}
+			estado = fich.get("estado").toString();
 			model.addAttribute("email", empleado.getEmail());
+			model.addAttribute("estado", estado);
 			if (empleado.getRol().equals("usuario"))
 				return new ModelAndView("home");
 			else return new ModelAndView("admin");
@@ -73,16 +82,24 @@ public class loginController {
 	@RequestMapping(method = RequestMethod.POST, value = "abrirFichaje.htm")
 	public ModelAndView abrirFichaje(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
 		String mensaje;
+		Document fich = null;
 		DateFormat hora = new SimpleDateFormat("HH:mm:ss");
 		DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
+//		List<Document> listaFichajes = new ArrayList<Document>();
+//		listaFichajes = fichaje.fichajesEmpleado(empleado.getDni());
+//		
+//		for (int i=0; i<listaFichajes.size(); i++) {
+//			fich = listaFichajes.get(listaFichajes.size()-1);
+//		}
+		
 		model.addAttribute("email", empleado.getEmail());
-		if(!fichaje.comprobarFichaje(empleado.getDni(), fecha.format(new Date())) == true)
-			mensaje = "Ya tienes un fichaje abierto hoy";
-		else {
-			mensaje = "Fichaje Abierto";
-			fichaje = new Fichaje(empleado.getDni(), fecha.format(new Date()), hora.format(new Date()));
-		}
-		return new ModelAndView("home", "mensaje", mensaje);
+		fichaje = new Fichaje(empleado.getDni(), fecha.format(new Date()), hora.format(new Date()));
+		model.addAttribute("estado", fichaje.getEstado());
+		mensaje = "Fichaje Abierto";
+		if(empleado.getRol().equals("usuario"))
+			return new ModelAndView("home", "mensaje", mensaje);
+		else 
+			return new ModelAndView("admin", "mensaje", mensaje);
 	} 
 
 	@RequestMapping(method = RequestMethod.POST, value = "cerrarFichaje.htm")
@@ -90,14 +107,14 @@ public class loginController {
 		String mensaje;
 		DateFormat hora = new SimpleDateFormat("HH:mm:ss");
 		DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
-		model.addAttribute("email", empleado.getEmail());
-		if(!fichaje.comprobarCierre(empleado.getDni(), fecha.format(new Date()), "Abierto"))
-			mensaje = "No puedes cerrar ningún fichaje";
-		else {
-			mensaje = "Fichaje Cerrado";
-			fichaje.cerrarFichaje(hora.format(new Date()), empleado);
-		}
-		return new ModelAndView("home", "mensaje", mensaje);
+		model.addAttribute("email", empleado.getEmail());		
+		mensaje = "Fichaje Cerrado";
+		fichaje.cerrarFichaje(hora.format(new Date()), empleado);
+		model.addAttribute("estado", fichaje.getEstado());
+		if(empleado.getRol().equals("usuario"))
+			return new ModelAndView("home", "mensaje", mensaje);
+		else 
+			return new ModelAndView("admin", "mensaje", mensaje);
 	} 
 
 	@RequestMapping(value = "vistaCambiarContrasena.htm", method = RequestMethod.POST)

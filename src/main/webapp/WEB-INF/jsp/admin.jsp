@@ -7,10 +7,14 @@
 <script src=" https://code.jquery.com/jquery.js ">
 	
 </script>
-<script
+<script type="text/javascript"
 	src=" https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
 	
 </script>
+
+
+</script>
+
 <link rel="stylesheet" href="css/estilos.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link
@@ -64,6 +68,7 @@ html, body {
 	border-style: solid;
 	border-radius: 35px;
 }
+
 .boton-contrasena {
 	text-decoration: none;
 	font-weight: 600;
@@ -106,24 +111,37 @@ html, body {
 	</br>
 
 	<p>
-	<form style="padding-left: 20px;" action="vistaCambiarContrasena.htm" method="post" align="left">
+	<form style="padding-left: 20px;" action="vistaCambiarContrasena.htm"
+		method="post" align="left">
 		<input class="btn boton-contrasena" type="submit"
-			name="cambiarContraseña" value="Cambiar Contraseña" />
+			id="cambiarContraseña" value="Cambiar Contraseña" />
 	</form>
 	</p>
 
 	<p>
 	<form action="abrirFichaje.htm" method="post" align="center">
-		<input class="btn boton-personalizado" type="submit"
-			name="abrirFichaje" value="Abrir Fichaje" />
+		<input class="btn boton-personalizado" type="submit" id="abrirFichaje"
+			value="Abrir Fichaje" />
 	</form>
 	</p>
+
 	<p>
 	<form action="cerrarFichaje.htm" method="post" align="center">
 		<input class="btn boton-personalizado" type="submit"
-			name="cerrarFichaje" value="Cerrar Fichaje" / align="center">
+			id="cerrarFichaje" value="Cerrar Fichaje" align="center" />
 	</form>
 	</p>
+
+	<script language="JavaScript" type="text/javascript">
+		if ("${estado}" == "Abierto"){
+			abrirFichaje.disabled = true;
+			cerrarFichaje.disabled = false;
+		}else{
+			abrirFichaje.disabled = false;
+			cerrarFichaje.disabled = true;
+		}
+	</script>
+
 	<p>
 	<form action="consulta.htm" method="post" align="center">
 		<input class="btn boton-personalizado" type="submit" name="consulta"
