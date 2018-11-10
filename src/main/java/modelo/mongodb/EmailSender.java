@@ -47,7 +47,7 @@ public class EmailSender {
 			mensaje = "Has realizado una petición para recuperar tu contraseña.\n"
 					+ "Tu nueva contraseña generada automáticamente es: " + contrasenaRecuperacion
 					+ ".\nCambie la contraseña por otra de su elección a la mayor brevedad posible.\n"
-					+ "Atentamente,\nEl servicio técnico de Anvengers Live.";
+					+ "Atentamente,\nEl servicio técnico de Avengers Live.";
 		else if(tipo.equalsIgnoreCase("alta de empleado"))
 			mensaje = "ya se hará";
 		return mensaje;
