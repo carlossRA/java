@@ -6,41 +6,42 @@ import java.util.List;
 import org.bson.Document;
 
 public class Incidencia {
-	
+
 	private String idEmpleado, tipo, mensaje, fechaInicio, fechaFin, comentario;
 	private DAOIncidencia dao = new DAOIncidencia();
-	
+
 	public Incidencia() {
-		
+
 	}
-	
-	public Incidencia(String idEmpleado, String tipo, String mensaje, String fechaInicio, String fechaFin, String comentario) {
+
+	public Incidencia(String idEmpleado, String tipo, String mensaje, String fechaInicio, String fechaFin, String comentario, boolean registro) {
 		this.idEmpleado = idEmpleado;
 		this.tipo = tipo;
 		this.mensaje = mensaje;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.comentario = comentario;
-		dao.registrarIncidencia(this);
-		
+		if(registro)
+			dao.registrarIncidencia(this);
+
 	}
-	
+
 	/////////////ANA///////////////////////
 	public boolean IncidenciaCorrecta(String idEmpleado, String tipo, String mensaje) {		
 		return dao.comprobarIncidencia(idEmpleado, tipo,mensaje);
 	}
-	
+
 	public List<Document> IncidenciasEmpleado(String idEmpleado){
 		return dao.IncidenciasEmpleado(idEmpleado);
 	}
 	/////////////////////////////////////////
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	/*Método para consultar las incidencias que hace el propio empleado
 	 * Es necesario pasarle el idEmpleado del empleado que haya iniciado sesión para que pueda filtrarlo en la BD
 	 * Devuelve una lista que contiene todas sus incidencias con cualquier campo que sea necesario mostrar en la tabla
@@ -50,10 +51,10 @@ public class Incidencia {
 		List<Incidencia> listaIncidenciasPropias = new ArrayList<Incidencia>();
 		listaDocIncidencias = dao.consultarIncidenciasPropias(idEmpleado);
 		listaIncidenciasPropias = listaIncidencias(listaDocIncidencias);
-		
+
 		return listaIncidenciasPropias;
 	}
-	
+
 	/*Método para que el gestor consulte las incidencias de los demás empleados
 	 * No es necesario pasarle parámetros, ya que devuelve todas las incidencias que haya en la colección a excepción
 	 * de las que estén resultas (se controla en el DAOIncidencia)
@@ -64,10 +65,10 @@ public class Incidencia {
 		List<Incidencia> listaIncidenciasPropias = new ArrayList<Incidencia>();
 		listaDocIncidencias = dao.consultarIncidenciasGestor();
 		listaIncidenciasPropias = listaIncidencias(listaDocIncidencias);
-		
+
 		return listaIncidenciasPropias;
 	}
-	
+
 	public List<Incidencia> listaIncidencias(List<Document> listaDocIncidencias){
 		List<Incidencia> listaIncidenciasPropias = new ArrayList<Incidencia>();
 		Document documentoIncidencia = new Document();
@@ -79,7 +80,8 @@ public class Incidencia {
 					documentoIncidencia.get("mensaje").toString(),
 					documentoIncidencia.get("fechaInicio").toString(),
 					documentoIncidencia.get("fechaFin").toString(),
-					documentoIncidencia.get("comentario").toString()
+					documentoIncidencia.get("comentario").toString(),
+					false
 					);
 			listaIncidenciasPropias.add(incidenciaPropia);
 		}
@@ -133,7 +135,7 @@ public class Incidencia {
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
 	}
-	
+
 	public DAOIncidencia getDao() {
 		return dao;
 	}

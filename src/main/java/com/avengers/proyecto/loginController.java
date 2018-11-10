@@ -169,15 +169,15 @@ public class loginController {
 		fechaInicio = request.getParameter("fechaInicio");
 		fechaFin = request.getParameter("fechaFin");	
 		comentario = request.getParameter("comentario");
-		mensajeEstado="Indefinida";
+		mensajeEstado="En espera";
 		model.addAttribute("email", empleado.getEmail());
 		
 		if(!incidencia.IncidenciaCorrecta(idEmpleado, tipo, mensajeEstado))
-			mensaje = "Ya tienes una incidencia de este tipo creada es espera";
+			mensaje = "Ya tienes una incidencia de este tipo creada en espera";
 		else {
 			mensaje = "Incidencia creada correctamente";
 			//incidencia = new Incidencia(idEmpleado,tipo,mensaje,fechaInicio.format(new Date()), fechaFin.format(new Date()),comentario);
-			incidencia = new Incidencia(idEmpleado,tipo,mensaje,fechaInicio,fechaFin,comentario);
+			incidencia = new Incidencia(idEmpleado,tipo,mensajeEstado,fechaInicio,fechaFin,comentario,true);
 		}
 		return new ModelAndView("home","mensaje",mensaje);
 	} 

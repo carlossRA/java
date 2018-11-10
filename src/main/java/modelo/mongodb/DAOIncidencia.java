@@ -51,7 +51,7 @@ public class DAOIncidencia {
 		db.insertarDocumento(coleccion, documento
 				.append("idEmpleado", incidencia.getIdEmpleado())
 				.append("tipo", incidencia.getTipo())
-				.append("mensaje", "Indefinida")
+				.append("mensaje", incidencia.getMensaje())
 				.append("fechaInicio", incidencia.getFechaInicio())
 				.append("fechaFin", incidencia.getFechaFin())
 				.append("comentario", incidencia.getComentario()));
