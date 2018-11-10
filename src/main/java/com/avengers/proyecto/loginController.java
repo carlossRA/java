@@ -82,7 +82,6 @@ public class loginController {
 	@RequestMapping(method = RequestMethod.POST, value = "abrirFichaje.htm")
 	public ModelAndView abrirFichaje(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
 		String mensaje;
-		Document fich = null;
 		DateFormat hora = new SimpleDateFormat("HH:mm:ss");
 		DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
 //		List<Document> listaFichajes = new ArrayList<Document>();
@@ -106,7 +105,6 @@ public class loginController {
 	public ModelAndView cerrarFichaje(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
 		String mensaje;
 		DateFormat hora = new SimpleDateFormat("HH:mm:ss");
-		DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
 		model.addAttribute("email", empleado.getEmail());		
 		mensaje = "Fichaje Cerrado";
 		fichaje.cerrarFichaje(hora.format(new Date()), empleado);
