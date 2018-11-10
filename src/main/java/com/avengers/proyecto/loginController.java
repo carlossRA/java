@@ -21,12 +21,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import modelo.mongodb.Empleado;
 import modelo.mongodb.Fichaje;
+import modelo.mongodb.Incidencia;
 
 @Controller
 public class loginController {
 	Empleado empleado = new Empleado();
 	Calendar calendario = new GregorianCalendar();
 	Fichaje fichaje = new Fichaje();
+	Incidencia incidencia = new Incidencia();
 
 	@RequestMapping("login.htm")
 	public ModelAndView redireccion() {
@@ -151,10 +153,25 @@ public class loginController {
 		return new ModelAndView("consulta", "fichajes", listaFichajes);
 	} 
 	
-	@RequestMapping(method = RequestMethod.POST, value = "crearIncidencia.htm")
-	public ModelAndView crearIncidencia(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
-	
-		return new ModelAndView("crearIncidencia");
+	@RequestMapping(method = RequestMethod.POST, value = "registrarIncidencia.htm")
+	public ModelAndView registrarIncidencia(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
+		String idEmpleado,tipo,fechaInicio, fechaFin, comentario, mensajeEstado,mensaje;
+		idEmpleado = empleado.getDni();
+		tipo = request.getParameter("tipo");	
+		fechaInicio = request.getParameter("fechaInicio");
+		fechaFin = request.getParameter("fechaFin");	
+		comentario = request.getParameter("comentario");
+		mensajeEstado="Indefinida";
+		model.addAttribute("email", empleado.getEmail());
+		
+		if(!incidencia.IncidenciaCorrecta(idEmpleado, tipo, mensajeEstado))
+			mensaje = "Ya tienes una incidencia de este tipo creada es espera";
+		else {
+			mensaje = "Incidencia creada correctamente";
+			//incidencia = new Incidencia(idEmpleado,tipo,mensaje,fechaInicio.format(new Date()), fechaFin.format(new Date()),comentario);
+			incidencia = new Incidencia(idEmpleado,tipo,mensaje,fechaInicio,fechaFin,comentario);
+		}
+		return new ModelAndView("home","mensaje",mensaje);
 	} 
 	
 }

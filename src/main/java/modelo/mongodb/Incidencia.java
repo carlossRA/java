@@ -21,8 +21,25 @@ public class Incidencia {
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.comentario = comentario;
+		dao.registrarIncidencia(this);
 		
 	}
+	
+	/////////////ANA///////////////////////
+	public boolean IncidenciaCorrecta(String idEmpleado, String tipo, String mensaje) {		
+		return dao.comprobarIncidencia(idEmpleado, tipo,mensaje);
+	}
+	
+	public List<Document> IncidenciasEmpleado(String idEmpleado){
+		return dao.IncidenciasEmpleado(idEmpleado);
+	}
+	/////////////////////////////////////////
+	
+	
+	
+	
+	
+	
 	
 	/*Método para consultar las incidencias que hace el propio empleado
 	 * Es necesario pasarle el idEmpleado del empleado que haya iniciado sesión para que pueda filtrarlo en la BD
@@ -115,6 +132,13 @@ public class Incidencia {
 
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
+	}
+	
+	public DAOIncidencia getDao() {
+		return dao;
+	}
+	public void setDao(DAOIncidencia dao) {
+		this.dao = dao;
 	}
 
 }

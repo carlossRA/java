@@ -46,6 +46,16 @@
 		$("#fechaFin").datepicker();
 	});
 </script>
+
+<script>
+$(document).ready(function(){
+	$("select[name=tipoIncidencia]").change(function(){
+            alert($('select[name=tipoIncidencia]').val());
+            $('input[name=tipo]').val($(this).val());
+        });
+});
+</script>
+
 </head>
 <style>
 .body {
@@ -55,8 +65,6 @@
 	background-attachment:fixed;
 	margin:0;
 	font-family: helvetica;
-		
-
 	
 }
 
@@ -167,22 +175,31 @@
 
 }
 
+.transparente  {
+    background-color: transparent;
+    border: 1px solid #000000;
+    color: transparent;
+    border: none;
+}
+
 </style>
 
 <body>
 	<div class="body">
 
-		<form action="" class="form">
+		<form action="registrarIncidencia.htm" class="form" method="post">
 			<h2 class="h2">INCIDENCIAS</h2>
 			<br></br>
 			<div class="caja caja::after">
-				<select class="select select:focus">
-					<option value=" ">--Tipo de incidencia--</option>
-					<option value="Aceptada">Aceptada</option>
-					<option value="Espera">En espera</option>
-					<option value="Denegada">Denegada</option>
+				<select name="tipoIncidencia" class="select select:focus">
+					<option>--Tipo de incidencia--</option>
+					<option value="Vacaciones">Solicitar vacaciones</option>
+					<option value="Bajas Medicas">Comunicar bajas médicas</option>
+					<option value="Ausencias">Justificar ausencias</option>
+					<option value="Errores">Comunicar errores en el marcaje</option>
 				</select>
 			</div>
+			<input type="text" name="tipo" size="40" class="transparente" value="">
 			<br></br>
 
 			<div class="fechas">
@@ -192,10 +209,10 @@
 				<input type="text" name="fechaFin" id="fechaFin">
 			</div>
 			<br></br>
-			<textarea class="textarea" name="observaciones"
+			<textarea class="textarea" name="comentario"
 				placeholder="Observaciones"></textarea>
-			<input type="button" class="boton boton:hover" value="ENVIAR"
-				id="botonEnviar">
+			<input type="submit" class="boton boton:hover" value="ENVIAR"
+				 name="botonEnviar">
 
 		</form>
 	</div>

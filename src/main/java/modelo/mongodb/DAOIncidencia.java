@@ -45,4 +45,43 @@ public class DAOIncidencia {
 		return incidencias;		
 	}
 	
+	//////////////////////////ANA///////////////////////////
+	public void registrarIncidencia(Incidencia incidencia) {
+		Document documento = new Document();
+		db.insertarDocumento(coleccion, documento
+				.append("idEmpleado", incidencia.getIdEmpleado())
+				.append("tipo", incidencia.getTipo())
+				.append("mensaje", "Indefinida")
+				.append("fechaInicio", incidencia.getFechaInicio())
+				.append("fechaFin", incidencia.getFechaFin())
+				.append("comentario", incidencia.getComentario()));
+	}
+	
+	public boolean comprobarIncidencia(String idEmpleado, String tipo, String mensaje) {
+		Document documento = new Document();
+		MongoCursor<Document> elementos = db.documentosEnColeccion(coleccion);
+		while(elementos.hasNext()) {
+			documento = elementos.next();
+			/*
+			if(documento.get("idEmpleado").toString().equalsIgnoreCase(idEmpleado))
+				if(documento.get("tipo").toString().equalsIgnoreCase(tipo))
+					return false;*/
+
+		}
+		return true;
+	}
+	
+	public List<Document> IncidenciasEmpleado(String idEmpleado){
+		List<Document> incidencias = new ArrayList<Document>();
+		Document documento = new Document();
+		MongoCursor<Document> elementos = db.documentosEnColeccion(coleccion);
+		while(elementos.hasNext()) {
+			documento = elementos.next();
+			if(documento.get("idEmpleado").toString().equalsIgnoreCase(idEmpleado))
+				incidencias.add(documento);
+		}	
+		return incidencias;
+	}
+	////////////////////////////////////////////////////////////////
+	
 }
