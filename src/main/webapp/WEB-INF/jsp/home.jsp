@@ -7,7 +7,7 @@
 <script src=" https://code.jquery.com/jquery.js ">
 	
 </script>
-<script
+<script type="text/javascript"
 	src=" https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
 	
 </script>
@@ -20,7 +20,7 @@
 </head>
 <style>
 html, body {
-	height: 100%;
+	height: 105%;
 	width: 100%;
 	margin: 0;
 	display: flex;
@@ -64,6 +64,7 @@ html, body {
 	border-style: solid;
 	border-radius: 35px;
 }
+
 .boton-contrasena {
 	text-decoration: none;
 	font-weight: 600;
@@ -100,31 +101,33 @@ html, body {
 
 	<h1 align="center">Bienvenido a AvengersLive Web</h1>
 	<h3 style="padding-right: 20px;" align="right">
-		Usuario:
+		Administrador:
 		<c:out value="${email}" />
 	</h3>
 	</br>
 
 	<p>
-	<form style="padding-left: 20px;" action="vistaCambiarContrasena.htm" method="post" align="left">
+	<form style="padding-left: 20px;" action="vistaCambiarContrasena.htm"
+		method="post" align="left">
 		<input class="btn boton-contrasena" type="submit"
-			name="cambiarContraseña" value="Cambiar Contraseña" />
+			id="cambiarContraseña" value="Cambiar Contraseña" />
 	</form>
 	</p>
 
 	<p>
 	<form action="abrirFichaje.htm" method="post" align="center">
-		<input class="btn boton-personalizado" type="submit"
-			name="abrirFichaje" value="Abrir Fichaje" />
+		<input class="btn boton-personalizado" type="submit" id="abrirFichaje"
+			value="Abrir Fichaje" />
 	</form>
 	</p>
+
 	<p>
 	<form action="cerrarFichaje.htm" method="post" align="center">
 		<input class="btn boton-personalizado" type="submit"
-			name="cerrarFichaje" value="Cerrar Fichaje" / align="center">
+			id="cerrarFichaje" value="Cerrar Fichaje" align="center" />
 	</form>
 	</p>
-	
+
 	<script language="JavaScript" type="text/javascript">
 		if ("${estado}" == "Abierto"){
 			abrirFichaje.disabled = true;
@@ -134,23 +137,24 @@ html, body {
 			cerrarFichaje.disabled = true;
 		}
 	</script>
+
 	<p>
 	<form action="consulta.htm" method="post" align="center">
 		<input class="btn boton-personalizado" type="submit" name="consulta"
 			value="Consulta de Fichajes" />
 	</form>
 	</p>
-	
+
 	<p>
-	<form action="crearIncidencia.htm" method="post" align="center">
-		<input class="btn boton-personalizado" type="submit" name="crearIncidencia"
-			value="Crear incidencia" />
+		<form action="crearIncidencia.htm" method="post" align="center">
+		<input class="btn boton-personalizado" type="submit"
+			name="crearIncidencia" value="Crear incidencia" />
 	</form>
 	</p>
-	
-	
-	<br></br>
+
+
 	<p>
+	
 	<h4 align="center">
 		Estado:
 		<c:out value="${mensaje}" />

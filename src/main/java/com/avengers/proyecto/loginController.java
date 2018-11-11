@@ -39,19 +39,22 @@ public class loginController {
 
 	@RequestMapping(value = "home.htm", method = RequestMethod.POST)
 	public ModelAndView login(HttpServletRequest request, ModelMap model)throws Exception{
-		String email, contrasena, estado;
+		String email, contrasena, estado = null;
 		Document fich = null;
 		email = request.getParameter("inputEmail");
 		contrasena = DigestUtils.md5Hex(request.getParameter("inputPassword"));	
 		List<Document> listaFichajes = new ArrayList<Document>();
-		
+
 		if(empleado.credencialesCorrectas(email, contrasena)) {
 			empleado = new Empleado(email, contrasena);
 			listaFichajes = fichaje.fichajesEmpleado(empleado.getDni());
-			for (int i=0; i<listaFichajes.size(); i++) {
-				fich = listaFichajes.get(listaFichajes.size()-1);
+			if(!listaFichajes.isEmpty()) {
+				for (int i=0; i<listaFichajes.size(); i++) {
+					fich = listaFichajes.get(listaFichajes.size()-1);
+				}
+				estado = fich.get("estado").toString();
+				
 			}
-			estado = fich.get("estado").toString();
 			model.addAttribute("email", empleado.getEmail());
 			model.addAttribute("estado", estado);
 			if (empleado.getRol().equals("usuario"))
@@ -63,12 +66,12 @@ public class loginController {
 			return new ModelAndView("login","error","Usuario o contraseña incorrectos");
 		} 	
 	}
-	
+
 	@RequestMapping(value = "recuperarContrasena.htm", method = RequestMethod.POST)
 	public ModelAndView recuperarContrasena() {
 		return new ModelAndView("recuperarContrasena");
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST, value = "enviarPeticionContrasena.htm")
 	public ModelAndView enviarPeticionContrasena(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
 		String mensaje, email;
@@ -86,13 +89,6 @@ public class loginController {
 		String mensaje;
 		DateFormat hora = new SimpleDateFormat("HH:mm:ss");
 		DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
-//		List<Document> listaFichajes = new ArrayList<Document>();
-//		listaFichajes = fichaje.fichajesEmpleado(empleado.getDni());
-//		
-//		for (int i=0; i<listaFichajes.size(); i++) {
-//			fich = listaFichajes.get(listaFichajes.size()-1);
-//		}
-		
 		model.addAttribute("email", empleado.getEmail());
 		fichaje = new Fichaje(empleado.getDni(), fecha.format(new Date()), hora.format(new Date()));
 		model.addAttribute("estado", fichaje.getEstado());
@@ -121,7 +117,7 @@ public class loginController {
 	public ModelAndView redireccionarContrasena() {
 		return new ModelAndView("contrasena");
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST, value = "cambiarContrasena.htm")
 	public ModelAndView cambiarContrasena(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
 		String mensaje, email, contrasena, contrasenaNueva1, contrasenaNueva2;
@@ -152,15 +148,15 @@ public class loginController {
 
 		return new ModelAndView("consulta", "fichajes", listaFichajes);
 	} 
-	
-	
+
+
 	@RequestMapping(method = RequestMethod.POST, value = "crearIncidencia.htm")
 	public ModelAndView crearIncidencia(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
 		return new ModelAndView("crearIncidencia");
 	} 
-	
-	
-	
+
+
+
 	@RequestMapping(method = RequestMethod.POST, value = "registrarIncidencia.htm")
 	public ModelAndView registrarIncidencia(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
 		String idEmpleado,tipo,fechaInicio, fechaFin, comentario, mensajeEstado,mensaje;
@@ -171,7 +167,7 @@ public class loginController {
 		comentario = request.getParameter("comentario");
 		mensajeEstado="En espera";
 		model.addAttribute("email", empleado.getEmail());
-		
+
 		if(!incidencia.IncidenciaCorrecta(idEmpleado, tipo, mensajeEstado))
 			mensaje = "Ya tienes una incidencia de este tipo creada en espera";
 		else {
@@ -181,5 +177,5 @@ public class loginController {
 		}
 		return new ModelAndView("home","mensaje",mensaje);
 	} 
-	
+
 }
