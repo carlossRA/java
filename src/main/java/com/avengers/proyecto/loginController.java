@@ -59,6 +59,7 @@ public class loginController {
 			model.addAttribute("estado", estado);
 			if (empleado.getRol().equals("usuario"))
 				return new ModelAndView("home");
+			else if(empleado.getRol().equals("gestor"))return new ModelAndView("gestor");//unica línea añadida
 			else return new ModelAndView("admin");
 
 		}else {
@@ -176,6 +177,44 @@ public class loginController {
 			incidencia = new Incidencia(idEmpleado,tipo,mensajeEstado,fechaInicio,fechaFin,comentario,true);
 		}
 		return new ModelAndView("home","mensaje",mensaje);
-	} 
+	}
+	@RequestMapping(value = "EmplConlInc.htm", method = RequestMethod.POST)
+	public ModelAndView gestIncEmpl(HttpServletRequest request, ModelMap model)throws Exception{
+		List<Incidencia> listaIncidencias=new ArrayList();
+	    listaIncidencias =  incidencia.consultarIncidenciasPropias(empleado.getDni());
+	   
+	    model.addAttribute("incidencias", listaIncidencias);
+        
+		return new ModelAndView("GestIncEmpl", "incidencias", listaIncidencias);
+	}
+	
+	
+	@RequestMapping(method = RequestMethod.POST, value = "Incidencias.htm")
+	public ModelAndView consulIncidencia(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
+	    
+		String id = request.getParameter("idEmpleado");
+		String tipo = request.getParameter("tipo");
+		String men = request.getParameter("mensaje");
+		String fechaIn = request.getParameter("fechaInicio");
+		String fechaFin = request.getParameter("fechaFin");
+		String comentario = request.getParameter("comentario");
+		model.addAttribute("id", id);
+		model.addAttribute("tipo", tipo);
+		model.addAttribute("men", men);
+		model.addAttribute("fechaIn", fechaIn);
+		model.addAttribute("fechaFin", fechaFin);
+		model.addAttribute("comentario", comentario);
+		return new ModelAndView("Incidencias");
+	}
+
+	@RequestMapping(value = "GestConlInc.htm", method = RequestMethod.POST)
+	public ModelAndView gestConInc(HttpServletRequest request, ModelMap model)throws Exception{
+		List<Incidencia> listaIncidencias=new ArrayList();
+	    listaIncidencias =  incidencia.consultarIncidenciasPropias(empleado.getDni());
+	   
+	    model.addAttribute("incidencias", listaIncidencias);
+        
+		return new ModelAndView("GestIncGest", "incidencias", listaIncidencias);
+	}
 
 }

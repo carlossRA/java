@@ -101,7 +101,7 @@ html, body {
 
 	<h1 align="center">Bienvenido a AvengersLive Web</h1>
 	<h3 style="padding-right: 20px;" align="right">
-		Administrador:
+		Empleado:
 		<c:out value="${email}" />
 	</h3>
 	</br>
@@ -151,8 +151,12 @@ html, body {
 			name="crearIncidencia" value="Crear incidencia" />
 	</form>
 	</p>
-
-
+	<p>
+		<form action="EmplConlInc.htm" method="post" align="center">
+		<input class="btn boton-personalizado" type="submit"
+			name="ConsultarIncidencia" value="Consultar incidencias" />
+	</form>
+	</p>
 	<p>
 	
 	<h4 align="center">

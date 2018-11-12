@@ -56,6 +56,8 @@
 		<table align="center" border="1" width: 100% id="tab">
 			<thead bgcolor="#FFFD86">
 			<tr>				
+				<th width="30">Estado</th>
+				<th width="30">comentario</th>
 				<th width="30">Fecha Inicio</th>
 				<th width="30">Fecha Fin</th>
 			</tr>
@@ -65,12 +67,12 @@
 			<c:forEach items="${incidencias}" var="proyecto">
 				<tr>
 					
-					<td style="display: none">${proyecto.idEmpleado}</td>
+				<td style="display: none">${proyecto.idEmpleado}</td>
 					<td style="display: none">${proyecto.tipo}</td>
-					<td style="display: none">${proyecto.mensaje}</td>
+					<td >${proyecto.mensaje}</td>
+					<td >${proyecto.comentario}</td>
 					<td >${proyecto.fechaInicio}</td>
 					<td >${proyecto.fechaFin}</td>
-					<td style="display: none">${proyecto.comentario}</td>
 					
 			
 				</tr>
@@ -139,9 +141,9 @@ function verIncidencia() {
   document.getElementById("dni").value=datoCoger;
   document.getElementById("tip").value=datoC;
   document.getElementById("mens").value=datoCg;
-  document.getElementById("fechIn").value=datoCoge;
-  document.getElementById("fechFin").value=datoCogerr;
-  document.getElementById("com").value=datoCogerria;
+  document.getElementById("com").value=datoCoge;
+  document.getElementById("fechIn").value=datoCogerr;
+  document.getElementById("fechFin").value=datoCogerria;
 	
     
 

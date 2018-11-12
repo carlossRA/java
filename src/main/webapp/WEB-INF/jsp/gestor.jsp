@@ -123,7 +123,7 @@ html, body {
 
 	<p>
 	<form action="cerrarFichaje.htm" method="post" align="center">
-		<input  type="submit"
+		<input class="btn boton-personalizado" type="submit"
 			id="cerrarFichaje" value="Cerrar Fichaje" align="center" />
 	</form>
 	</p>
@@ -144,18 +144,17 @@ html, body {
 			value="Consulta de Fichajes" />
 	</form>
 	</p>
-    
+
 	<p>
-		<form action="GestConlInc.htm" method="post" align="center">
-		<input class="btn boton-personalizado" type="submit"
-			name="consultarIncidencia" value="Consultar Incidencias" />
-	</form>
-	</p>
-	
-<p>
 		<form action="crearIncidencia.htm" method="post" align="center">
 		<input class="btn boton-personalizado" type="submit"
 			name="crearIncidencia" value="Crear incidencia" />
+	</form>
+	</p>
+	<p>
+		<form action="GestConlInc.htm" method="post" align="center">
+		<input class="btn boton-personalizado" type="submit"
+			name="ConsultarIncidencia" value="Consultar incidencias" />
 	</form>
 	</p>
 	<p>
@@ -169,7 +168,5 @@ html, body {
 		<input class="btn boton-salir" value="Logout" type="submit"
 			name="BtnSalir">
 	</form>
-	
-	
 </body>
 </html>

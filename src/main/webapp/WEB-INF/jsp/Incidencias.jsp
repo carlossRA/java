@@ -3,7 +3,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Administración de Tareas.</title>
+  <title>Informacion de incidencias.</title>
 
   <!-- BOOTSTRAP -->
   <script src="https://code.jquery.com/jquery.js"></script>
@@ -54,7 +54,7 @@
         <input name="nameTarea" readonly=”readonly” value= "${tipo}" class="form-control" id="nameTarea">
         
         <br>
- 		<label>mensaje</label>
+ 		<label>Estado</label>
         <input name="id"   readonly=”readonly” value= "${men}" class="form-control" id="id">
         
         <br>
