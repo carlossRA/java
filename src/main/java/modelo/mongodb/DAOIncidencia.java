@@ -39,7 +39,7 @@ public class DAOIncidencia {
 		MongoCursor<Document> elementos = db.documentosEnColeccion(coleccion);
 		while(elementos.hasNext()) {
 			documento = elementos.next();
-			if(!documento.get("estado").toString().equalsIgnoreCase("Resuelta"))
+			if(!documento.get("mensaje").toString().equalsIgnoreCase("Resuelta"))
 				incidencias.add(documento);
 		}
 		return incidencias;		

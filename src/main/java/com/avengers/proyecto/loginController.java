@@ -210,7 +210,7 @@ public class loginController {
 	@RequestMapping(value = "GestConlInc.htm", method = RequestMethod.POST)
 	public ModelAndView gestConInc(HttpServletRequest request, ModelMap model)throws Exception{
 		List<Incidencia> listaIncidencias=new ArrayList();
-	    listaIncidencias =  incidencia.consultarIncidenciasPropias(empleado.getDni());
+	    listaIncidencias =  incidencia.consultarIncidenciasGestor();
 	   
 	    model.addAttribute("incidencias", listaIncidencias);
         
