@@ -134,7 +134,7 @@ public class loginController {
 		else if(!empleado.contrasenaCoincide(contrasenaNueva1, contrasenaNueva2))
 			mensaje = "Las contraseñas no coinciden";
 		else {
-			empleado.cambiarContrasena(email, contrasenaNueva1);
+			empleado.cambiarContrasena("cambiar contraseña", email, contrasenaNueva1);
 			mensaje = "Contraseña cambiada con éxito";
 		}
 		return new ModelAndView("contrasena", "mensaje", mensaje);
