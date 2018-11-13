@@ -38,7 +38,8 @@ public class Empleado {
 
 		return false;
 	}
-	public void cambiarContrasena(String email, String contrasena) {
+	public void cambiarContrasena(String tipo, String email, String contrasena) {
+		enviarEmail(tipo, email, contrasena);
 		dao.cambiarContrasena(email, DigestUtils.md5Hex(contrasena));
 	}
 
@@ -82,32 +83,21 @@ public class Empleado {
 	}
 
 	public boolean recuperarContrasena(String emailEmpleado) {
-		@SuppressWarnings("unused")
-		EmailSender enviarEmail;
 		String contrasena;
 		if(!dao.existeEmpleado(emailEmpleado))
 			return false;
-		contrasena = generarContrasena();
-		try {
-			enviarEmail = new EmailSender("recuperar credenciales", emailEmpleado, contrasena);
-		}catch (Exception e){
-			System.out.println(e.getMessage());
-			return false;
-		}
-		cambiarContrasena(emailEmpleado, contrasena);
+		contrasena = GeneradorContrasena.getContrasenaAleatoria(20);
+		cambiarContrasena("recuperar credenciales", emailEmpleado, contrasena);
 		return true;
 	}
-	
-	public List<Fichaje> devolverListaFichajes(String idEmpleado){
-		
-		
-		
-		
-		return null;		
-	}
 
-	private String generarContrasena() {	
-		return GeneradorContrasena.getContrasenaAleatoria(10);	
+	private void enviarEmail(String tipo, String emailEmpleado, String contrasena) {
+		@SuppressWarnings("unused")
+		EmailSender enviarEmail = new EmailSender(tipo, emailEmpleado, contrasena);
+	}
+	
+	public void eliminarEmpleado(String emailEmpleado) {
+		
 	}
 
 	public String getDni() {

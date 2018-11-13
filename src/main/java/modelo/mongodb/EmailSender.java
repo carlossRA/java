@@ -41,15 +41,25 @@ public class EmailSender {
 		session.setDebug(true);
 	}
 
-	private String texto(String tipo, String contrasenaRecuperacion) {
+	private String texto(String tipo, String contrasenaNueva) {
 		String mensaje = "";
+		String email = "";
 		if(tipo.equalsIgnoreCase("recuperar credenciales"))
 			mensaje = "Has realizado una petición para recuperar tu contraseña.\n"
-					+ "Tu nueva contraseña generada automáticamente es: " + contrasenaRecuperacion
-					+ ".\nCambie la contraseña por otra de su elección a la mayor brevedad posible.\n"
+					+ "Tu nueva contraseña generada automáticamente es: " + contrasenaNueva
+					+ "\nCambie la contraseña por otra de su elección a la mayor brevedad posible.\n"
+					+ "Atentamente,\nEl servicio técnico de Avengers Live.";
+		else if(tipo.equalsIgnoreCase("cambiar contraseña"))
+			mensaje = "Tu contraseña ha sido cambiada con éxito.\n"
+					+ "Si tú no has realizado este cambio, ponte en contacto con el servicio técnico de Avengers Live.\n"
 					+ "Atentamente,\nEl servicio técnico de Avengers Live.";
 		else if(tipo.equalsIgnoreCase("alta de empleado"))
-			mensaje = "ya se hará";
+			mensaje = "Bienvenido a Avengers Live.\n"
+					+ "Te ha sido creado un nuevo usuario en nuestra aplicación.\n"
+					+ "Las credenciales para acceder son\n"
+					+ "Usuaio: " + email
+					+ "\nContraseña: " + contrasenaNueva
+					+ "\nAtentamente,\nEl servicio técnico de Avengers Live.";
 		return mensaje;
 	}
 
@@ -57,8 +67,10 @@ public class EmailSender {
 		String asunto = "";
 		if(tipo.equalsIgnoreCase("recuperar credenciales"))
 			asunto = "Recuperación de contraseña";
+		else if(tipo.equalsIgnoreCase("cambiar contraseña"))
+			asunto = "Contraseña cambiada con éxito";
 		else if(tipo.equalsIgnoreCase("alta de empleado"))
-			asunto = "ya se verá";
+			asunto = "Bienvenido a Avengers Live";
 		return asunto;
 	}
 

@@ -51,6 +51,10 @@ public class DBBroker {
 		coleccion.updateOne(filtro, documento);
 	}
 	
+	public void borrarDocumento(MongoCollection<Document> coleccion, Document documento) {
+		coleccion.findOneAndDelete(documento);
+	}
+	
 	public MongoCursor<Document> documentosEnColeccion(MongoCollection<Document> coleccion) {
 		return coleccion.find().iterator();		
 	}
