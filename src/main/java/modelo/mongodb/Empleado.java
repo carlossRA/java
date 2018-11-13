@@ -86,17 +86,18 @@ public class Empleado {
 		String contrasena;
 		if(!dao.existeEmpleado(emailEmpleado))
 			return false;
-		contrasena = generarContrasena();
+		contrasena = GeneradorContrasena.getContrasenaAleatoria(20);
 		cambiarContrasena("recuperar credenciales", emailEmpleado, contrasena);
 		return true;
 	}
 
-	private String generarContrasena() {	
-		return GeneradorContrasena.getContrasenaAleatoria(20);	
-	}
-
 	private void enviarEmail(String tipo, String emailEmpleado, String contrasena) {
+		@SuppressWarnings("unused")
 		EmailSender enviarEmail = new EmailSender(tipo, emailEmpleado, contrasena);
+	}
+	
+	public void eliminarEmpleado(String emailEmpleado) {
+		
 	}
 
 	public String getDni() {

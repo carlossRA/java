@@ -51,7 +51,7 @@ public class EmailSender {
 					+ "Atentamente,\nEl servicio técnico de Avengers Live.";
 		else if(tipo.equalsIgnoreCase("cambiar contraseña"))
 			mensaje = "Tu contraseña ha sido cambiada con éxito.\n"
-					+ "Si tu no has realizado este cambio, ponte en contacto con el servicio técnico de Avengers Live"
+					+ "Si tú no has realizado este cambio, ponte en contacto con el servicio técnico de Avengers Live.\n"
 					+ "Atentamente,\nEl servicio técnico de Avengers Live.";
 		else if(tipo.equalsIgnoreCase("alta de empleado"))
 			mensaje = "Bienvenido a Avengers Live.\n"

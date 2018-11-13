@@ -57,6 +57,11 @@ public class DAOEmpleado {
 		return false;
 	}
 	
+	public void eliminarEmpleado(String emailEmpleado) {
+		Document documento = new Document("email", emailEmpleado);
+		db.borrarDocumento(coleccion, documento);
+	}
+	
 	public Document documentoEmpleado(String emailEmpleado) {
 		return db.devolverDocumento(coleccion, "email", emailEmpleado);
 	}
