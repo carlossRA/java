@@ -1,7 +1,5 @@
 package modelo.mongodb;
 
-import java.util.List;
-
 import org.apache.commons.codec.digest.DigestUtils;
 
 public class Empleado {
@@ -19,6 +17,16 @@ public class Empleado {
 		this.contrasena = contrasena;
 		this.nombre = dao.nombreEmpleado(email);
 		this.rol = dao.rolEmpleado(email);
+	}
+	
+	//Constructor para dar de alta un usuario
+	public Empleado(String dni, String email, String nombre, String rol) {
+		this.dni = dni;
+		this.email = email;
+		this.contrasena = GeneradorContrasena.getContrasenaAleatoria(20);
+		this.nombre = nombre;
+		this.rol = rol;
+		darAltaUsuario();
 	}
 
 	public boolean credencialesCorrectas(String emailEmpleado, String contrasenaIntroducida) {
@@ -97,7 +105,16 @@ public class Empleado {
 	}
 	
 	public void eliminarEmpleado(String emailEmpleado) {
-		
+		dao.eliminarEmpleado(emailEmpleado);
+	}
+	
+	public void darAltaUsuario() {
+		dao.darAltaUsuario(this);
+		enviarEmail("alta de empleado", email, contrasena);
+	}
+	
+	public void cambiarRol(String emailEmpleado, String nuevoRol) {
+		dao.cambiarRol(emailEmpleado, nuevoRol);
 	}
 
 	public String getDni() {
