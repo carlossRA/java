@@ -66,5 +66,25 @@ public class DAOEmpleado {
 		return db.devolverDocumento(coleccion, "email", emailEmpleado);
 	}
 
+	public void darAltaUsuario(Empleado empleado) {
+		Document documento = new Document();
+		db.insertarDocumento(coleccion, documento
+				.append("_id", empleado.getDni())
+				.append("email", empleado.getEmail())
+				.append("contrasna", empleado.getContrasena())
+				.append("nombre", empleado.getNombre())
+				.append("rol", empleado.getRol()));		
+	}
+
+	public void cambiarRol(String emailEmpleado, String nuevoRol) {
+		Document documento = new Document();
+		Document filtro = new Document();
+		Document cambio = new Document();
+		filtro.put("email", emailEmpleado);
+		cambio.put("rol", nuevoRol);
+		documento.put("$set", cambio);
+		db.actualizarDocumento(coleccion, filtro, documento);		
+	}
+
 
 }
