@@ -36,15 +36,20 @@
 		$("#fecha").datepicker();
 	});
 </script>
+
 <script>
-	$(function() {
-		$("#fechaInicio").datepicker();
-	});
-</script>
-<script>
-	$(function() {
-		$("#fechaFin").datepicker();
-	});
+$(function () {
+$("#fechaInicio").datepicker({ minDate:0,
+onClose: function (selectedDate) {
+$("#fechaFin").datepicker("option", "minDate", selectedDate);
+} 
+});
+$("#fechaFin").datepicker({
+onClose: function (selectedDate) {
+$("#fechaInicio").datepicker("option", "maxDate", selectedDate);
+}
+});
+});
 </script>
 
 <script>
