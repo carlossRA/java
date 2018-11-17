@@ -14,7 +14,7 @@ public class Incidencia {
 
 	}
 
-	public Incidencia(String idEmpleado, String tipo, String mensaje, String fechaInicio, String fechaFin, String comentario, boolean registro) {
+	public Incidencia(String idEmpleado, String tipo, String mensaje, String fechaInicio, String fechaFin, String comentario, String archivo, boolean registro) {
 		this.idEmpleado = idEmpleado;
 		this.tipo = tipo;
 		this.mensaje = mensaje;
@@ -81,11 +81,16 @@ public class Incidencia {
 					documentoIncidencia.get("fechaInicio").toString(),
 					documentoIncidencia.get("fechaFin").toString(),
 					documentoIncidencia.get("comentario").toString(),
+					documentoIncidencia.getString("archivo").toString(),
 					false
 					);
 			listaIncidenciasPropias.add(incidenciaPropia);
 		}
 		return listaIncidenciasPropias;
+	}
+	
+	public void cambiarMensaje(Incidencia incidencia, String nuevoMensaje) {
+		dao.cambiarMensaje(incidencia, nuevoMensaje);
 	}
 
 	public String getIdEmpleado() {
