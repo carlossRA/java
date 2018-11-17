@@ -20,33 +20,12 @@
 </head>
 <style>
 html, body {
-	height: 105%;
+	height: auto;
 	width: 100%;
 	margin: 0;
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
-}
-
-.boton-personalizado::before, ..boton-personalizado::after {
-	content: '';
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	bottom: 0;
-	left: 0;
-	z-index: 1;
-	transition: all 0.3s;
-	border: 1px solid rgba(255, 255, 255, 0.5);
-	color: black;
-}
-
-.boton-personalizado:hover::after, .boton-personalizado:hover::before {
-	left: 96px;
-	width: 64px;
-	color: black;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
 }
 
 .boton-personalizado {
@@ -101,7 +80,7 @@ html, body {
 
 	<h1 align="center">Bienvenido a AvengersLive Web</h1>
 	<h3 style="padding-right: 20px;" align="right">
-		Empleado:
+		Usuario:
 		<c:out value="${email}" />
 	</h3>
 	</br>
@@ -152,7 +131,7 @@ html, body {
 	</form>
 	</p>
 	<p>
-		<form action="EmplConlInc.htm" method="post" align="center">
+		<form action="incidenciasGestorUsuario.htm" method="post" align="center">
 		<input class="btn boton-personalizado" type="submit"
 			name="ConsultarIncidencia" value="Consultar incidencias" />
 	</form>
