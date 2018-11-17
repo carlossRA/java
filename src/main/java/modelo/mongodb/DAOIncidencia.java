@@ -45,6 +45,19 @@ public class DAOIncidencia {
 		return incidencias;		
 	}
 	
+
+	public void cambiarMensaje(Incidencia incidencia, String nuevoMensaje) {
+		Document documento = new Document();
+		Document filtro = new Document();
+		Document cambio = new Document();
+		filtro.put("idEmpleado", incidencia.getIdEmpleado());
+		filtro.put("mensaje", incidencia.getMensaje());
+		cambio.put("mensaje", nuevoMensaje);
+		documento.put("$set", cambio);
+		db.actualizarDocumento(coleccion, filtro, documento);
+		incidencia.setMensaje(nuevoMensaje);
+	}
+	
 	//////////////////////////ANA///////////////////////////
 	public void registrarIncidencia(Incidencia incidencia) {
 		Document documento = new Document();
@@ -83,5 +96,6 @@ public class DAOIncidencia {
 		return incidencias;
 	}
 	////////////////////////////////////////////////////////////////
+
 	
 }

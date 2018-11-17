@@ -38,27 +38,30 @@
 </script>
 
 <script>
-$(function () {
-$("#fechaInicio").datepicker({ minDate:0,
-onClose: function (selectedDate) {
-$("#fechaFin").datepicker("option", "minDate", selectedDate);
-} 
-});
-$("#fechaFin").datepicker({
-onClose: function (selectedDate) {
-$("#fechaInicio").datepicker("option", "maxDate", selectedDate);
-}
-});
-});
+	$(function() {
+		$("#fechaInicio").datepicker({
+			minDate : 0,
+			onClose : function(selectedDate) {
+				$("#fechaFin").datepicker("option", "minDate", selectedDate);
+			}
+		});
+		$("#fechaFin").datepicker(
+				{
+					onClose : function(selectedDate) {
+						$("#fechaInicio").datepicker("option", "maxDate",
+								selectedDate);
+					}
+				});
+	});
 </script>
 
 <script>
-$(document).ready(function(){
-	$("select[name=tipoIncidencia]").change(function(){
-            alert($('select[name=tipoIncidencia]').val());
-            $('input[name=tipo]').val($(this).val());
-        });
-});
+	$(document).ready(function() {
+		$("select[name=tipoIncidencia]").change(function() {
+			alert($('select[name=tipoIncidencia]').val());
+			$('input[name=tipo]').val($(this).val());
+		});
+	});
 </script>
 
 </head>
@@ -67,10 +70,9 @@ $(document).ready(function(){
 	background-image:
 		url(https://i2.wp.com/plagi.es/wp-content/uploads/2016/01/FONDO-Web-2016-OK-1.jpg);
 	background-size: 100% 100%;
-	background-attachment:fixed;
-	margin:0;
+	background-attachment: fixed;
+	margin: 0;
 	font-family: helvetica;
-	
 }
 
 .form {width 450px;
@@ -164,7 +166,8 @@ $(document).ready(function(){
 	right: 0px;
 	pointer-events: none;
 }
-.fechas{
+
+.fechas {
 	background-color: #31384A;
 	font-size: 14px;
 	border: outset;
@@ -177,16 +180,14 @@ $(document).ready(function(){
 	color: white;
 	text-align: center;
 	padding: 20px;
-
 }
 
-.transparente  {
-    background-color: transparent;
-    border: 1px solid #000000;
-    color: transparent;
-    border: none;
+.transparente {
+	background-color: transparent;
+	border: 1px solid #000000;
+	color: transparent;
+	border: none;
 }
-
 </style>
 
 <body>
@@ -204,22 +205,45 @@ $(document).ready(function(){
 					<option value="Errores">Comunicar errores en el marcaje</option>
 				</select>
 			</div>
-			<input type="text" name="tipo" size="40" class="transparente" value="">
-			<br></br>
+			<input type="text" name="tipo" size="40" class="transparente"
+				value=""> <br></br>
 
 			<div class="fechas">
-				<label>Fecha de inicio</label> 
-				<input type="text" name="fechaInicio" id="fechaInicio"><br></br>
-				<label>Fecha de fin</label>
-				<input type="text" name="fechaFin" id="fechaFin">
+				<label>Fecha de inicio</label> <input type="text" name="fechaInicio"
+					id="fechaInicio"><br></br> <label>Fecha de fin</label> <input
+					type="text" name="fechaFin" id="fechaFin">
 			</div>
 			<br></br>
 			<textarea class="textarea" name="comentario"
 				placeholder="Observaciones"></textarea>
+
 			<input type="submit" class="boton boton:hover" value="ENVIAR"
-				 name="botonEnviar">
+				name="botonEnviar">
 
 		</form>
+		
+			<input type="file" id="files" name="files[]" multiple />
+			<output id="list"></output>
+
+		<script>
+			function handleFileSelect(evt) {
+				var files = evt.target.files; // FileList object
+
+				// files is a FileList of File objects. List some properties.
+				var output = [];
+				for (var i = 0, f; f = files[i]; i++) {
+					output.push('<li><strong>', escape(f.name), '</strong> (',
+							f.type || 'n/a', ') - ', f.size,
+							' bytes, last modified: ', f.lastModifiedDate.toLocaleDateString(), '</li>');
+				}
+				document.getElementById('list').innerHTML = '<ul>'
+						+ output.join('') + '</ul>';
+			}
+
+			document.getElementById('files').addEventListener('change',
+					handleFileSelect, false);
+		</script>
+
 	</div>
 </body>
 </html>

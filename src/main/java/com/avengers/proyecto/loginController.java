@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JFileChooser;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.bson.Document;
@@ -160,13 +161,14 @@ public class loginController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "registrarIncidencia.htm")
 	public ModelAndView registrarIncidencia(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
-		String idEmpleado,tipo,fechaInicio, fechaFin, comentario, mensajeEstado,mensaje;
+		String idEmpleado, tipo, fechaInicio, fechaFin, comentario, mensajeEstado, mensaje, archivo;
 		idEmpleado = empleado.getDni();
 		tipo = request.getParameter("tipo");	
 		fechaInicio = request.getParameter("fechaInicio");
 		fechaFin = request.getParameter("fechaFin");	
 		comentario = request.getParameter("comentario");
-		mensajeEstado="En espera";
+		mensajeEstado = "En espera";
+		archivo = request.getParameter("files");
 		model.addAttribute("email", empleado.getEmail());
 
 		if(!incidencia.IncidenciaCorrecta(idEmpleado, tipo, mensajeEstado))
@@ -174,13 +176,14 @@ public class loginController {
 		else {
 			mensaje = "Incidencia creada correctamente";
 			//incidencia = new Incidencia(idEmpleado,tipo,mensaje,fechaInicio.format(new Date()), fechaFin.format(new Date()),comentario);
-			incidencia = new Incidencia(idEmpleado,tipo,mensajeEstado,fechaInicio,fechaFin,comentario,true);
+			incidencia = new Incidencia(idEmpleado, tipo, mensajeEstado, fechaInicio, fechaFin, comentario, archivo, true);
 		}
 		return new ModelAndView("home","mensaje",mensaje);
 	}
+	
 	@RequestMapping(value = "EmplConlInc.htm", method = RequestMethod.POST)
 	public ModelAndView gestIncEmpl(HttpServletRequest request, ModelMap model)throws Exception{
-		List<Incidencia> listaIncidencias=new ArrayList();
+		List<Incidencia> listaIncidencias=new ArrayList<Incidencia>();
 	    listaIncidencias =  incidencia.consultarIncidenciasPropias(empleado.getDni());
 	   
 	    model.addAttribute("incidencias", listaIncidencias);
@@ -209,7 +212,7 @@ public class loginController {
 
 	@RequestMapping(value = "GestConlInc.htm", method = RequestMethod.POST)
 	public ModelAndView gestConInc(HttpServletRequest request, ModelMap model)throws Exception{
-		List<Incidencia> listaIncidencias=new ArrayList();
+		List<Incidencia> listaIncidencias=new ArrayList<Incidencia>();
 	    listaIncidencias =  incidencia.consultarIncidenciasGestor();
 	   
 	    model.addAttribute("incidencias", listaIncidencias);

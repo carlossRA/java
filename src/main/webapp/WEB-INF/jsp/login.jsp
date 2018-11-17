@@ -60,8 +60,6 @@
 			<form action="recuperarContrasena.htm" method="post">
 				<input class="btn btn-lg btn-danger btn-block" type="submit"
 					name="recuperarContrasena" value="¿Olvidaste tu contraseña?" />
-
-
 			</form>
 
 			<div>
