@@ -31,6 +31,8 @@
 				<prop key="enviarPeticionContrasena.htm">loginController</prop>
                 <prop key="Incidencias.htm">loginController</prop>
                 <prop key="incidenciasGestorUsuario.htm">loginController</prop>
+                <prop key="resolucionIncidencias.htm">loginController</prop>
+                <prop key="actualizarIncidencias.htm">loginController</prop>
 				
 				
 			</props>
