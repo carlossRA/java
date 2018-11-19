@@ -13,7 +13,7 @@
 	$.datepicker.regional['es'] = {
 		closeText : 'Cerrar',
 		prevText : '< Ant',
- nextText: 'Sig >',
+ 		nextText: 'Sig >',
 		currentText : 'Hoy',
 		monthNames : [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
 				'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre',
@@ -220,30 +220,8 @@
 			<input type="submit" class="boton boton:hover" value="ENVIAR"
 				name="botonEnviar">
 
-		</form>
-		
-			<input type="file" id="files" name="files[]" multiple />
-			<output id="list"></output>
-
-		<script>
-			function handleFileSelect(evt) {
-				var files = evt.target.files; // FileList object
-
-				// files is a FileList of File objects. List some properties.
-				var output = [];
-				for (var i = 0, f; f = files[i]; i++) {
-					output.push('<li><strong>', escape(f.name), '</strong> (',
-							f.type || 'n/a', ') - ', f.size,
-							' bytes, last modified: ', f.lastModifiedDate.toLocaleDateString(), '</li>');
-				}
-				document.getElementById('list').innerHTML = '<ul>'
-						+ output.join('') + '</ul>';
-			}
-
-			document.getElementById('files').addEventListener('change',
-					handleFileSelect, false);
-		</script>
-
+		</form>	
+			
 	</div>
 </body>
 </html>

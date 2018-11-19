@@ -74,14 +74,7 @@
         
        
            <br>
-        
-         
-            
-              
-         
-        </form>
-        
-        
+        </form>       
           </div>
 
     </div>
@@ -91,10 +84,10 @@
  
 </body>
 
-<script type="text/javascript">
+<script language="JavaScript" type="text/javascript">
 
 function retroceder(){
-	
+		
 		document.normal.action ="GestConlInc.htm";
 
 	}

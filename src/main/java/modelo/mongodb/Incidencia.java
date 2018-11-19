@@ -4,31 +4,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 public class Incidencia {
 
 	private String idEmpleado, tipo, mensaje, fechaInicio, fechaFin, comentario;
+	private ObjectId _id;
 	private DAOIncidencia dao = new DAOIncidencia();
 
 	public Incidencia() {
 
 	}
 
-	public Incidencia(String idEmpleado, String tipo, String mensaje, String fechaInicio, String fechaFin, String comentario, String archivo, boolean registro) {
+	public Incidencia(String idEmpleado, String tipo, String mensaje, String fechaInicio, String fechaFin, String comentario) {
 		this.idEmpleado = idEmpleado;
 		this.tipo = tipo;
 		this.mensaje = mensaje;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.comentario = comentario;
-		if(registro)
-			dao.registrarIncidencia(this);
+		dao.registrarIncidencia(this);
+
+	}
+
+	public Incidencia(ObjectId _id, String idEmpleado, String tipo, String mensaje, String fechaInicio, String fechaFin, String comentario) {
+		this._id = _id;
+		this.idEmpleado = idEmpleado;
+		this.tipo = tipo;
+		this.mensaje = mensaje;
+		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
+		this.comentario = comentario;
 
 	}
 
 	/////////////ANA///////////////////////
 	public boolean IncidenciaCorrecta(String idEmpleado, String tipo, String mensaje) {		
-		return dao.comprobarIncidencia(idEmpleado, tipo,mensaje);
+		return dao.comprobarIncidencia(idEmpleado, tipo, mensaje);
 	}
 
 	public List<Document> IncidenciasEmpleado(String idEmpleado){
@@ -75,22 +87,21 @@ public class Incidencia {
 		for(int i = 0; i < listaDocIncidencias.size(); i++) {
 			documentoIncidencia = listaDocIncidencias.get(i);
 			Incidencia incidenciaPropia = new Incidencia(
+					documentoIncidencia.getObjectId(_id),
 					documentoIncidencia.get("idEmpleado").toString(),
 					documentoIncidencia.get("tipo").toString(),
 					documentoIncidencia.get("mensaje").toString(),
 					documentoIncidencia.get("fechaInicio").toString(),
 					documentoIncidencia.get("fechaFin").toString(),
-					documentoIncidencia.get("comentario").toString(),
-					documentoIncidencia.getString("archivo").toString(),
-					false
+					documentoIncidencia.get("comentario").toString()
 					);
 			listaIncidenciasPropias.add(incidenciaPropia);
 		}
 		return listaIncidenciasPropias;
 	}
-	
-	public void cambiarMensaje(Incidencia incidencia, String nuevoMensaje) {
-		dao.cambiarMensaje(incidencia, nuevoMensaje);
+
+	public void cambiarMensaje(String idEmpleado, String comentario, String nuevoMensaje) {
+		dao.cambiarMensaje(idEmpleado, comentario, nuevoMensaje);
 	}
 
 	public String getIdEmpleado() {
