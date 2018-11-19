@@ -202,7 +202,7 @@ public class loginController {
 		String idEmpleado = request.getParameter("idEmpleado");
 		String mensaje = request.getParameter("mensaje");
 		String comentario = request.getParameter("comentario");
-		incidencia.cambiarMensaje(idEmpleado, mensaje, comentario);
+		incidencia.cambiarMensaje(idEmpleado, comentario, mensaje);
 		
 		List<Incidencia> listaIncidenciasUsuario=new ArrayList<Incidencia>();
 		List<Incidencia> listaIncidenciasGestor=new ArrayList<Incidencia>();
