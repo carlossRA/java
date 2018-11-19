@@ -192,7 +192,7 @@ public class loginController {
 		else {
 			mensaje = "Incidencia creada correctamente";
 			//incidencia = new Incidencia(idEmpleado,tipo,mensaje,fechaInicio.format(new Date()), fechaFin.format(new Date()),comentario);
-			incidencia = new Incidencia(idEmpleado, tipo, mensajeEstado, fechaInicio, fechaFin, comentario, true);
+			incidencia = new Incidencia(idEmpleado, tipo, mensajeEstado, fechaInicio, fechaFin, comentario);
 		}
 		return new ModelAndView("home","mensaje",mensaje);
 	}
