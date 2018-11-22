@@ -1,10 +1,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="iso-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>Crear incidencia</title>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -20,10 +20,10 @@
 				'Diciembre' ],
 		monthNamesShort : [ 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul',
 				'Ago', 'Sep', 'Oct', 'Nov', 'Dic' ],
-		dayNames : [ 'Domingo', 'Lunes', 'Martes', 'MiÃ©rcoles', 'Jueves',
-				'Viernes', 'SÃ¡bado' ],
-		dayNamesShort : [ 'Dom', 'Lun', 'Mar', 'MiÃ©', 'Juv', 'Vie', 'SÃ¡b' ],
-		dayNamesMin : [ 'Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'SÃ¡' ],
+		dayNames : [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves',
+				'Viernes', 'Sábado' ],
+		dayNamesShort : [ 'Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb' ],
+		dayNamesMin : [ 'Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá' ],
 		weekHeader : 'Sm',
 		dateFormat : 'dd/mm/yy',
 		firstDay : 1,
@@ -46,9 +46,9 @@
 			}
 		});
 		$("#fechaFin").datepicker(
-				{
+				{	
 					onClose : function(selectedDate) {
-						$("#fechaInicio").datepicker("option", "maxDate",
+					$("#fechaInicio").datepicker("option", "maxDate",
 								selectedDate);
 					}
 				});
@@ -200,7 +200,7 @@
 				<select name="tipoIncidencia" class="select select:focus">
 					<option>--Tipo de incidencia--</option>
 					<option value="Vacaciones">Solicitar vacaciones</option>
-					<option value="Bajas Medicas">Comunicar bajas mÃ©dicas</option>
+					<option value="Bajas Medicas">Comunicar bajas médicas</option>
 					<option value="Ausencias">Justificar ausencias</option>
 					<option value="Errores">Comunicar errores en el marcaje</option>
 				</select>
@@ -209,9 +209,10 @@
 				value=""> <br></br>
 
 			<div class="fechas">
-				<label>Fecha de inicio</label> <input type="text" name="fechaInicio"
-					id="fechaInicio"><br></br> <label>Fecha de fin</label> <input
-					type="text" name="fechaFin" id="fechaFin">
+				<label>Fecha de inicio</label> 
+				<input type="text" name="fechaInicio" id="fechaInicio" placeholder="dd/mm/yy"><br></br> 
+				<label>Fecha de fin</label> 
+				<input type="text" name="fechaFin" id="fechaFin" placeholder="dd/mm/yy">
 			</div>
 			<br></br>
 			<textarea class="textarea" name="comentario"
