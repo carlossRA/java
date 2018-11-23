@@ -116,6 +116,7 @@ table {
 			<thead bgcolor="#FFFD86">
 				<tr>
 					<th width="30">DNI</th>
+					<th width="30">Email</th>
 					<th width="30">Estado</th>
 					<th width="30">Comentario</th>
 					<th width="30">Fecha Inicio</th>
@@ -128,6 +129,7 @@ table {
 					<tr>
 
 						<td>${proyecto.idEmpleado}</td>
+						<td>${proyecto.emailEmpleado}</td>
 						<td style="display: none">${proyecto.tipo}</td>
 						<td>${proyecto.mensaje}</td>
 						<td>${proyecto.comentario}</td>
@@ -142,6 +144,7 @@ table {
 		</table>
 
 		<input name="idEmpleado" id="dni" value="" style="display: none">
+		<input name="emailEmpleado" id="email" value="" style="display: none">
 		<input name="tipo" id="tip" value="" style="display: none"> <input
 			name="mensaje" id="mens" value="" style="display: none"> <input
 			name="fechaInicio" id="fechIn" value="" style="display: none">

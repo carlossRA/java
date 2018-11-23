@@ -90,13 +90,22 @@ public class Empleado {
 		return false;
 	}
 
-	public boolean recuperarContrasena(String emailEmpleado) {
-		String contrasena;
-		if(!dao.existeEmpleado(emailEmpleado))
+	public boolean recuperarContrasena(String emailDni) {
+		String contrasena, emailDestino, destinatario;
+		if(!dao.empleadoExiste(emailDni))
 			return false;
+		emailDestino = emailEmpleado(emailDni);
+		if(!emailDestino.equals(null))
+			destinatario = emailDestino;
+		else
+			destinatario = emailDni;
 		contrasena = GeneradorContrasena.getContrasenaAleatoria(20);
-		cambiarContrasena("recuperar credenciales", emailEmpleado, contrasena);
+		cambiarContrasena("recuperar credenciales", destinatario, contrasena);
 		return true;
+	}
+	
+	public String emailEmpleado(String dni) {
+		return dao.emailEmpleado(dni);
 	}
 
 	private void enviarEmail(String tipo, String emailEmpleado, String contrasena) {
