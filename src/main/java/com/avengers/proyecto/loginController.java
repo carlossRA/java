@@ -218,14 +218,16 @@ public class loginController {
 	@RequestMapping(method = RequestMethod.POST, value = "Incidencias.htm")
 	public ModelAndView consulIncidencia(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
 	    String id = request.getParameter("idEmpleado");
-		String tipo = request.getParameter("tipo");
+		String tip = request.getParameter("tipo");
+		String email=request.getParameter("emailEmpleado");
 		String men = request.getParameter("mensaje");
 		String fechaIn = request.getParameter("fechaInicio");
 		String fechaFin = request.getParameter("fechaFin");
 		String comentario = request.getParameter("comentario");
 		
 		model.addAttribute("id", id);
-		model.addAttribute("tipo", tipo);
+		model.addAttribute("tip", tip);
+		model.addAttribute("email", email);
 		model.addAttribute("men", men);
 		model.addAttribute("fechaIn", fechaIn);
 		model.addAttribute("fechaFin", fechaFin);
@@ -242,6 +244,11 @@ public class loginController {
 	    model.addAttribute("id", id);
 	    model.addAttribute("comentario", comentario);
 		return new ModelAndView("resolucionIncidencias");
+	}
+	@RequestMapping(method = RequestMethod.POST, value = "GestionarUsuarios.htm")
+	public ModelAndView GestionarUsuarios(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
+	   
+		return new ModelAndView("GestionarUsuarios");
 	}
 	
 	

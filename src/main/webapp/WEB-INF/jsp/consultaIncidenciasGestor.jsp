@@ -129,8 +129,8 @@ table {
 					<tr>
 
 						<td>${proyecto.idEmpleado}</td>
-						<td>${proyecto.emailEmpleado}</td>
 						<td style="display: none">${proyecto.tipo}</td>
+						<td>${proyecto.emailEmpleado}</td>
 						<td>${proyecto.mensaje}</td>
 						<td>${proyecto.comentario}</td>
 						<td>${proyecto.fechaInicio}</td>
@@ -144,10 +144,11 @@ table {
 		</table>
 
 		<input name="idEmpleado" id="dni" value="" style="display: none">
+		<input name="tipo" id="tip" value="" style="display: none"> 
 		<input name="emailEmpleado" id="email" value="" style="display: none">
-		<input name="tipo" id="tip" value="" style="display: none"> <input
-			name="mensaje" id="mens" value="" style="display: none"> <input
-			name="fechaInicio" id="fechIn" value="" style="display: none">
+		
+		<input name="mensaje" id="mens" value="" style="display: none"> 
+		<input name="fechaInicio" id="fechIn" value="" style="display: none">
 		<input name="fechaFin" id="fechFin" value="" style="display: none">
 		<input name="comentario" id="com" value="" style="display: none">
 		<input name="estado" id="est" value="" style="display: none">
@@ -205,12 +206,14 @@ table {
 		var f = seleccionado.getElementsByTagName('td');
 		var dni = f[0].textContent;
 		var tipo = f[1].textContent;
-		var mensaje = f[2].textContent;
-		var comentario = f[3].textContent;
-		var fechaInicio = f[4].textContent;
-		var fechaFin = f[5].textContent;
+		var correo= f[2].textContent;
+		var mensaje = f[3].textContent;
+		var comentario = f[4].textContent;
+		var fechaInicio = f[5].textContent;
+		var fechaFin = f[6].textContent;
 		document.getElementById("dni").value = dni;
 		document.getElementById("tip").value = tipo;
+		document.getElementById("email").value = correo;
 		document.getElementById("mens").value = mensaje;
 		document.getElementById("com").value = comentario;
 		document.getElementById("fechIn").value = fechaInicio;

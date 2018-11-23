@@ -33,7 +33,7 @@
                 <prop key="incidenciasGestorUsuario.htm">loginController</prop>
                 <prop key="resolucionIncidencias.htm">loginController</prop>
                 <prop key="actualizarIncidencias.htm">loginController</prop>
-				
+				<prop key="GestionarUsuarios.htm">loginController</prop>
 				
 			</props>
 		</property>
