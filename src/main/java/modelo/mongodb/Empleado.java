@@ -94,7 +94,7 @@ public class Empleado {
 		String contrasena, emailDestino, destinatario;
 		if(!dao.empleadoExiste(emailDni))
 			return false;
-		emailDestino = dao.emailEmpleado(emailDni);
+		emailDestino = emailEmpleado(emailDni);
 		if(!emailDestino.equals(null))
 			destinatario = emailDestino;
 		else
@@ -102,6 +102,10 @@ public class Empleado {
 		contrasena = GeneradorContrasena.getContrasenaAleatoria(20);
 		cambiarContrasena("recuperar credenciales", destinatario, contrasena);
 		return true;
+	}
+	
+	public String emailEmpleado(String dni) {
+		return dao.emailEmpleado(dni);
 	}
 
 	private void enviarEmail(String tipo, String emailEmpleado, String contrasena) {

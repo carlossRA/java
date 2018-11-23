@@ -8,7 +8,7 @@ import org.bson.types.ObjectId;
 
 public class Incidencia {
 
-	private String idEmpleado, tipo, mensaje, fechaInicio, fechaFin, comentario;
+	private String idEmpleado, emailEmpleado, tipo, mensaje, fechaInicio, fechaFin, comentario;
 	private ObjectId _id;
 	private DAOIncidencia dao = new DAOIncidencia();
 
@@ -28,8 +28,10 @@ public class Incidencia {
 	}
 
 	public Incidencia(ObjectId _id, String idEmpleado, String tipo, String mensaje, String fechaInicio, String fechaFin, String comentario) {
+		Empleado empleado = new Empleado();
 		this._id = _id;
 		this.idEmpleado = idEmpleado;
+		this.emailEmpleado = empleado.emailEmpleado(idEmpleado);
 		this.tipo = tipo;
 		this.mensaje = mensaje;
 		this.fechaInicio = fechaInicio;
@@ -49,15 +51,6 @@ public class Incidencia {
 	/////////////////////////////////////////
 
 
-
-
-
-
-
-	/*Método para consultar las incidencias que hace el propio empleado
-	 * Es necesario pasarle el idEmpleado del empleado que haya iniciado sesión para que pueda filtrarlo en la BD
-	 * Devuelve una lista que contiene todas sus incidencias con cualquier campo que sea necesario mostrar en la tabla
-	 * Se usa en la interfaz de consultas de incidencia del empleado*/
 	public List<Incidencia> consultarIncidenciasPropias(String idEmpleado) {
 		List<Document> listaDocIncidencias = new ArrayList<Document>();
 		List<Incidencia> listaIncidenciasPropias = new ArrayList<Incidencia>();
@@ -66,12 +59,7 @@ public class Incidencia {
 
 		return listaIncidenciasPropias;
 	}
-
-	/*Método para que el gestor consulte las incidencias de los demás empleados
-	 * No es necesario pasarle parámetros, ya que devuelve todas las incidencias que haya en la colección a excepción
-	 * de las que estén resultas (se controla en el DAOIncidencia)
-	 * Devuelve una lista que contiene todas sus incidencias con cualquier campo que sea necesario mostrar en la tabla
-	 * Se usa en la interfaz de consultas de incidencia del gestor*/
+	
 	public List<Incidencia> consultarIncidenciasGestor() {
 		List<Document> listaDocIncidencias = new ArrayList<Document>();
 		List<Incidencia> listaIncidenciasPropias = new ArrayList<Incidencia>();
@@ -152,11 +140,12 @@ public class Incidencia {
 		this.comentario = comentario;
 	}
 
-	public DAOIncidencia getDao() {
-		return dao;
+	public String getEmailEmpleado() {
+		return emailEmpleado;
 	}
-	public void setDao(DAOIncidencia dao) {
-		this.dao = dao;
+
+	public void setEmailEmpleado(String emailEmpleado) {
+		this.emailEmpleado = emailEmpleado;
 	}
 
 }
