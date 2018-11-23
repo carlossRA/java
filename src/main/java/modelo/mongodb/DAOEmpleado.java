@@ -3,6 +3,7 @@ package modelo.mongodb;
 import org.bson.Document;
 
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 
 public class DAOEmpleado {
 
@@ -10,7 +11,7 @@ public class DAOEmpleado {
 	private MongoCollection<Document> coleccion;
 
 	public DAOEmpleado() {
-		
+
 		db = new DBBroker();
 		coleccion = db.devolverColeccion("Empleados");
 	}
@@ -23,24 +24,24 @@ public class DAOEmpleado {
 			contrasenaEmpleado = documentoEmail.get("contrasena").toString();
 		return contrasenaEmpleado;
 	}
-	
+
 	public String dniEmpleado(String emailEmpleado) {
 		Document documentoEmail = null;
 		documentoEmail = documentoEmpleado(emailEmpleado);	
 		return documentoEmail.get("_id").toString();
 	}
-	
+
 	public String rolEmpleado(String emailEmpleado) {
 		Document documentoEmail = null;
 		documentoEmail = documentoEmpleado(emailEmpleado);	
 		return documentoEmail.get("rol").toString();
 	}	
-	
+
 	public String nombreEmpleado(String emailEmpleado) {
 		Document documentoEmail = documentoEmpleado(emailEmpleado);
 		return documentoEmail.get("nombre").toString();
 	}
-	
+
 	public void cambiarContrasena(String email, String nuevaContrasena) {
 		Document documento = new Document();
 		Document filtro = new Document();
@@ -56,12 +57,36 @@ public class DAOEmpleado {
 			return true;
 		return false;
 	}
+
+	public boolean empleadoExiste(String emailDni) {
+		Document documento = new Document();
+		MongoCursor<Document> elementos = db.documentosEnColeccion(coleccion);
+		while(elementos.hasNext()) {
+			documento = elementos.next();
+			if(documento.get("_id").toString().equalsIgnoreCase(emailDni))
+				return true;
+			if(documento.get("email").toString().equalsIgnoreCase(emailDni))
+				return true;
+		}
+		return false;
+	}
 	
+	public String emailEmpleado(String dni) {
+		Document documento = new Document();
+		MongoCursor<Document> elementos = db.documentosEnColeccion(coleccion);
+		while(elementos.hasNext()) {
+			documento = elementos.next();
+			if(documento.get("_id").toString().equalsIgnoreCase(dni))
+				return documento.get("email").toString();
+		}
+		return null;
+	}
+
 	public void eliminarEmpleado(String emailEmpleado) {
 		Document documento = new Document("email", emailEmpleado);
 		db.borrarDocumento(coleccion, documento);
 	}
-	
+
 	public Document documentoEmpleado(String emailEmpleado) {
 		return db.devolverDocumento(coleccion, "email", emailEmpleado);
 	}

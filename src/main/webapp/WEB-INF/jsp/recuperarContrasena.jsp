@@ -27,7 +27,7 @@
 		<p align="center">
 			<span></span>
 			<input type="text" name="inputEmail"
-				placeholder="Email" required autofocus>
+				placeholder="Introducir email o DNI" required autofocus>
 		</p>
 
 		<input class="btn btn-success" type="submit" name="enviarPeticion"

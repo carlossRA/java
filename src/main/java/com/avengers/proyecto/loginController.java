@@ -10,7 +10,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JFileChooser;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.bson.Document;
@@ -95,9 +94,9 @@ public class loginController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "enviarPeticionContrasena.htm")
 	public ModelAndView enviarPeticionContrasena(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
-		String mensaje, email;
-		email = request.getParameter("inputEmail");
-		if(empleado.recuperarContrasena(email))
+		String mensaje, emailDni;
+		emailDni = request.getParameter("inputEmail");
+		if(empleado.recuperarContrasena(emailDni))
 			mensaje = "Te hemos enviado una nueva contraseña al correo introducido";
 		else
 			mensaje = "No existe un usuario con el correo introducido";
