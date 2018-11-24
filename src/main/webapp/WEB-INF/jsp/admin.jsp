@@ -140,13 +140,14 @@ html, body {
 		</form>
 		</p>
 
-        <p>
-		<form action="GestionarUsuarios.htm" method="post"
+		<p>
+		<form action="direccionAltaEmpleado.htm" method="post"
 			align="center">
 			<input class="btn boton-personalizado" type="submit"
-				name="GestionUsuarios" value="Gestionar Usuarios" />
+				name="darAltaEmpleado" value="Dar de alta" />
 		</form>
 		</p>
+
 
 		<br></br>
 		<p>
