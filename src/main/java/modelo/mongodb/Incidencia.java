@@ -1,6 +1,9 @@
 package modelo.mongodb;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.bson.Document;
@@ -44,10 +47,6 @@ public class Incidencia {
 	public boolean IncidenciaCorrecta(String idEmpleado, String tipo, String mensaje) {		
 		return dao.comprobarIncidencia(idEmpleado, tipo, mensaje);
 	}
-
-	public List<Document> IncidenciasEmpleado(String idEmpleado){
-		return dao.IncidenciasEmpleado(idEmpleado);
-	}
 	/////////////////////////////////////////
 
 
@@ -90,6 +89,19 @@ public class Incidencia {
 
 	public void cambiarMensaje(String idEmpleado, String comentario, String nuevoMensaje) {
 		dao.cambiarMensaje(idEmpleado, comentario, nuevoMensaje);
+	}
+	
+	public void generarIncidenciaFichajeSinCerrar(String idEmpleado) {
+		DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
+		@SuppressWarnings("unused")
+		Incidencia incidencia = new Incidencia(
+				idEmpleado,
+				"Comunicar errores en el marcaje",
+				"En espera",
+				fecha.format(new Date()),
+				fecha.format(new Date()),
+				"Se ha abierto un nuevo fichaje teniendo uno sin cerrar"			
+				);
 	}
 
 	public String getIdEmpleado() {

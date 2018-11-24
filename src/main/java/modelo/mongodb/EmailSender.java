@@ -57,7 +57,7 @@ public class EmailSender {
 			mensaje = "Bienvenido a Avengers Live.\n"
 					+ "Te ha sido creado un nuevo usuario en nuestra aplicación.\n"
 					+ "Las credenciales para acceder son\n"
-					+ "Usuaio: " + email
+					+ "Usuario: " + email
 					+ "\nContraseña: " + contrasenaNueva
 					+ "\nAtentamente,\nEl servicio técnico de Avengers Live.";
 		return mensaje;

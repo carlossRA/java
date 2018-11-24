@@ -83,18 +83,6 @@ public class DAOIncidencia {
 		}
 		return true;
 	}
-	
-	public List<Document> IncidenciasEmpleado(String idEmpleado){
-		List<Document> incidencias = new ArrayList<Document>();
-		Document documento = new Document();
-		MongoCursor<Document> elementos = db.documentosEnColeccion(coleccion);
-		while(elementos.hasNext()) {
-			documento = elementos.next();
-			if(documento.get("idEmpleado").toString().equalsIgnoreCase(idEmpleado))
-				incidencias.add(documento);
-		}	
-		return incidencias;
-	}
 	////////////////////////////////////////////////////////////////
 
 	
