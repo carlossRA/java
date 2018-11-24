@@ -1,5 +1,9 @@
 package modelo.mongodb;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.codec.digest.DigestUtils;
 import org.bson.Document;
 
 import com.mongodb.client.MongoCollection;
@@ -70,7 +74,7 @@ public class DAOEmpleado {
 		}
 		return false;
 	}
-	
+
 	public String emailEmpleado(String dni) {
 		Document documento = new Document();
 		MongoCursor<Document> elementos = db.documentosEnColeccion(coleccion);
@@ -96,9 +100,9 @@ public class DAOEmpleado {
 		db.insertarDocumento(coleccion, documento
 				.append("_id", empleado.getDni())
 				.append("email", empleado.getEmail())
-				.append("contrasna", empleado.getContrasena())
+				.append("contrasena", DigestUtils.md5Hex(empleado.getContrasena()))
 				.append("nombre", empleado.getNombre())
-				.append("rol", empleado.getRol()));		
+				.append("rol", empleado.getRol()));
 	}
 
 	public void cambiarRol(String emailEmpleado, String nuevoRol) {
@@ -109,6 +113,17 @@ public class DAOEmpleado {
 		cambio.put("rol", nuevoRol);
 		documento.put("$set", cambio);
 		db.actualizarDocumento(coleccion, filtro, documento);		
+	}
+
+	public List<Document> listaEmpleados(){
+		List<Document> empleados = new ArrayList<Document>();
+		Document documento = new Document();
+		MongoCursor<Document> elementos = db.documentosEnColeccion(coleccion);
+		while(elementos.hasNext()) {
+			documento = elementos.next();
+			empleados.add(documento);
+		}
+		return empleados;	
 	}
 
 

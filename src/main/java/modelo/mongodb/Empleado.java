@@ -1,6 +1,10 @@
 package modelo.mongodb;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.codec.digest.DigestUtils;
+import org.bson.Document;
 
 public class Empleado {
 
@@ -27,6 +31,13 @@ public class Empleado {
 		this.nombre = nombre;
 		this.rol = rol;
 		darAltaUsuario();
+	}
+	
+	//Constructor para devolver todos los empleados
+	public Empleado(String dni, String email, String rol) {
+		this.dni = dni;
+		this.email = email;
+		this.rol = rol;
 	}
 
 	public boolean credencialesCorrectas(String emailEmpleado, String contrasenaIntroducida) {
@@ -124,6 +135,24 @@ public class Empleado {
 	
 	public void cambiarRol(String emailEmpleado, String nuevoRol) {
 		dao.cambiarRol(emailEmpleado, nuevoRol);
+	}
+	
+	//Devuelve una lista con todos los empleados para el administrador
+	public List<Empleado> listaEmpleados(){
+		List<Document> listaDocIncidencias = new ArrayList<Document>();
+		List<Empleado> listaEmpleados = new ArrayList<Empleado>();
+		listaDocIncidencias = dao.listaEmpleados();
+		Document documentoEmpleado = new Document();
+		for(int i = 0; i < listaDocIncidencias.size(); i++) {
+			documentoEmpleado = listaDocIncidencias.get(i);
+			Empleado empleado = new Empleado(
+					documentoEmpleado.get("_id").toString(),
+					documentoEmpleado.get("email").toString(),
+					documentoEmpleado.get("rol").toString()
+					);
+			listaEmpleados.add(empleado);
+		}
+		return listaEmpleados;
 	}
 
 	public String getDni() {
