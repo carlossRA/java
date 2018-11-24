@@ -58,7 +58,7 @@ public class Incidencia {
 
 		return listaIncidenciasPropias;
 	}
-	
+
 	public List<Incidencia> consultarIncidenciasGestor() {
 		List<Document> listaDocIncidencias = new ArrayList<Document>();
 		List<Incidencia> listaIncidenciasPropias = new ArrayList<Incidencia>();
@@ -90,7 +90,7 @@ public class Incidencia {
 	public void cambiarMensaje(String idEmpleado, String comentario, String nuevoMensaje) {
 		dao.cambiarMensaje(idEmpleado, comentario, nuevoMensaje);
 	}
-	
+
 	public void generarIncidenciaFichajeSinCerrar(String idEmpleado) {
 		DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
 		@SuppressWarnings("unused")
@@ -102,6 +102,30 @@ public class Incidencia {
 				fecha.format(new Date()),
 				"Se ha abierto un nuevo fichaje teniendo uno sin cerrar"			
 				);
+	}
+
+	public List<Incidencia> incidenciasFiltradas(String[] arrayTipo, String[] arrayValor, String rol, String idEmpleado){
+		List<Document> totalIncidencias = new ArrayList<Document>();
+		if(rol.equalsIgnoreCase("gestor"))
+			totalIncidencias = dao.consultarIncidenciasGestor();
+		else
+			totalIncidencias = dao.consultarIncidenciasPropias(idEmpleado);
+		
+		List<Incidencia> incidenciasFinales = new ArrayList<Incidencia>();
+		Empleado empleado = new Empleado();
+		String dni;
+		for(int i = 0; i < arrayTipo.length; i++) {
+			//No se puede buscar directamente por email, así que tenemos que conseguir el dni de la colección Empleados
+			if(arrayTipo[i].equalsIgnoreCase("email")) {
+				dni = empleado.dniEmpleado(arrayValor[i]);
+				totalIncidencias = dao.filtrar("idEmpleado", dni, totalIncidencias);
+			}else
+				totalIncidencias = dao.filtrar(arrayTipo[i], arrayValor[i], totalIncidencias);
+		}
+		
+		incidenciasFinales = listaIncidencias(totalIncidencias);
+
+		return incidenciasFinales;
 	}
 
 	public String getIdEmpleado() {

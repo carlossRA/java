@@ -22,7 +22,7 @@ public class Empleado {
 		this.nombre = dao.nombreEmpleado(email);
 		this.rol = dao.rolEmpleado(email);
 	}
-	
+
 	//Constructor para dar de alta un usuario
 	public Empleado(String dni, String email, String nombre, String rol) {
 		this.dni = dni;
@@ -32,7 +32,7 @@ public class Empleado {
 		this.rol = rol;
 		darAltaUsuario();
 	}
-	
+
 	//Constructor para devolver todos los empleados
 	public Empleado(String dni, String email, String rol) {
 		this.dni = dni;
@@ -114,29 +114,33 @@ public class Empleado {
 		cambiarContrasena("recuperar credenciales", destinatario, contrasena);
 		return true;
 	}
-	
+
 	public String emailEmpleado(String dni) {
 		return dao.emailEmpleado(dni);
+	}
+
+	public String dniEmpleado(String email) {
+		return dao.dniEmpleado(email);
 	}
 
 	private void enviarEmail(String tipo, String emailEmpleado, String contrasena) {
 		@SuppressWarnings("unused")
 		EmailSender enviarEmail = new EmailSender(tipo, emailEmpleado, contrasena);
 	}
-	
+
 	public void eliminarEmpleado(String emailEmpleado) {
 		dao.eliminarEmpleado(emailEmpleado);
 	}
-	
+
 	public void darAltaUsuario() {
 		dao.darAltaUsuario(this);
 		enviarEmail("alta de empleado", email, contrasena);
 	}
-	
+
 	public void cambiarRol(String emailEmpleado, String nuevoRol) {
 		dao.cambiarRol(emailEmpleado, nuevoRol);
 	}
-	
+
 	//Devuelve una lista con todos los empleados para el administrador
 	public List<Empleado> listaEmpleados(){
 		List<Document> listaDocIncidencias = new ArrayList<Document>();
