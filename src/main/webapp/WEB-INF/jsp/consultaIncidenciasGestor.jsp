@@ -100,6 +100,45 @@ table {
 	border-style: solid;
 	border-radius: 35px;
 }
+p.rounded{
+
+	border: 1px solid #EAEAEA;
+	width: auto;
+	heigth: auto;
+	border-radius: 5px;
+	color: #000000;
+}
+.caja {
+	margin: 20px auto 40px auto;
+	border: 1px solid #d9d9d9;
+	overflow: hidden;
+	position: relative;
+}
+.caja::after {
+	content: "\025be";
+	display: table-cell;
+	padding-top: 7px;
+	text-align: center;
+	width: 30px;
+	height: 30px;
+	background-color: #31384A;
+	position: absolute;
+	top: 0;
+	right: 0px;
+	pointer-events: none;
+}
+.select {
+	background: white;
+	border: outset;
+	font-size: 14px;
+	height: 30px;
+	padding: 5px;
+	width: 250px;
+}
+
+.select:focus {
+	outline: none;
+}
 </style>
 <body>
 	<p>
@@ -111,6 +150,41 @@ table {
 			el botón "Consultar" para mostrar la información más detallada </b>
 	</p>
 
+	<p class="rounded" align="center">
+		<br>
+		DNI
+		<input type="text" name="filtroDni">
+		Email
+		<input type="text" name="filtroEmail">
+		Fecha Inicio
+		<input type="text" name="filtroFechaInicio">
+		
+		Fecha Fin
+		<input type="text" name="filtroFechaFin">
+		<br><br>
+		Tipo de Incidencia
+		<div class="caja caja::after">
+				<select name="tipoIncidencia" class="select select:focus">
+					<option>--Tipo de incidencia--</option>
+					<option value="Vacaciones">Solicitar vacaciones</option>
+					<option value="Bajas Medicas">Comunicar bajas médicas</option>
+					<option value="Ausencias">Justificar ausencias</option>
+					<option value="Errores">Comunicar errores en el marcaje</option>
+				</select>
+			</div>
+		Estado
+		<div class="caja caja::after">
+				<select name="estado" class="select select:focus">
+					<option>--Estado--</option>
+					<option value="En espera">En espera</option>
+					<option value="Resuelta">Resuelta</option>
+				</select>
+			</div>
+		<br><br>
+	
+	
+	</p>
+	
 	<form name="normal" method="post">
 		<table align="center" border="1" width: 100% id="tab">
 			<thead bgcolor="#FFFD86">
