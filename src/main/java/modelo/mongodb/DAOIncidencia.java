@@ -1,6 +1,8 @@
 package modelo.mongodb;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.bson.Document;
@@ -64,6 +66,34 @@ public class DAOIncidencia {
 			documento = totalIncidencias.get(i);
 			if(documento.get(tipo).toString().equalsIgnoreCase(valor))
 				incidencias.add(documento);
+		}
+
+		return incidencias;
+	}
+
+	public List<Document> filtrarFecha(String tipo, Date valor, List<Document> totalIncidencias){
+		List<Document> incidencias = new ArrayList<Document>();
+		Document documento = new Document();
+		SimpleDateFormat castFecha = new SimpleDateFormat("dd-MM-yyyy");
+		for(int i = 0; i < totalIncidencias.size(); i++) {
+			documento = totalIncidencias.get(i);
+			if(tipo.equalsIgnoreCase("fechaInicio")) {
+				try {
+					if(castFecha.parse(documento.get(tipo).toString()).before(valor)||
+							castFecha.parse(documento.get(tipo).toString()).equals(valor))
+						incidencias.add(documento);
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+			}else if(tipo.equalsIgnoreCase("fechaFin")) {
+				try {
+					if(castFecha.parse(documento.get(tipo).toString()).after(valor) ||
+							castFecha.parse(documento.get(tipo).toString()).equals(valor))
+						incidencias.add(documento);
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+			}
 		}
 
 		return incidencias;
