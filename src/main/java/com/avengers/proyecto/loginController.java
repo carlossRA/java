@@ -267,4 +267,58 @@ public class loginController {
 		return new ModelAndView("darAltaEmpleado");
 	}
 	
+	@RequestMapping(method = RequestMethod.POST, value = "filtro.htm")
+	public ModelAndView filtros(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
+		int i=0;
+		String [] listaValores = new String[1];
+		String [] listaTipos = new String[1];;
+		List<Incidencia> listaIncidenciasFiltradas = new ArrayList<Incidencia>();
+		String idEmpleado = request.getParameter("filtroDni");
+		String email = request.getParameter("filtroEmail");
+		String fechaInicio = request.getParameter("filtroFechaInicio");
+		String fechaFin = request.getParameter("filtroFechaFin");
+		String tipoIncidencia = request.getParameter("tipoIncidencia");
+		String estado = request.getParameter("filtroEstado");
+		
+		if(!idEmpleado.equals("")) {
+			listaValores[i] = idEmpleado;
+			listaTipos[i] = "idEmpleado";
+			i++;
+		}
+		if(!email.equals("")) {
+			listaValores[i] = email;
+			listaTipos[i] = "email";
+			i++;
+		}
+		if(!fechaInicio.equals("")) {
+			listaValores[i] = fechaInicio;
+			listaTipos[i] = "fechaInicio";
+			i++;
+		}
+		if(!fechaFin.equals("")) {
+			listaValores[i] = fechaFin;
+			listaTipos[i] = "fechaFin";
+			i++;
+		}
+		if(!tipoIncidencia.equals("")) {
+			listaValores[i] = tipoIncidencia;
+			listaTipos[i] = "tipo";
+			i++;
+		}
+		if(!estado.equals("")) {
+			listaValores[i] = estado;
+			listaTipos[i] = "mensaje";
+			i++;
+		}
+		if(idEmpleado.equals("") && email.equals("") && fechaInicio.equals("") && fechaFin.equals("") && tipoIncidencia.equals("") && estado.equals("")) {
+			if(empleado.getRol().equals("gestor"))
+				listaIncidenciasFiltradas =  incidencia.consultarIncidenciasGestor();
+			else
+				listaIncidenciasFiltradas = incidencia.consultarIncidenciasPropias(empleado.getDni());
+		}else 
+			listaIncidenciasFiltradas = incidencia.incidenciasFiltradas(listaTipos, listaValores, empleado.getRol(), empleado.getDni());
+		
+		
+		return new ModelAndView("consultaIncidenciasGestor", "incidencias", listaIncidenciasFiltradas);
+	}
 }
