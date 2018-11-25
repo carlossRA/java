@@ -74,12 +74,12 @@ public class DAOIncidencia {
 	public List<Document> filtrarFecha(String tipo, Date valor, List<Document> totalIncidencias){
 		List<Document> incidencias = new ArrayList<Document>();
 		Document documento = new Document();
-		SimpleDateFormat castFecha = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat castFecha = new SimpleDateFormat("dd/MM/yyyy");
 		for(int i = 0; i < totalIncidencias.size(); i++) {
 			documento = totalIncidencias.get(i);
 			if(tipo.equalsIgnoreCase("fechaInicio")) {
 				try {
-					if(castFecha.parse(documento.get(tipo).toString()).before(valor)||
+					if(castFecha.parse(documento.get(tipo).toString()).after(valor)||
 							castFecha.parse(documento.get(tipo).toString()).equals(valor))
 						incidencias.add(documento);
 				} catch (Exception e) {
@@ -87,7 +87,7 @@ public class DAOIncidencia {
 				}
 			}else if(tipo.equalsIgnoreCase("fechaFin")) {
 				try {
-					if(castFecha.parse(documento.get(tipo).toString()).after(valor) ||
+					if(castFecha.parse(documento.get(tipo).toString()).before(valor) ||
 							castFecha.parse(documento.get(tipo).toString()).equals(valor))
 						incidencias.add(documento);
 				} catch (Exception e) {

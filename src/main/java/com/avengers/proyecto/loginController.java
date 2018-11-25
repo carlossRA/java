@@ -270,8 +270,8 @@ public class loginController {
 	@RequestMapping(method = RequestMethod.POST, value = "filtro.htm")
 	public ModelAndView filtros(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
 		int i=0;
-		String [] listaValores = new String[1];
-		String [] listaTipos = new String[1];;
+		String [] listaValores = new String[6];
+		String [] listaTipos = new String[6];
 		List<Incidencia> listaIncidenciasFiltradas = new ArrayList<Incidencia>();
 		String idEmpleado = request.getParameter("filtroDni");
 		String email = request.getParameter("filtroEmail");

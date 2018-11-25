@@ -109,26 +109,32 @@ public class Incidencia {
 		List<Incidencia> incidenciasFinales = new ArrayList<Incidencia>();
 		Empleado empleado = new Empleado();
 		String dni;
-		SimpleDateFormat castFecha = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat castFecha = new SimpleDateFormat("dd/MM/yyyy");
 		if(rol.equalsIgnoreCase("gestor"))
 			totalIncidencias = dao.consultarIncidenciasGestor();
 		else
 			totalIncidencias = dao.consultarIncidenciasPropias(idEmpleado);
 
 		for(int i = 0; i < arrayTipo.length; i++) {
-			//No se puede buscar directamente por email, así que tenemos que conseguir el dni de la colección Empleados
-			if(arrayTipo[i].equalsIgnoreCase("email")) {
-				dni = empleado.dniEmpleado(arrayValor[i]);
-				totalIncidencias = dao.filtrar("idEmpleado", dni, totalIncidencias);
-			//Las fechas tienen que ser filtradas de forma diferente
-			}else if(arrayTipo[i].equalsIgnoreCase("fechaInicio") || arrayTipo[i].equalsIgnoreCase("fechaFin")) {
-				try {
-					totalIncidencias = dao.filtrarFecha(arrayTipo[i], castFecha.parse(arrayValor[i]), totalIncidencias);
-				} catch (Exception e) {
-					System.out.println(e.getMessage());
-				}
-			}else if(!arrayTipo[i].equals(null))
-				totalIncidencias = dao.filtrar(arrayTipo[i], arrayValor[i], totalIncidencias);
+			try {
+				//No se puede buscar directamente por email, así que tenemos que conseguir el dni de la colección Empleados
+				if(arrayTipo[i].equalsIgnoreCase("email")) {
+					dni = empleado.dniEmpleado(arrayValor[i]);
+					totalIncidencias = dao.filtrar("idEmpleado", dni, totalIncidencias);
+				//Las fechas tienen que ser filtradas de forma diferente
+				}else if(arrayTipo[i].equalsIgnoreCase("fechaInicio") || arrayTipo[i].equalsIgnoreCase("fechaFin")) {
+					try {
+						totalIncidencias = dao.filtrarFecha(arrayTipo[i], castFecha.parse(arrayValor[i]), totalIncidencias);
+					} catch (Exception e) {
+						System.out.println(e.getMessage());
+					}
+				}else
+					totalIncidencias = dao.filtrar(arrayTipo[i], arrayValor[i], totalIncidencias);
+
+			}catch(Exception e) {
+				incidenciasFinales = listaIncidencias(totalIncidencias);
+				return incidenciasFinales;
+			}
 		}
 
 		incidenciasFinales = listaIncidencias(totalIncidencias);
