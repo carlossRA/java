@@ -106,27 +106,36 @@ public class Incidencia {
 
 	public List<Incidencia> incidenciasFiltradas(String[] arrayTipo, String[] arrayValor, String rol, String idEmpleado){
 		List<Document> totalIncidencias = new ArrayList<Document>();
+		List<Incidencia> incidenciasFinales = new ArrayList<Incidencia>();
+		Empleado empleado = new Empleado();
+		String dni;
+		SimpleDateFormat castFecha = new SimpleDateFormat("dd-MM-yyyy");
 		if(rol.equalsIgnoreCase("gestor"))
 			totalIncidencias = dao.consultarIncidenciasGestor();
 		else
 			totalIncidencias = dao.consultarIncidenciasPropias(idEmpleado);
-		
-		List<Incidencia> incidenciasFinales = new ArrayList<Incidencia>();
-		Empleado empleado = new Empleado();
-		String dni;
+
 		for(int i = 0; i < arrayTipo.length; i++) {
 			//No se puede buscar directamente por email, así que tenemos que conseguir el dni de la colección Empleados
 			if(arrayTipo[i].equalsIgnoreCase("email")) {
 				dni = empleado.dniEmpleado(arrayValor[i]);
 				totalIncidencias = dao.filtrar("idEmpleado", dni, totalIncidencias);
-			}else
+			//Las fechas tienen que ser filtradas de forma diferente
+			}else if(arrayTipo[i].equalsIgnoreCase("fechaInicio") || arrayTipo[i].equalsIgnoreCase("fechaFin")) {
+				try {
+					totalIncidencias = dao.filtrarFecha(arrayTipo[i], castFecha.parse(arrayValor[i]), totalIncidencias);
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+			}else if(!arrayTipo[i].equals(null))
 				totalIncidencias = dao.filtrar(arrayTipo[i], arrayValor[i], totalIncidencias);
 		}
-		
+
 		incidenciasFinales = listaIncidencias(totalIncidencias);
 
 		return incidenciasFinales;
 	}
+
 
 	public String getIdEmpleado() {
 		return idEmpleado;
