@@ -36,6 +36,7 @@
 				<prop key="GestionarUsuarios.htm">loginController</prop>
 				<prop key="direccionAltaEmpleado.htm">loginController</prop>
 				<prop key="darAltaEmpleado.htm">loginController</prop>
+				<prop key="filtro.htm">loginController</prop>
 				
 			</props>
 		</property>

@@ -150,7 +150,9 @@ p.rounded{
 			el botón "Consultar" para mostrar la información más detallada </b>
 	</p>
 
-	<p class="rounded" align="center">
+	<form action="filtro.htm" method="post">
+	<p class="rounded" align="center">	
+		Filtros
 		<br>
 		DNI
 		<input type="text" name="filtroDni">
@@ -165,7 +167,7 @@ p.rounded{
 		Tipo de Incidencia
 		<div class="caja caja::after">
 				<select name="tipoIncidencia" class="select select:focus">
-					<option>--Tipo de incidencia--</option>
+					<option></option>
 					<option value="Vacaciones">Solicitar vacaciones</option>
 					<option value="Bajas Medicas">Comunicar bajas médicas</option>
 					<option value="Ausencias">Justificar ausencias</option>
@@ -174,16 +176,16 @@ p.rounded{
 			</div>
 		Estado
 		<div class="caja caja::after">
-				<select name="estado" class="select select:focus">
-					<option>--Estado--</option>
+				<select name="filtroEstado" class="select select:focus">
+					<option></option>
 					<option value="En espera">En espera</option>
 					<option value="Resuelta">Resuelta</option>
 				</select>
-			</div>
+		</div>
 		<br><br>
-	
-	
+		<input class="btn" type="submit" value="Filtrar"> 
 	</p>
+	</form>
 	
 	<form name="normal" method="post">
 		<table align="center" border="1" width: 100% id="tab">
