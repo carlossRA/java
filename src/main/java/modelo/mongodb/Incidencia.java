@@ -91,17 +91,20 @@ public class Incidencia {
 		dao.cambiarMensaje(idEmpleado, comentario, nuevoMensaje);
 	}
 
-	public void generarIncidenciaFichajeSinCerrar(String idEmpleado) {
+	public void generarIncidenciaFichajeSinCerrar(Empleado empleado) {
 		DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
+		Fichaje fichaje = new Fichaje();
+		DateFormat horaCierre = new SimpleDateFormat("HH:mm:ss");
 		@SuppressWarnings("unused")
 		Incidencia incidencia = new Incidencia(
-				idEmpleado,
+				empleado.getDni(),
 				"Comunicar errores en el marcaje",
 				"En espera",
 				fecha.format(new Date()),
 				fecha.format(new Date()),
-				"Se ha abierto un nuevo fichaje teniendo uno sin cerrar"			
+				"Se ha abierto un nuevo fichaje teniendo otro sin cerrar"			
 				);
+		fichaje.cerrarFichaje(horaCierre.format(new Date()), empleado);
 	}
 
 	public List<Incidencia> incidenciasFiltradas(String[] arrayTipo, String[] arrayValor, String rol, String idEmpleado){
