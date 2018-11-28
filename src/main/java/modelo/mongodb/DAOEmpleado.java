@@ -125,6 +125,28 @@ public class DAOEmpleado {
 		}
 		return empleados;	
 	}
+	
+	public List<Document> filtrar(String tipo, String valor, List<Document> totalIncidencias){
+		List<Document> incidencias = new ArrayList<Document>();
+		Document documento = new Document();
+		for(int i = 0; i < totalIncidencias.size(); i++) {
+			documento = totalIncidencias.get(i);
+			if(documento.get(tipo).toString().equalsIgnoreCase(valor))
+				incidencias.add(documento);
+		}
+
+		return incidencias;
+	}
+	
+	public void modificarEmpleado(String tipo, String valor, String idEmpleado) {
+		Document documento = new Document();
+		Document filtro = new Document();
+		Document cambio = new Document();
+		filtro.put("dni", idEmpleado);
+		cambio.put(tipo, valor);
+		documento.put("$set", cambio);
+		db.actualizarDocumento(coleccion, filtro, documento);
+	}
 
 
 }

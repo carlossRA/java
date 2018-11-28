@@ -34,9 +34,10 @@ public class Empleado {
 	}
 
 	//Constructor para devolver todos los empleados
-	public Empleado(String dni, String email, String rol) {
+	public Empleado(String dni, String email, String nombre, String rol, boolean lista) {
 		this.dni = dni;
 		this.email = email;
+		this.nombre = nombre;
 		this.rol = rol;
 	}
 
@@ -142,21 +143,56 @@ public class Empleado {
 	}
 
 	//Devuelve una lista con todos los empleados para el administrador
-	public List<Empleado> listaEmpleados(){
-		List<Document> listaDocIncidencias = new ArrayList<Document>();
+	public List<Empleado> consultarEmpleados(){
+		List<Document> listaDocEmpleados = dao.listaEmpleados();
 		List<Empleado> listaEmpleados = new ArrayList<Empleado>();
-		listaDocIncidencias = dao.listaEmpleados();
+		listaEmpleados = listaEmpleados(listaDocEmpleados);
+
+		return listaEmpleados;
+	}
+
+	public List<Empleado> listaEmpleados(List<Document> listaDocEmpleados){
+		List<Empleado> listaEmpleados = new ArrayList<Empleado>();
 		Document documentoEmpleado = new Document();
-		for(int i = 0; i < listaDocIncidencias.size(); i++) {
-			documentoEmpleado = listaDocIncidencias.get(i);
+		for(int i = 0; i < listaDocEmpleados.size(); i++) {
+			documentoEmpleado = listaDocEmpleados.get(i);
 			Empleado empleado = new Empleado(
 					documentoEmpleado.get("_id").toString(),
 					documentoEmpleado.get("email").toString(),
-					documentoEmpleado.get("rol").toString()
+					documentoEmpleado.get("nombre").toString(),
+					documentoEmpleado.get("rol").toString(),
+					true
 					);
 			listaEmpleados.add(empleado);
 		}
 		return listaEmpleados;
+	}
+
+	public List<Empleado> incidenciasFiltradas(String[] arrayTipo, String[] arrayValor){
+		List<Document> totalEmpleados = dao.listaEmpleados();
+		List<Empleado> empleadosFinales = new ArrayList<Empleado>();
+
+		for(int i = 0; i < arrayTipo.length; i++)
+			try {
+				totalEmpleados = dao.filtrar(arrayTipo[i], arrayValor[i], totalEmpleados);
+			}catch(Exception e) {
+				empleadosFinales =listaEmpleados(totalEmpleados);
+				return empleadosFinales;
+			}
+
+		empleadosFinales = listaEmpleados(totalEmpleados);
+
+		return empleadosFinales;
+	}
+
+	//He supuesto que de un empleado no se puede modificar el id, ya que es PK
+	public void modificarEmpleado(String[] arrayTipo, String[] arrayValor, String idEmpleado) {
+		for(int i = 0; i < arrayTipo.length; i++)
+			try {
+				dao.modificarEmpleado(arrayTipo[i], arrayValor[i], idEmpleado);
+			}catch(Exception e) {
+			}
+
 	}
 
 	public String getDni() {
