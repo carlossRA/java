@@ -137,6 +137,16 @@ public class DAOEmpleado {
 
 		return incidencias;
 	}
+	
+	public void modificarEmpleado(String tipo, String valor, String idEmpleado) {
+		Document documento = new Document();
+		Document filtro = new Document();
+		Document cambio = new Document();
+		filtro.put("dni", idEmpleado);
+		cambio.put(tipo, valor);
+		documento.put("$set", cambio);
+		db.actualizarDocumento(coleccion, filtro, documento);
+	}
 
 
 }

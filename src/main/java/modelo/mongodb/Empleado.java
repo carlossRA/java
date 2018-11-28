@@ -1,6 +1,5 @@
 package modelo.mongodb;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -174,11 +173,26 @@ public class Empleado {
 		List<Empleado> empleadosFinales = new ArrayList<Empleado>();
 
 		for(int i = 0; i < arrayTipo.length; i++)
-			totalEmpleados = dao.filtrar(arrayTipo[i], arrayValor[i], totalEmpleados);
+			try {
+				totalEmpleados = dao.filtrar(arrayTipo[i], arrayValor[i], totalEmpleados);
+			}catch(Exception e) {
+				empleadosFinales =listaEmpleados(totalEmpleados);
+				return empleadosFinales;
+			}
 
 		empleadosFinales = listaEmpleados(totalEmpleados);
 
 		return empleadosFinales;
+	}
+
+	//He supuesto que de un empleado no se puede modificar el id, ya que es PK
+	public void modificarEmpleado(String[] arrayTipo, String[] arrayValor, String idEmpleado) {
+		for(int i = 0; i < arrayTipo.length; i++)
+			try {
+				dao.modificarEmpleado(arrayTipo[i], arrayValor[i], idEmpleado);
+			}catch(Exception e) {
+			}
+
 	}
 
 	public String getDni() {
