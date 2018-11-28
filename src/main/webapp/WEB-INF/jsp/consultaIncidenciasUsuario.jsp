@@ -135,6 +135,8 @@ table {
 		<p align="center" >
 			<br>
 			<b>Filtros</b> 
+			<input style="display: none" value ="" type="text" name="filtroDni">
+			<input style="display: none" value ="" type="text" name="filtroEmail"> 
 			<br><br>			
 			Fecha Inicio 
 			<input type="text" id="datepickerInicio" name="filtroFechaInicio" onChange="copiar()"> 

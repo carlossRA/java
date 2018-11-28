@@ -280,59 +280,38 @@ public class loginController {
 		String tipoIncidencia = request.getParameter("tipoIncidencia");
 		String estado = request.getParameter("filtroEstado");
 
-		if(empleado.getRol().equals("gestor")) {
-			if(!idEmpleado.equals("")) {
-				listaValores[i] = idEmpleado;
-				listaTipos[i] = "idEmpleado";
-				i++;
-			}
-			if(!email.equals("")) {
-				listaValores[i] = email;
-				listaTipos[i] = "email";
-				i++;
-			}
-			if(!fechaInicio.equals("")) {
-				listaValores[i] = fechaInicio;
-				listaTipos[i] = "fechaInicio";
-				i++;
-			}
-			if(!fechaFin.equals("")) {
-				listaValores[i] = fechaFin;
-				listaTipos[i] = "fechaFin";
-				i++;
-			}
-			if(!tipoIncidencia.equals("")) {
-				listaValores[i] = tipoIncidencia;
-				listaTipos[i] = "tipo";
-				i++;
-			}
-			if(!estado.equals("")) {
-				listaValores[i] = estado;
-				listaTipos[i] = "mensaje";
-				i++;
-			}
-		}else {
-			if(!fechaInicio.equals("")) {
-				listaValores[i] = fechaInicio;
-				listaTipos[i] = "fechaInicio";
-				i++;
-			}
-			if(!fechaFin.equals("")) {
-				listaValores[i] = fechaFin;
-				listaTipos[i] = "fechaFin";
-				i++;
-			}
-			if(!tipoIncidencia.equals("")) {
-				listaValores[i] = tipoIncidencia;
-				listaTipos[i] = "tipo";
-				i++;
-			}
-			if(!estado.equals("")) {
-				listaValores[i] = estado;
-				listaTipos[i] = "mensaje";
-				i++;
-			}
+
+		if(!idEmpleado.equals("")) {
+			listaValores[i] = idEmpleado;
+			listaTipos[i] = "idEmpleado";
+			i++;
 		}
+		if(!email.equals("")) {
+			listaValores[i] = email;
+			listaTipos[i] = "email";
+			i++;
+		}
+		if(!fechaInicio.equals("")) {
+			listaValores[i] = fechaInicio;
+			listaTipos[i] = "fechaInicio";
+			i++;
+		}
+		if(!fechaFin.equals("")) {
+			listaValores[i] = fechaFin;
+			listaTipos[i] = "fechaFin";
+			i++;
+		}
+		if(!tipoIncidencia.equals("")) {
+			listaValores[i] = tipoIncidencia;
+			listaTipos[i] = "tipo";
+			i++;
+		}
+		if(!estado.equals("")) {
+			listaValores[i] = estado;
+			listaTipos[i] = "mensaje";
+			i++;
+		}
+
 		if(empleado.getRol().equals("gestor")) {
 			if(idEmpleado.equals("") && email.equals("") && fechaInicio.equals("") && fechaFin.equals("") && tipoIncidencia.equals("") && estado.equals("")) 
 				listaIncidenciasFiltradas =  incidencia.consultarIncidenciasGestor();
@@ -346,10 +325,10 @@ public class loginController {
 				listaIncidenciasFiltradas = incidencia.incidenciasFiltradas(listaTipos, listaValores, empleado.getRol(), empleado.getDni());
 
 
-	
+
 		if(empleado.getRol().equals("gestor")) 
 			return new ModelAndView("consultaIncidenciasGestor", "incidencias", listaIncidenciasFiltradas);
 		else
 			return new ModelAndView("consultaIncidenciasUsuario", "incidencias", listaIncidenciasFiltradas);
-}
+	}
 }
