@@ -14,6 +14,21 @@
 	href=" https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <meta http-equiv="content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="css/estilos.css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $( function() {
+    $( "#datepickerInicio" ).datepicker({
+    	dateFormat: 'dd/mm/yy'
+    });
+    $( "#datepickerFin" ).datepicker({
+    	dateFormat: 'dd/mm/yy'
+    });
+  } );
+  </script>
 <title>Consulta Incidencias Usuario</title>
 </head>
 <style>
@@ -115,6 +130,37 @@ table {
 		<b>*Seleccione una fila haciendo click sobre ella y después, pulse el botón "Consultar" 
 		para mostrar la información más detallada </b>
 	</p>
+	
+	<form action="filtro.htm" method="post">
+		<p align="center" >
+			<br>
+			<b>Filtros</b> 
+			<br><br>			
+			Fecha Inicio 
+			<input type="text" id="datepickerInicio" name="filtroFechaInicio" onChange="copiar()"> 
+			Fecha Fin 
+			<input type="text" name="filtroFechaFin" id="datepickerFin"> 
+			<br><br> 
+			Tipo de Incidencia			
+			<select name="tipoIncidencia" class="select select:focus">
+				<option></option>
+				<option value="Vacaciones">Solicitar vacaciones</option>
+				<option value="Bajas Medicas">Comunicar bajas médicas</option>
+				<option value="Ausencias">Justificar ausencias</option>
+				<option value="Errores">Comunicar errores en el marcaje</option>
+			</select>
+			
+			Estado
+			
+				<select name="filtroEstado" class="select select:focus">
+					<option></option>
+					<option value="En espera">En espera</option>
+					<option value="Resuelta">Resuelta</option>
+				</select>
+		<br>
+		<br> <input class="btn" type="submit" value="Filtrar">
+		</p>
+	</form>
 
 	<form name="normal" method="post">
 		<table align="center" border="1" width: 100% id="tab">
@@ -176,6 +222,11 @@ table {
 
 <script type="text/javascript">
 	var seleccionado = null; // tendremos la fila necesaria
+	
+	function copiar()
+    {
+        document.getElementById("datepickerFin").value=document.getElementById("datepickerInicio").value;
+    }
 
 	function onclickHandler() {
 		if (seleccionado == this) {

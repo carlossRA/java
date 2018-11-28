@@ -36,25 +36,25 @@ public class loginController {
 		MV.setViewName("login");
 		return MV;
 	}
-	
-//	@RequestMapping(value = "atras.htm", method = RequestMethod.POST)
-//	public ModelAndView atras(HttpServletRequest request, ModelMap model) throws Exception {
-//		String estado = null;
-//		List<Document> listaFichajes = new ArrayList<Document>();
-//		Document fich = null;
-//		if(!listaFichajes.isEmpty()) {
-//			for (int i=0; i<listaFichajes.size(); i++) {
-//				fich = listaFichajes.get(listaFichajes.size()-1);
-//			}
-//			estado = fich.get("estado").toString();
-//		}
-//		model.addAttribute("email", empleado.getEmail());
-//		model.addAttribute("estado", estado);
-//		if (empleado.getRol().equals("usuario"))
-//			return new ModelAndView("home");
-//		else if(empleado.getRol().equals("gestor"))return new ModelAndView("gestor");//unica línea añadida
-//		else return new ModelAndView("admin");
-//	}
+
+	//	@RequestMapping(value = "atras.htm", method = RequestMethod.POST)
+	//	public ModelAndView atras(HttpServletRequest request, ModelMap model) throws Exception {
+	//		String estado = null;
+	//		List<Document> listaFichajes = new ArrayList<Document>();
+	//		Document fich = null;
+	//		if(!listaFichajes.isEmpty()) {
+	//			for (int i=0; i<listaFichajes.size(); i++) {
+	//				fich = listaFichajes.get(listaFichajes.size()-1);
+	//			}
+	//			estado = fich.get("estado").toString();
+	//		}
+	//		model.addAttribute("email", empleado.getEmail());
+	//		model.addAttribute("estado", estado);
+	//		if (empleado.getRol().equals("usuario"))
+	//			return new ModelAndView("home");
+	//		else if(empleado.getRol().equals("gestor"))return new ModelAndView("gestor");//unica línea añadida
+	//		else return new ModelAndView("admin");
+	//	}
 
 	@RequestMapping(value = "home.htm", method = RequestMethod.POST)
 	public ModelAndView login(HttpServletRequest request, ModelMap model)throws Exception{
@@ -72,7 +72,7 @@ public class loginController {
 					fich = listaFichajes.get(listaFichajes.size()-1);
 				}
 				estado = fich.get("estado").toString();
-				
+
 			}
 			model.addAttribute("email", empleado.getEmail());
 			model.addAttribute("estado", estado);
@@ -183,7 +183,7 @@ public class loginController {
 		fechaFin = request.getParameter("fechaFin");	
 		comentario = request.getParameter("comentario");
 		mensajeEstado = "En espera";
-		
+
 		model.addAttribute("email", empleado.getEmail());
 
 		if(!incidencia.IncidenciaCorrecta(idEmpleado, tipo, mensajeEstado))
@@ -195,14 +195,14 @@ public class loginController {
 		}
 		return new ModelAndView("home","mensaje",mensaje);
 	}
-	
+
 	@RequestMapping(value = "incidenciasGestorUsuario.htm", method = RequestMethod.POST)
 	public ModelAndView incidenciasGestorUsuario(HttpServletRequest request, ModelMap model)throws Exception{
 		String idEmpleado = request.getParameter("idEmpleado");
 		String mensaje = request.getParameter("mensaje");
 		String comentario = request.getParameter("comentario");
 		incidencia.cambiarMensaje(idEmpleado, comentario, mensaje);
-		
+
 		List<Incidencia> listaIncidenciasUsuario=new ArrayList<Incidencia>();
 		List<Incidencia> listaIncidenciasGestor=new ArrayList<Incidencia>();
 		listaIncidenciasUsuario =  incidencia.consultarIncidenciasPropias(empleado.getDni());
@@ -214,17 +214,17 @@ public class loginController {
 		else
 			return new ModelAndView("consultaIncidenciasUsuario", "incidencias", listaIncidenciasUsuario);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST, value = "Incidencias.htm")
 	public ModelAndView consulIncidencia(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
-	    String id = request.getParameter("idEmpleado");
+		String id = request.getParameter("idEmpleado");
 		String tip = request.getParameter("tipo");
 		String email=request.getParameter("emailEmpleado");
 		String men = request.getParameter("mensaje");
 		String fechaIn = request.getParameter("fechaInicio");
 		String fechaFin = request.getParameter("fechaFin");
 		String comentario = request.getParameter("comentario");
-		
+
 		model.addAttribute("id", id);
 		model.addAttribute("tip", tip);
 		model.addAttribute("email", email);
@@ -234,29 +234,29 @@ public class loginController {
 		model.addAttribute("comentario", comentario);
 		return new ModelAndView("Incidencias");
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST, value = "resolucionIncidencias.htm")
 	public ModelAndView resolverIncidencia(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
-	    String mensaje = "";
-	    String id = request.getParameter("idEmpleado");
-	    String comentario = request.getParameter("comentario");
-	    model.addAttribute("mensaje", mensaje);
-	    model.addAttribute("id", id);
-	    model.addAttribute("comentario", comentario);
+		String mensaje = "";
+		String id = request.getParameter("idEmpleado");
+		String comentario = request.getParameter("comentario");
+		model.addAttribute("mensaje", mensaje);
+		model.addAttribute("id", id);
+		model.addAttribute("comentario", comentario);
 		return new ModelAndView("resolucionIncidencias");
 	}
 	@RequestMapping(method = RequestMethod.POST, value = "GestionarUsuarios.htm")
 	public ModelAndView GestionarUsuarios(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
-	   
+
 		return new ModelAndView("GestionarUsuarios");
 	}
-	
+
 
 	@RequestMapping(method = RequestMethod.POST, value = "direccionAltaEmpleado.htm")
 	public ModelAndView direccionAltaEmpleado(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
 		return new ModelAndView("darAltaEmpleado");
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST, value = "darAltaEmpleado.htm")
 	public ModelAndView darAltaEmpleado(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
 		String id = request.getParameter("dni");
@@ -266,7 +266,7 @@ public class loginController {
 		Empleado altaEmpleado = new Empleado(id, email, nombre, rol);	
 		return new ModelAndView("darAltaEmpleado");
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST, value = "filtro.htm")
 	public ModelAndView filtros(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
 		int i=0;
@@ -279,46 +279,77 @@ public class loginController {
 		String fechaFin = request.getParameter("filtroFechaFin");
 		String tipoIncidencia = request.getParameter("tipoIncidencia");
 		String estado = request.getParameter("filtroEstado");
-		
-		if(!idEmpleado.equals("")) {
-			listaValores[i] = idEmpleado;
-			listaTipos[i] = "idEmpleado";
-			i++;
+
+		if(empleado.getRol().equals("gestor")) {
+			if(!idEmpleado.equals("")) {
+				listaValores[i] = idEmpleado;
+				listaTipos[i] = "idEmpleado";
+				i++;
+			}
+			if(!email.equals("")) {
+				listaValores[i] = email;
+				listaTipos[i] = "email";
+				i++;
+			}
+			if(!fechaInicio.equals("")) {
+				listaValores[i] = fechaInicio;
+				listaTipos[i] = "fechaInicio";
+				i++;
+			}
+			if(!fechaFin.equals("")) {
+				listaValores[i] = fechaFin;
+				listaTipos[i] = "fechaFin";
+				i++;
+			}
+			if(!tipoIncidencia.equals("")) {
+				listaValores[i] = tipoIncidencia;
+				listaTipos[i] = "tipo";
+				i++;
+			}
+			if(!estado.equals("")) {
+				listaValores[i] = estado;
+				listaTipos[i] = "mensaje";
+				i++;
+			}
+		}else {
+			if(!fechaInicio.equals("")) {
+				listaValores[i] = fechaInicio;
+				listaTipos[i] = "fechaInicio";
+				i++;
+			}
+			if(!fechaFin.equals("")) {
+				listaValores[i] = fechaFin;
+				listaTipos[i] = "fechaFin";
+				i++;
+			}
+			if(!tipoIncidencia.equals("")) {
+				listaValores[i] = tipoIncidencia;
+				listaTipos[i] = "tipo";
+				i++;
+			}
+			if(!estado.equals("")) {
+				listaValores[i] = estado;
+				listaTipos[i] = "mensaje";
+				i++;
+			}
 		}
-		if(!email.equals("")) {
-			listaValores[i] = email;
-			listaTipos[i] = "email";
-			i++;
-		}
-		if(!fechaInicio.equals("")) {
-			listaValores[i] = fechaInicio;
-			listaTipos[i] = "fechaInicio";
-			i++;
-		}
-		if(!fechaFin.equals("")) {
-			listaValores[i] = fechaFin;
-			listaTipos[i] = "fechaFin";
-			i++;
-		}
-		if(!tipoIncidencia.equals("")) {
-			listaValores[i] = tipoIncidencia;
-			listaTipos[i] = "tipo";
-			i++;
-		}
-		if(!estado.equals("")) {
-			listaValores[i] = estado;
-			listaTipos[i] = "mensaje";
-			i++;
-		}
-		if(idEmpleado.equals("") && email.equals("") && fechaInicio.equals("") && fechaFin.equals("") && tipoIncidencia.equals("") && estado.equals("")) {
-			if(empleado.getRol().equals("gestor"))
+		if(empleado.getRol().equals("gestor")) {
+			if(idEmpleado.equals("") && email.equals("") && fechaInicio.equals("") && fechaFin.equals("") && tipoIncidencia.equals("") && estado.equals("")) 
 				listaIncidenciasFiltradas =  incidencia.consultarIncidenciasGestor();
-			else
+			else 
+				listaIncidenciasFiltradas = incidencia.incidenciasFiltradas(listaTipos, listaValores, empleado.getRol(), empleado.getDni());
+
+		}else
+			if(fechaInicio.equals("") && fechaFin.equals("") && tipoIncidencia.equals("") && estado.equals(""))
 				listaIncidenciasFiltradas = incidencia.consultarIncidenciasPropias(empleado.getDni());
-		}else 
-			listaIncidenciasFiltradas = incidencia.incidenciasFiltradas(listaTipos, listaValores, empleado.getRol(), empleado.getDni());
-		
-		
-		return new ModelAndView("consultaIncidenciasGestor", "incidencias", listaIncidenciasFiltradas);
-	}
+			else 
+				listaIncidenciasFiltradas = incidencia.incidenciasFiltradas(listaTipos, listaValores, empleado.getRol(), empleado.getDni());
+
+
+	
+		if(empleado.getRol().equals("gestor")) 
+			return new ModelAndView("consultaIncidenciasGestor", "incidencias", listaIncidenciasFiltradas);
+		else
+			return new ModelAndView("consultaIncidenciasUsuario", "incidencias", listaIncidenciasFiltradas);
+}
 }

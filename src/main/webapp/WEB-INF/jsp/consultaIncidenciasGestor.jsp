@@ -124,28 +124,6 @@ p.rounded {
 	color: #000000;
 	-webkit-box-sizing: border-box;
 }
-
-.caja {
-	margin: 20px auto 40px auto;
-	border: 1px solid #d9d9d9;
-	overflow: hidden;
-	position: relative;
-}
-
-.caja::after {
-	content: "\025be";
-	display: table-cell;
-	padding-top: 7px;
-	text-align: center;
-	width: 30px;
-	height: 30px;
-	background-color: #31384A;
-	position: absolute;
-	top: 0;
-	right: 0px;
-	pointer-events: none;
-}
-
 .select {
 	background: white;
 	border: outset;
