@@ -270,8 +270,8 @@ public class loginController {
 	@RequestMapping(method = RequestMethod.POST, value = "filtro.htm")
 	public ModelAndView filtros(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
 		int i=0;
-		String [] listaValores = new String[6];
-		String [] listaTipos = new String[6];
+		String [] arrayValores = new String[6];
+		String [] arrayTipos = new String[6];
 		List<Incidencia> listaIncidenciasFiltradas = new ArrayList<Incidencia>();
 		String idEmpleado = request.getParameter("filtroDni");
 		String email = request.getParameter("filtroEmail");
@@ -282,49 +282,37 @@ public class loginController {
 
 
 		if(!idEmpleado.equals("")) {
-			listaValores[i] = idEmpleado;
-			listaTipos[i] = "idEmpleado";
+			arrayValores[i] = idEmpleado;
+			arrayTipos[i] = "idEmpleado";
 			i++;
 		}
 		if(!email.equals("")) {
-			listaValores[i] = email;
-			listaTipos[i] = "email";
+			arrayValores[i] = email;
+			arrayTipos[i] = "email";
 			i++;
 		}
 		if(!fechaInicio.equals("")) {
-			listaValores[i] = fechaInicio;
-			listaTipos[i] = "fechaInicio";
+			arrayValores[i] = fechaInicio;
+			arrayTipos[i] = "fechaInicio";
 			i++;
 		}
 		if(!fechaFin.equals("")) {
-			listaValores[i] = fechaFin;
-			listaTipos[i] = "fechaFin";
+			arrayValores[i] = fechaFin;
+			arrayTipos[i] = "fechaFin";
 			i++;
 		}
 		if(!tipoIncidencia.equals("")) {
-			listaValores[i] = tipoIncidencia;
-			listaTipos[i] = "tipo";
+			arrayValores[i] = tipoIncidencia;
+			arrayTipos[i] = "tipo";
 			i++;
 		}
 		if(!estado.equals("")) {
-			listaValores[i] = estado;
-			listaTipos[i] = "mensaje";
+			arrayValores[i] = estado;
+			arrayTipos[i] = "mensaje";
 			i++;
 		}
-
-		if(empleado.getRol().equals("gestor")) {
-			if(idEmpleado.equals("") && email.equals("") && fechaInicio.equals("") && fechaFin.equals("") && tipoIncidencia.equals("") && estado.equals("")) 
-				listaIncidenciasFiltradas =  incidencia.consultarIncidenciasGestor();
-			else 
-				listaIncidenciasFiltradas = incidencia.incidenciasFiltradas(listaTipos, listaValores, empleado.getRol(), empleado.getDni());
-
-		}else
-			if(fechaInicio.equals("") && fechaFin.equals("") && tipoIncidencia.equals("") && estado.equals(""))
-				listaIncidenciasFiltradas = incidencia.consultarIncidenciasPropias(empleado.getDni());
-			else 
-				listaIncidenciasFiltradas = incidencia.incidenciasFiltradas(listaTipos, listaValores, empleado.getRol(), empleado.getDni());
-
-
+		
+		listaIncidenciasFiltradas = incidencia.incidenciasFiltradas(arrayTipos, arrayValores, empleado.getRol(), empleado.getDni());
 
 		if(empleado.getRol().equals("gestor")) 
 			return new ModelAndView("consultaIncidenciasGestor", "incidencias", listaIncidenciasFiltradas);
