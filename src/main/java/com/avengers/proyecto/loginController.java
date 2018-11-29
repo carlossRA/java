@@ -200,18 +200,17 @@ public class loginController {
 		String idEmpleado = request.getParameter("idEmpleado");
 		String mensaje = request.getParameter("mensaje");
 		String comentario = request.getParameter("comentario");
+		Incidencia auxIncidencia = new Incidencia();
 		incidencia.cambiarMensaje(idEmpleado, comentario, mensaje);
 
-		List<Incidencia> listaIncidenciasUsuario=new ArrayList<Incidencia>();
-		List<Incidencia> listaIncidenciasGestor=new ArrayList<Incidencia>();
-		listaIncidenciasUsuario =  incidencia.consultarIncidenciasPropias(empleado.getDni());
-		listaIncidenciasGestor =  incidencia.consultarIncidenciasGestor();
-		model.addAttribute("incidenciasUsuario", listaIncidenciasUsuario);
-		model.addAttribute("incidenciasGestor", listaIncidenciasGestor);
+		List<Incidencia> listaIncidencias=new ArrayList<Incidencia>();
+		listaIncidencias =  auxIncidencia.incidenciasFiltradas(null, null, empleado.getRol(), empleado.getDni());
+		model.addAttribute("incidenciasUsuario", listaIncidencias);
+		model.addAttribute("incidenciasGestor", listaIncidencias);
 		if(empleado.getRol().equals("gestor"))
-			return new ModelAndView("consultaIncidenciasGestor", "incidencias", listaIncidenciasGestor);
+			return new ModelAndView("consultaIncidenciasGestor", "incidencias", listaIncidencias);
 		else
-			return new ModelAndView("consultaIncidenciasUsuario", "incidencias", listaIncidenciasUsuario);
+			return new ModelAndView("consultaIncidenciasUsuario", "incidencias", listaIncidencias);
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "Incidencias.htm")
