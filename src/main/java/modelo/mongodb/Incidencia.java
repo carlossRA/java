@@ -43,11 +43,9 @@ public class Incidencia {
 
 	}
 
-	/////////////ANA///////////////////////
-	public boolean IncidenciaCorrecta(String idEmpleado, String tipo, String mensaje) {		
+	public boolean incidenciaMismoTipo(String idEmpleado, String tipo, String mensaje) {		
 		return dao.comprobarIncidencia(idEmpleado, tipo, mensaje);
 	}
-	/////////////////////////////////////////
 
 
 	public List<Incidencia> consultarIncidenciasPropias(String idEmpleado) {

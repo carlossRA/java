@@ -197,8 +197,8 @@
 			<h2 class="h2">INCIDENCIAS</h2>
 			<br></br>
 			<div class="caja caja::after">
-				<select name="tipoIncidencia" class="select select:focus">
-					<option>--Tipo de incidencia--</option>
+				<select name="tipoIncidencia" class="select select:focus" required>
+					<option></option>
 					<option value="Vacaciones">Solicitar vacaciones</option>
 					<option value="Bajas Medicas">Comunicar bajas médicas</option>
 					<option value="Ausencias">Justificar ausencias</option>
@@ -210,13 +210,13 @@
 
 			<div class="fechas">
 				<label>Fecha de inicio</label> 
-				<input type="text" name="fechaInicio" id="fechaInicio" placeholder="dd/mm/yy"><br></br> 
+				<input type="text" name="fechaInicio" id="fechaInicio" placeholder="dd/mm/yy" required><br></br> 
 				<label>Fecha de fin</label> 
-				<input type="text" name="fechaFin" id="fechaFin" placeholder="dd/mm/yy">
+				<input type="text" name="fechaFin" id="fechaFin" placeholder="dd/mm/yy" required>
 			</div>
 			<br></br>
 			<textarea class="textarea" name="comentario"
-				placeholder="Observaciones"></textarea>
+				placeholder="Observaciones" required></textarea>
 
 			<input type="submit" class="boton boton:hover" value="ENVIAR"
 				name="botonEnviar">
