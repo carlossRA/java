@@ -186,14 +186,13 @@ public class loginController {
 
 		model.addAttribute("email", empleado.getEmail());
 
-		if(!incidencia.IncidenciaCorrecta(idEmpleado, tipo, mensajeEstado))
+		if(!incidencia.incidenciaMismoTipo(idEmpleado, tipo, mensajeEstado))
 			mensaje = "Ya tienes una incidencia de este tipo creada en espera";
 		else {
 			mensaje = "Incidencia creada correctamente";
-			//incidencia = new Incidencia(idEmpleado,tipo,mensaje,fechaInicio.format(new Date()), fechaFin.format(new Date()),comentario);
 			incidencia = new Incidencia(idEmpleado, tipo, mensajeEstado, fechaInicio, fechaFin, comentario);
 		}
-		return new ModelAndView("home","mensaje",mensaje);
+		return new ModelAndView("home", "mensaje", mensaje);
 	}
 
 	@RequestMapping(value = "incidenciasGestorUsuario.htm", method = RequestMethod.POST)

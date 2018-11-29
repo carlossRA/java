@@ -99,7 +99,6 @@ public class DAOIncidencia {
 		return incidencias;
 	}
 
-	//////////////////////////ANA///////////////////////////
 	public void registrarIncidencia(Incidencia incidencia) {
 		Document documento = new Document();
 		db.insertarDocumento(coleccion, documento
@@ -116,15 +115,14 @@ public class DAOIncidencia {
 		MongoCursor<Document> elementos = db.documentosEnColeccion(coleccion);
 		while(elementos.hasNext()) {
 			documento = elementos.next();
-			/*
 			if(documento.get("idEmpleado").toString().equalsIgnoreCase(idEmpleado))
 				if(documento.get("tipo").toString().equalsIgnoreCase(tipo))
-					return false;*/
+					if(documento.get("mensaje").toString().equalsIgnoreCase("En espera"))
+						return false;
 
 		}
 		return true;
 	}
-	////////////////////////////////////////////////////////////////
 
 
 }
