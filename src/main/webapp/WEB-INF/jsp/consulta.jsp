@@ -74,7 +74,7 @@ table {
 	</p>
 	<p>
 	<form action="consulta.htm" method="post">
-		<table align="center" border="1"width: 100%>
+		<table align="center" border="1">
 			<thead bgcolor="#FFFD86">
 				<tr>
 					<th>Fecha</th>

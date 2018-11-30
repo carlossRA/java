@@ -165,7 +165,7 @@ table {
 	</form>
 
 	<form name="normal" method="post">
-		<table align="center" border="1" width: 100% id="tab">
+		<table align="center" border="1" id="tab">
 			<thead bgcolor="#FFFD86">
 				<tr>
 					<th width="30">Estado</th>

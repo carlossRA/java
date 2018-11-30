@@ -227,7 +227,7 @@ public class loginController {
 		String fechaFin = request.getParameter("fechaFin");
 		String comentario = request.getParameter("comentario");
 		inc=new Incidencia(id,tip,email,men,fechaIn,fechaFin,comentario);
-		
+
 		model.addAttribute("id", id);
 		model.addAttribute("tip", tip);
 		model.addAttribute("email", email);
@@ -314,7 +314,7 @@ public class loginController {
 			arrayTipos[i] = "mensaje";
 			i++;
 		}
-		
+
 		listaIncidenciasFiltradas = incidencia.incidenciasFiltradas(arrayTipos, arrayValores, empleado.getRol(), empleado.getDni());
 
 		if(empleado.getRol().equals("gestor")) 
@@ -322,57 +322,35 @@ public class loginController {
 		else
 			return new ModelAndView("consultaIncidenciasUsuario", "incidencias", listaIncidenciasFiltradas);
 	}
-	
-	
-	
+
 	@RequestMapping(value = "IrHome.htm", method = RequestMethod.POST)
-	public ModelAndView IrHome(HttpServletRequest request, ModelMap model)throws Exception{
-		
-		
-
-		
-			model.addAttribute("email", empleado.getEmail());
-			
-			if (empleado.getRol().equals("usuario"))
-				return new ModelAndView("home");
-			else if(empleado.getRol().equals("gestor"))return new ModelAndView("gestor");//unica línea añadida
-			else return new ModelAndView("admin");
-
-		 	
-	
-	
-	
-
-}
+	public ModelAndView IrHome(HttpServletRequest request, ModelMap model)throws Exception{	
+		model.addAttribute("email", empleado.getEmail());			
+		if (empleado.getRol().equals("usuario"))
+			return new ModelAndView("home");
+		else if(empleado.getRol().equals("gestor"))return new ModelAndView("gestor");//unica línea añadida
+		else return new ModelAndView("admin");
+	}
 	@RequestMapping(method = RequestMethod.POST, value = "incis.htm")
 	public ModelAndView incis(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
-	   
-	    String id=request.getParameter("id");
-	    model.addAttribute("id", id); 
+		String id=request.getParameter("id");
+		model.addAttribute("id", id); 
 		listaFichajes = fichaje.fichajesEmpleado(id);
 		dniEmpl=id;
 		model.addAttribute("mail",mail);
 		model.addAttribute("fichajes", listaFichajes);
-		
-
-	   
 		return new ModelAndView("incs","fichajes", listaFichajes);
-	    
-	  
 	}
+	
 	@RequestMapping( value = "formFich.htm")
 	public ModelAndView formFich(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
 		model.addAttribute("dni", dniEmpl);
 		model.addAttribute("emailEmpleado", mail);
-		
-		
-		
 		String email = request.getParameter("emailEmpleado");
 		String fechaFich=request.getParameter("fechaFichaje"); 
 		String horaEntrada=request.getParameter("horaEntrada");
 		String horaCierre=request.getParameter("horaCierre");
 		String estad=request.getParameter("estado");
-		
 		model.addAttribute("horAh",horaEntrada.substring(0, 2));
 		model.addAttribute("horAm",horaEntrada.substring(3, 5));
 		model.addAttribute("horAs",horaEntrada.substring(6, 8));
@@ -387,32 +365,27 @@ public class loginController {
 			fichaj=new Fichaje("", fechaFich, horaEntrada,horaCierre, estad);
 		}
 		if(email!=null) {
-			
-		String dni = request.getParameter("idEmpleado");
-		String horAh = request.getParameter("horAh");
-		String horAm = request.getParameter("horAm");
-		String horAs= request.getParameter("horAs");
-		String horCh = request.getParameter("horCh");
-		String horCm = request.getParameter("horCm");
-		String horCs= request.getParameter("horCs");
-		String dia= request.getParameter("dia");
-		String mes= request.getParameter("mes");
-		String ano= request.getParameter("ano");
-		String estado= request.getParameter("estado");
-		fichaj.setIdEmpleado(dni);
-		fichaj.editarFichaje(dni, horAh, horAm, horAs, horCh, horCm, horCs, dia, mes, ano, estado);
+
+			String dni = request.getParameter("idEmpleado");
+			String horAh = request.getParameter("horAh");
+			String horAm = request.getParameter("horAm");
+			String horAs= request.getParameter("horAs");
+			String horCh = request.getParameter("horCh");
+			String horCm = request.getParameter("horCm");
+			String horCs= request.getParameter("horCs");
+			String dia= request.getParameter("dia");
+			String mes= request.getParameter("mes");
+			String ano= request.getParameter("ano");
+			String estado= request.getParameter("estado");
+			fichaj.setIdEmpleado(dni);
+			fichaj.editarFichaje(dni, horAh, horAm, horAs, horCh, horCm, horCs, dia, mes, ano, estado);
 		}
 		return new ModelAndView("formFich");
-	    
-	  
 	}
+	
 	@RequestMapping(value = "resolverInc.htm", method = RequestMethod.POST)
 	public ModelAndView Resolverincidencias(HttpServletRequest request, ModelMap model)throws Exception{
-		
-
-	    String id = request.getParameter("idEmpleado");
-		
-		
+		String id = request.getParameter("idEmpleado");
 		String fechaIn = request.getParameter("fechaInicio");
 		String fechaFin = request.getParameter("fechaFin");
 		String comen = request.getParameter("comentario");
@@ -425,35 +398,23 @@ public class loginController {
 		model.addAttribute("men","resuelta");
 		model.addAttribute("fechaIn", fechaIn);
 		model.addAttribute("fechaFin", fechaFin);
-		model.addAttribute("comentario", comen);
-		
-			
-			
-		  
-		
-		
-			return new ModelAndView("Incidencias");
+		model.addAttribute("comentario", comen);		
+		return new ModelAndView("Incidencias");
 	}
+	
 	@RequestMapping(method = RequestMethod.POST, value = "incs.htm")
 	public ModelAndView inc(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
-	    String id = request.getParameter("idEmpleado");
-	    model.addAttribute("id", id); 
-	    
-	   
+		String id = request.getParameter("idEmpleado");
+		model.addAttribute("id", id); 
 		listaFichajes = fichaje.fichajesEmpleado(id);
 		dniEmpl=id;
 		mail=request.getParameter("emailEmpleado");
 		model.addAttribute("fichajes", listaFichajes);
-		
-
-	   
 		return new ModelAndView("incs","fichajes", listaFichajes);
-	    
-	  
 	}
+	
 	@RequestMapping(method = RequestMethod.POST, value = "RellenarIncidencia.htm")
 	public ModelAndView RellenarIncidencia(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
-	   
 		model.addAttribute("id", inc.getIdEmpleado());
 		model.addAttribute("tip", inc.getTipo());
 		model.addAttribute("email", inc.getEmailEmpleado());
@@ -463,4 +424,13 @@ public class loginController {
 		model.addAttribute("comentario", inc.getComentario());
 		return new ModelAndView("Incidencias");
 	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "accesoModulo.htm")
+	public ModelAndView accesoModulo(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
+		List<Empleado> listaEmpleados = new ArrayList<Empleado>();
+		listaEmpleados = empleado.consultarEmpleados();
+		model.addAttribute("Empleados", listaEmpleados);
+		return new ModelAndView("consultaEmpleadosModuloAdministrador");
+	}
+
 }

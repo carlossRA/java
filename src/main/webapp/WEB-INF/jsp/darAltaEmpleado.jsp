@@ -94,24 +94,24 @@ button:hover {
 <form action="darAltaEmpleado.htm" class="form" method="post">
 	<h2>Dar de alta</h2>
 	<p type="DNI:">
-		<input id="dni" name="dni" placeholder="DNI del empleado"></input>
+		<input id="dni" name="dni" placeholder="DNI del empleado" required></input>
 	</p>
 	<p type="Email:">
-		<input id="email" name="email" placeholder="Email del empleado"></input>
+		<input id="email" name="email" placeholder="Email del empleado" required></input>
 	</p>
-	<p type="Nombre y apellidos:">
+	<p type="Nombre y apellidos:" required>
 		<input id="nombre" name="nombre"
-			placeholder="Nombre y apellidos del empleado"></input>
+			placeholder="Nombre y apellidos del empleado" required></input>
 	</p>
 	<p type="Rol:">
 		<input id="rol" type="radio" name="rol" value="usuario">Usuario 
 		<input id="rol" type="radio" name="rol" value="administrador">Administrador 
 		<input id="rol" type="radio" name="rol" value="gestor">Gestor
 	</p>
-	<button class="btn"	type="submit">Dar de alta</button>
+	<button class="btn"	OnClick="atras()" type="submit">Dar de alta</button>
 
 </form>
-<script>
+<script type="text/javascript">
 
 	function mandarInfoAlta(){
 		var dni;
@@ -123,6 +123,9 @@ button:hover {
 		document.getElementById("nombre").value = nombre;
 		document.getElementById("rol").value = rol;
 		
+	}
+	function atras(){
+		document.normal.action="irHome.htm";
 	}
 
 

@@ -141,22 +141,23 @@ html, body {
 		</p>
 
 		<p>
-		<form action="direccionAltaEmpleado.htm" method="post"
-			align="center">
+			<form action="accesoModulo.htm" method="post" align="center">
 			<input class="btn boton-personalizado" type="submit"
-				name="darAltaEmpleado" value="Dar de alta" />
-		</form>
+				name="accederModulo" value="Módulo de empleados" />
+			</form>
 		</p>
 
 
 		<br></br>
 		<p>
+		
 		<h4 align="center">
 			Estado:
 			<c:out value="${mensaje}" />
 		</h4>
 		</p>
 		<p>
+		
 		<form style="padding-left: 20px;" action="login.htm" method="post">
 			<input class="btn boton-salir" value="Logout" type="submit"
 				name="BtnSalir">
