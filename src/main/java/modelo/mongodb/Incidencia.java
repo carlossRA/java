@@ -29,6 +29,17 @@ public class Incidencia {
 		dao.registrarIncidencia(this);
 
 	}
+	public Incidencia(String idEmpleado, String tipo,String email, String mensaje, String fechaInicio, String fechaFin, String comentario) {
+		this.idEmpleado = idEmpleado;
+		this.tipo = tipo;
+		this.emailEmpleado=email;
+		this.mensaje = mensaje;
+		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
+		this.comentario = comentario;
+		
+
+	}
 
 	public Incidencia(ObjectId _id, String idEmpleado, String tipo, String mensaje, String fechaInicio, String fechaFin, String comentario) {
 		Empleado empleado = new Empleado();
@@ -179,6 +190,10 @@ public class Incidencia {
 
 	public void setEmailEmpleado(String emailEmpleado) {
 		this.emailEmpleado = emailEmpleado;
+	}
+	public void resolver(String id, String fechaIn, String fechaFin, String comen) {
+		dao.resolver(id,fechaIn,fechaFin,comen);
+		
 	}
 
 }

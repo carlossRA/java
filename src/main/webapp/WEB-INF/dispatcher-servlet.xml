@@ -37,6 +37,12 @@
 				<prop key="direccionAltaEmpleado.htm">loginController</prop>
 				<prop key="darAltaEmpleado.htm">loginController</prop>
 				<prop key="filtro.htm">loginController</prop>
+				<prop key="incs.htm">loginController</prop>
+<prop key="formFich.htm">loginController</prop>
+<prop key="resolverInc.htm">loginController</prop>
+<prop key="RellenarIncidencia.htm">loginController</prop>
+<prop key="incis.htm">loginController</prop>
+<prop key="IrHome.htm">loginController</prop>
 				
 			</props>
 		</property>

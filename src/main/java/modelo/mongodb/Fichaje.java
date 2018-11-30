@@ -20,6 +20,14 @@ public class Fichaje {
 		this.estado = "Abierto";
 		dao.abrirFichaje(this);		
 	}
+	public Fichaje(String idEmpleado, String fechaFichaje, String horaEntrada,String horaCierre,String estado) {
+		this.idEmpleado = idEmpleado;
+		this.fechaFichaje = fechaFichaje;
+		this.horaEntrada = horaEntrada;
+		this.horaCierre=horaCierre;
+		this.estado = estado;
+			
+	}
 	
 	public void cerrarFichaje(String horaCierre, Empleado empleado) {
 		this.horaCierre = horaCierre;
@@ -73,6 +81,10 @@ public class Fichaje {
 		this.estado = estado;
 	}
 
+	public void editarFichaje(String dni ,String horAh,String horAm,String horAs,String horCh ,
+			String horCm,String horCs,String dia,String mes,String ano,String estado) {
+				dao.editarFichaje(dni,horAh,horAm,horAs,horCh,horCm,horCs,dia,mes,ano,estado,this); 
+			}
 
 	
 }

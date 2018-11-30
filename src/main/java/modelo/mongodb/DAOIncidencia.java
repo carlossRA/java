@@ -123,6 +123,18 @@ public class DAOIncidencia {
 		}
 		return true;
 	}
-
+	public void resolver(String id, String fechaIn, String fechaFin, String comen) {
+		Document documento = new Document();
+		Document filtro = new Document();
+		Document cambio = new Document();
+		filtro.put("idEmpleado", id);
+		filtro.put("comentario",comen);
+		filtro.put("fechaInicio", fechaIn);
+		filtro.put("fechaFin",fechaFin );
+		cambio.put("mensaje","resuelta");
+		documento.put("$set", cambio);
+		db.actualizarDocumento(coleccion, filtro, documento);
+		
+	}
 
 }

@@ -231,19 +231,15 @@ p.rounded {
 				onClick="verIncidencia()" class="btn boton-personalizado"></input>
 		</p>
 
-		<p>
-			<input type="submit" value="Resolver" id="resolver"
-				onClick="resolverIncidencia()" class="btn boton-resolver"></input>
-		</p>
-
+		
+	<p>
+	<input class="btn boton-salir" type="submit" value="Atrás"
+			onclick="atras()">
+</p>
 
 
 	</form>
-	<form action="home.htm" method="post">
-		<p>
-			<input class="btn boton-salir" type="submit" value="Atrás">
-		</p>
-	</form>
+	
 </body>
 
 
@@ -309,6 +305,8 @@ p.rounded {
 		document.normal.action = "resolucionIncidencias.htm";
 	}
 	
-	
+	function atras(){
+		document.normal.action="IrHome.htm";
+	}
 </script>
 </html>

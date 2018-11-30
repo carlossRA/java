@@ -82,5 +82,71 @@ public class DAOFichaje {
 		
 		return fichajes;
 	}
+	public void editarFichaje(String dni, String horAh, String horAm, String horAs, String horCh, String horCm,
+			String horCs, String dia, String mes, String ano, String estado,Fichaje fichaje) {
+		
+		String horaEntrada=""; 
+		String horaCierre="";
+				if(horAh.length()==1){
+					horaEntrada="0"+horAh+":";
+							}else {
+								horaEntrada=horAh+":";
+							}
+				
+				if(horAm.length()==1){
+					horaEntrada=horaEntrada+("0"+horAm)+":";
+							}else {
+								horaEntrada=horaEntrada+horAm+":";
+							}
+
+				if(horAs.length()==1){
+					horaEntrada=horaEntrada+("0"+horAs);
+							}else {
+								horaEntrada=horaEntrada+horAs;
+							}
+				
+				
+				
+				if(horCh.length()==1){
+					horaCierre="0"+horCh+":";
+							}else {
+								horaCierre=horCh+":";
+							}
+				
+				if(horCm.length()==1){
+					horaCierre=horaCierre+("0"+horCm)+":";
+							}else {
+								horaCierre=horaCierre+horCm+":";
+							}
+
+				if(horCs.length()==1){
+					horaCierre=horaCierre+("0"+horCs);
+							}else {
+								horaCierre=horaCierre+horCs;
+							}
+				
+				String fechaFich="";
+				if(dia.length()==1) {
+					fechaFich="0"+dia+"/";
+				}else
+				fechaFich=fechaFich+dia+"/";
+				fechaFich=fechaFich+mes+"/"+ano;
+		Document documento = new Document();
+		Document filtro = new Document();
+		Document cambio = new Document();
+		filtro.put("idEmpleado", dni);
+		filtro.put("estado", fichaje.getEstado());
+		filtro.put("horaEntrada",fichaje.getHoraEntrada());
+		filtro.put("horaCierre",fichaje.getHoraCierre());
+		filtro.put("fechaFichaje",fichaje.getFechaFichaje());
+		cambio.put("horaEntrada",horaEntrada);
+		cambio.put("horaCierre", horaCierre);
+		cambio.put("estado", estado);
+		cambio.put("fechaFichaje",fechaFich);
+		documento.put("$set", cambio);
+		db.actualizarDocumento(coleccion, filtro, documento);
+		
+	}
+
 
 }
