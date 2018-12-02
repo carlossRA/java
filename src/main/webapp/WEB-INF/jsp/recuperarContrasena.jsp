@@ -323,5 +323,5 @@ header .stivky #logo {
 
 
 </body>
-<jsp:include page="pieDePagina.jsp" />
+
 </html>

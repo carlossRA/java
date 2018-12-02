@@ -45,7 +45,7 @@
 <title>Login</title>
 </head>
 <style>
-body {
+.body1 {
 	/* Aquí el origen de la imagen */
 	background-image:
 		url(https://i2.wp.com/plagi.es/wp-content/uploads/2016/01/FONDO-Web-2016-OK-1.jpg);
@@ -60,15 +60,11 @@ body {
 	background-size: cover;
 	/* Damos un color de fondo mientras la imagen está cargando  */
 	background-color: #464646;
+
 }
 
 
 
-body {
-	padding: 0px;
-	margin: 0px;
-	width: 100%;
-}
 
 .wrapper {
 	width: 100%;
@@ -85,7 +81,7 @@ header {
 	color: #fff;
 	background: #1161ee;
 	line-height: 80px;
-	position: fixed;
+	position: relative;
 	top: 0;
 	transition: all 0.5s ease;
 	box-shadow: 0px 2px 10px #fff inset;
@@ -318,7 +314,7 @@ header {
 
 <body>
 
-
+<div class="body1">
 	
 		<!-- HEADER -->
 		<div class="wrapper">
@@ -331,7 +327,7 @@ header {
 
 		</div>
 
-<div  class="body" style="background:#1161ee; background-color:transparent">
+<div  style="background:#1161ee; background-color:transparent">
 		<p></p>
 
 		<!-- LOGIN -->
@@ -371,7 +367,8 @@ header {
 		</div>	
 	</div>
 	<br></br>
-
+</div>
+</div>
 </body>
-<jsp:include page="pieDePagina.jsp" />
+
 </html>

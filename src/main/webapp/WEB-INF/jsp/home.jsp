@@ -48,16 +48,7 @@ body {
 	background-color: #464646;
 }
 
-.body1 {
-	width: 100%;
-	heigth: 100%;
-	background-image:
-		url(https://i2.wp.com/plagi.es/wp-content/uploads/2016/01/FONDO-Web-2016-OK-1.jpg);
-	background-size: cover;
-	background-position: center center;
-	background-repeat: no-repeat;
-	font-family: helvetica;
-}
+
 
 .button {
 	font-family: Arial;
@@ -186,7 +177,7 @@ body {
 
 	</div>
 </body>
-<jsp:include page="pieDePagina.jsp" />
+
 <script type="text/javascript">
 	function verEstado() {
 		if (document.getElementById("est").value == "true") {

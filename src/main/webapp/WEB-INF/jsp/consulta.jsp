@@ -93,5 +93,5 @@ table {
 	</div>
 
 </body>
-<jsp:include page="pieDePagina.jsp" />
+
 </html>
