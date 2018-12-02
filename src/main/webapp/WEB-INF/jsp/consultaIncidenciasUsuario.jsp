@@ -178,7 +178,6 @@ table {
 
 				<c:forEach items="${incidencias}" var="proyecto">
 					<tr>
-
 						<td style="display: none">${proyecto.idEmpleado}</td>
 						<td style="display: none">${proyecto.tipo}</td>
 						<td style="display: none">${proyecto.emailEmpleado}</td>
@@ -186,16 +185,13 @@ table {
 						<td>${proyecto.comentario}</td>
 						<td>${proyecto.fechaInicio}</td>
 						<td>${proyecto.fechaFin}</td>
-
-
-
 					</tr>
 				</c:forEach>
 			</tbody>
 
 		</table>
 
-<input name="idEmpleado" id="dni" value="" style="display: none">
+		<input name="idEmpleado" id="dni" value="" style="display: none">
 		<input name="tipo" id="tip" value="" style="display: none"> 
 		<input name="emailEmpleado" id="email" value="" style="display: none">
 		
@@ -207,7 +203,7 @@ table {
 
 
 
-
+		<p>
 		<input type="submit" value="consultar" id="modificar"
 			onClick="verIncidencia()" class="btn boton-personalizado"></input>
 

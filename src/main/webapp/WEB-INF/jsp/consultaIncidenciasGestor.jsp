@@ -216,8 +216,8 @@ p.rounded {
 		</table>
 
 		<input name="idEmpleado" id="dni" value="" style="display: none">
-		<input name="tipo" id="tip" value="" style="display: none"> <input
-			name="emailEmpleado" id="email" value="" style="display: none">
+		<input name="tipo" id="tip" value="" style="display: none"> 
+		<input name="emailEmpleado" id="email" value="" style="display: none">
 
 		<input name="mensaje" id="mens" value="" style="display: none">
 		<input name="fechaInicio" id="fechIn" value="" style="display: none">

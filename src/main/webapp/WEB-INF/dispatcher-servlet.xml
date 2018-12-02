@@ -44,6 +44,10 @@
 				<prop key="incis.htm">loginController</prop>
 				<prop key="IrHome.htm">loginController</prop>
 				<prop key="accesoModulo.htm">loginController</prop>
+				<prop key="eliminarEmpleado.htm">loginController</prop>
+				<prop key="modificarEmpleado.htm">loginController</prop>
+				<prop key="promocionarEmpleado.htm">loginController</prop>
+				
 
 			</props>
 		</property>

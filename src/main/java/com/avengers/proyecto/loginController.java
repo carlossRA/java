@@ -76,7 +76,6 @@ public class loginController {
 					fich = listaFichajes.get(listaFichajes.size()-1);
 				}
 				estado = fich.get("estado").toString();
-
 			}
 			model.addAttribute("email", empleado.getEmail());
 			model.addAttribute("estado", estado);
@@ -432,5 +431,33 @@ public class loginController {
 		model.addAttribute("Empleados", listaEmpleados);
 		return new ModelAndView("consultaEmpleadosModuloAdministrador");
 	}
+	
+	@RequestMapping(method = RequestMethod.POST, value = "eliminarEmpleado.htm")
+	public ModelAndView eliminarEmpleado(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
+		String email = request.getParameter("emailEmpleado");
+		String nombre = request.getParameter("nombre");
+		String dni = request.getParameter("dni");
+		String rol = request.getParameter("rol");
+		empleado.eliminarEmpleado(email);
+		List<Empleado> listaEmpleados = new ArrayList<Empleado>();
+		listaEmpleados = empleado.consultarEmpleados();
+		model.addAttribute("Empleados", listaEmpleados);
+		return new ModelAndView("consultaEmpleadosModuloAdministrador");
+	}
 
+	
+	@RequestMapping(method = RequestMethod.POST, value = "modificarEmpleado.htm")
+	public ModelAndView modificarEmpleado(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
+		String email = request.getParameter("emailEmpleado");
+		model.addAttribute("emailEmpleado", email);
+		return new ModelAndView("modificarEmpleado");
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value = "promocionarEmpleado.htm")
+	public ModelAndView promocionarEmpleado(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
+		String email = request.getParameter("emailEmpleado");
+		String rol = request.getParameter("rol");
+		empleado.cambiarRol(email, rol);		
+		return new ModelAndView("modificarEmpleado");
+	}
 }
