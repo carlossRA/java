@@ -1,22 +1,26 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page contentType="text/html; charset=utf-8"
-	import="com.avengers.proyecto.loginController"%>
+<%@page contentType="text/html" pageEncoding="iso-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-<script src=" https://code.jquery.com/jquery.js ">
+<script src=" https://code.jquery.com/jquery.js">
 	
 </script>
-<script type="text/javascript"
+<script
 	src=" https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
 	
 </script>
+<link rel="stylesheet"
+	href=" https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<meta http-equiv="content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="css/estilos.css">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"
-	rel="stylesheet" media="screen">
-<title>Interfaz de consulta de empleados del mÃ³dulo para el
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<title>Interfaz de consulta de empleados del módulo para el
 	administrador</title>
 </head>
 
@@ -47,6 +51,12 @@ html, body {
 	border-radius: 35px;
 }
 
+table {
+	font-size: 15px;
+	width: 60%;
+	height: 150px;
+	text-align: center;
+}
 
 </style>
 <body>
@@ -55,7 +65,7 @@ html, body {
 	
 	<br>
 	<form name="normal" method="post">
-		<table align="center" border="1" width=60%>
+		<table align="center" border="1" id="table">
 			<thead bgcolor="#FFFD86">
 				<tr>
 					<th width="30">DNI</th>
@@ -75,13 +85,92 @@ html, body {
 				</c:forEach>
 			</tbody>
 		</table>
-	</form>
-	<p>
-	<form action="direccionAltaEmpleado.htm" method="post" >
-		<input class="btn boton-personalizado" type="submit"
-			name="darAltaEmpleado" value="Dar de alta" />
+		
+		<input name="dni" id="dni" value="" style="display: none">
+		<input name="emailEmpleado" id="email" value="" style="display: none">
+		<input name="nombre" id="nombre" value="" style="display: none">
+		<input name="rol" id="rol" value="" style="display: none">
+		
+		<p>
+			<input class="btn boton-personalizado" type="submit" onClick="eliminarEmpleado()"
+				id="eliminarEmpleado" value="Dar de baja"></input>
+		</p>
+		
+		<p>
+			<input class="btn boton-personalizado" type="submit" onClick="modificar()"
+			name="modificar" value="Modificar Empleado">
+		</p>
 	</form>
 	
-	</p>
+		
+	
+	<form action="direccionAltaEmpleado.htm" method="post" >
+		<input class="btn boton-personalizado" type="submit" onClick="darAltaEmpleado()"
+			name="darAltaEmpleado" value="Dar de alta" />
+	</form>	
+		
+	
 </body>
+<script type="text/javascript">
+	var seleccionado = null; 
+
+	function onclickHandler() {
+		if (seleccionado == this) {
+			this.style.backgroundColor = "transparent";
+			seleccionado = null;
+		} else {
+			if (seleccionado != null)
+				seleccionado.style.backgroundColor = "transparent";
+			this.style.backgroundColor = "#e1b";
+			seleccionado = this;
+		}
+	}
+	
+	var fil = document.getElementById("table").getElementsByTagName("tr");
+	for (var i = 0; i < fil.length; i++) {
+		fil[i].onclick = onclickHandler;
+	
+	}
+
+	function eliminarEmpleado() {
+		if (seleccionado == null) {
+			alert("Seleccione una fila haciendo click sobre ella");
+		}
+		var f = seleccionado.getElementsByTagName('td');
+		var dni= f[0].textContent;
+		var email= f[1].textContent;
+		var nombre= f[2].textContent;
+		var rol= f[3].textContent;
+		
+		document.getElementById("dni").value = dni;
+		document.getElementById("email").value = email;
+		document.getElementById("nombre").value = nombre;
+		document.getElementById("rol").value = rol;
+		
+		document.normal.action = "eliminarEmpleado.htm";
+		
+	}
+	
+	function modificar(){
+		if (seleccionado == null) {
+			alert("Seleccione una fila haciendo click sobre ella");
+		}
+		var f = seleccionado.getElementsByTagName('td');
+		var dni= f[0].textContent;
+		var email= f[1].textContent;
+		var nombre= f[2].textContent;
+		var rol= f[3].textContent;
+		
+		document.getElementById("dni").value = dni;
+		document.getElementById("email").value = email;
+		document.getElementById("nombre").value = nombre;
+		document.getElementById("rol").value = rol;
+		
+		document.normal.action = "modificarEmpleado.htm";
+		
+		
+	}
+	
+	
+</script>
 </html>

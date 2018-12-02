@@ -46,9 +46,9 @@ html, body {
 </style>
 <body>
 
-	<h2 align="center">Resolución de incidencias</h2>
+	<h2 align="center">Modificación de rol del empleado</h2>
 	<p align="center">
-		<b>*Acepte o deniegue la incidencia seleccionada </b>
+		<b>*Promocione o deniegue al empleado </b>
 	</p>
 	<input name="idEmpleado" id="dni" value="" style="display: none">
 	<input name="mensaje" id="mens" value="" style="display: none">
@@ -58,28 +58,31 @@ html, body {
 	<br>
 	<div class="col-sm-12 col-xs-12" align="center">
 
-		<form action="incidenciasGestorUsuario.htm" method="post">
+		<form action="promocionarEmpleado.htm" method="post">
 			<p>
-				<input type="submit" value="Aceptar" id="aceptar"
+				<input type="submit" value="Promocionar a admin" id="promocionar"
 					class="btn boton boton-personalizado"></input>
-			</p>
-			<input name="mensaje" id="mens" value="Aceptada"
-				style="display: none"> <input name="idEmpleado" id="dni"
-				value="${id}" style="display: none"> <input
-				name="comentario" id="com" value="${comentario}"
-				style="display: none">
+			</p>			
+			<input name="emailEmpleado" id="email" value="${emailEmpleado}" style="display: none"> 
+			<input name="rol" id="rol" value="Administrador" style="display: none">
 		</form>
 
-		<form action="incidenciasGestorUsuario.htm" method="post">
+		<form action="promocionarEmpleado.htm" method="post">
 			<p>
-				<input type="submit" value="Denegar" id="denegar"
+				<input type="submit" value="Degradar a usuario" id="degradar"
 					class="btn boton boton-personalizado"></input>
 			</p>
-			<input name="mensaje" id="mens" value="Denegada"
-				style="display: none"> <input name="idEmpleado" id="dni"
-				value="${id}" style="display: none"> <input
-				name="comentario" id="com" value="${comentario}"
-				style="display: none">
+			<input name="emailEmpleado" id="email" value="${emailEmpleado}" style="display: none"> 
+			<input name="rol" id="rol" value="Usuario" style="display: none">
+		</form>
+		
+		<form action="promocionarEmpleado.htm" method="post">
+			<p>
+				<input type="submit" value="Promocionar a gestor" id="degradar"
+					class="btn boton boton-personalizado"></input>
+			</p>
+			<input name="emailEmpleado" id="email" value="${emailEmpleado}" style="display: none"> 
+			<input name="rol" id="rol" value="Gestor" style="display: none">
 		</form>
 	</div>
 </body>
