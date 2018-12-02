@@ -34,6 +34,7 @@ public class loginController {
 	String dniEmpl;
 	String mail;
 	Incidencia inc;
+	String mensaje;
 	@RequestMapping("login.htm")
 	public ModelAndView redireccion() {
 		ModelAndView MV= new ModelAndView();
@@ -80,6 +81,11 @@ public class loginController {
 			}
 			model.addAttribute("email", empleado.getEmail());
 			model.addAttribute("estado", estado);
+			boolean est=fichaje.fichajesAbiertos(empleado.getDni());
+			model.addAttribute("est",est);
+			mensaje="Fichaje Cerrado";
+			if(est)mensaje="Fichaje Abierto";
+			model.addAttribute("mensaje",mensaje);
 			if (empleado.getRol().equals("usuario"))
 				return new ModelAndView("home");
 			else if(empleado.getRol().equals("gestor"))return new ModelAndView("gestor");//unica línea añadida
@@ -110,13 +116,19 @@ public class loginController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "abrirFichaje.htm")
 	public ModelAndView abrirFichaje(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
-		String mensaje;
+		
 		DateFormat hora = new SimpleDateFormat("HH:mm:ss");
 		DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
 		model.addAttribute("email", empleado.getEmail());
 		fichaje = new Fichaje(empleado.getDni(), fecha.format(new Date()), hora.format(new Date()));
 		model.addAttribute("estado", fichaje.getEstado());
 		mensaje = "Fichaje Abierto";
+
+		
+		
+		boolean est=fichaje.fichajesAbiertos(empleado.getDni());
+		
+		model.addAttribute("est",est);
 		if(empleado.getRol().equals("usuario"))
 			return new ModelAndView("home", "mensaje", mensaje);
 		else 
@@ -324,13 +336,26 @@ public class loginController {
 	}
 
 	@RequestMapping(value = "IrHome.htm", method = RequestMethod.POST)
-	public ModelAndView IrHome(HttpServletRequest request, ModelMap model)throws Exception{	
-		model.addAttribute("email", empleado.getEmail());			
-		if (empleado.getRol().equals("usuario"))
-			return new ModelAndView("home");
-		else if(empleado.getRol().equals("gestor"))return new ModelAndView("gestor");//unica línea añadida
-		else return new ModelAndView("admin");
-	}
+	public ModelAndView IrHome(HttpServletRequest request, ModelMap model)throws Exception{
+		
+		
+
+		
+			model.addAttribute("email", empleado.getEmail());
+			boolean est=fichaje.fichajesAbiertos(empleado.getDni());
+			model.addAttribute("est",est);
+			model.addAttribute("mensaje",mensaje);
+			if (empleado.getRol().equals("usuario"))
+				return new ModelAndView("home");
+			else if(empleado.getRol().equals("gestor"))return new ModelAndView("gestor");//unica línea añadida
+			else return new ModelAndView("admin");
+
+		 	
+	
+	
+	
+
+}
 	@RequestMapping(method = RequestMethod.POST, value = "incis.htm")
 	public ModelAndView incis(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
 		String id=request.getParameter("id");
@@ -431,6 +456,31 @@ public class loginController {
 		listaEmpleados = empleado.consultarEmpleados();
 		model.addAttribute("Empleados", listaEmpleados);
 		return new ModelAndView("consultaEmpleadosModuloAdministrador");
+	}
+	@RequestMapping(method = RequestMethod.POST, value = "CrearIncYCerrarFich.htm")
+	public ModelAndView CrearIncYCerrarFich(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
+		boolean est=fichaje.fichajesAbiertos(empleado.getDni());
+		model.addAttribute("est",est);
+		
+		DateFormat hora1 = new SimpleDateFormat("HH:mm:ss");
+		model.addAttribute("email", empleado.getEmail());		
+		
+		fichaje.cerrarFichaje(hora1.format(new Date()), empleado);
+		model.addAttribute("estado", fichaje.getEstado());
+		
+		Incidencia inc= new Incidencia();
+		inc.generarIncidenciaFichajeSinCerrar(empleado);
+	
+		String mensaje;
+		DateFormat hora = new SimpleDateFormat("HH:mm:ss");
+		DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
+		model.addAttribute("email", empleado.getEmail());
+		fichaje = new Fichaje(empleado.getDni(), fecha.format(new Date()), hora.format(new Date()));
+		model.addAttribute("estado", fichaje.getEstado());
+		mensaje = "Fichaje Abierto";
+		
+		
+		return new ModelAndView("gestor","mensaje", mensaje);
 	}
 
 }

@@ -93,12 +93,15 @@ html, body {
 	</form>
 	</p>
 
+	<form name="abr" method="post">
 	<p>
-	<form action="abrirFichaje.htm" method="post" align="center">
-		<input class="btn boton-personalizado" type="submit" id="abrirFichaje"
-			value="Abrir Fichaje" />
-	</form>
+	<input name="est" id="est" value="${est}" style="display: none">
+	<input type="submit" value="Abrir Fichaje" id="consulta"
+				onClick="verEstado()" class="btn boton-personalizado"></input>
 	</p>
+	
+    </form>
+	
 
 	<p>
 	<form action="cerrarFichaje.htm" method="post" align="center">
@@ -148,4 +151,27 @@ html, body {
 			name="BtnSalir">
 	</form>
 </body>
+<script type="text/javascript">
+function verEstado(){
+	if(document.getElementById("est").value=="true"){
+		
+	
+		
+	
+		var mensaje;
+		var opcion = confirm("Tiene otro fichaje abierto, ¿desea continuar?");
+		if (opcion == true) {
+			document.abr.action = "CrearIncYCerrarFich.htm";
+		} else {
+			
+			document.abr.action = "IrHome.htm";
+		}
+}else
+	{
+	document.abr.action="abrirFichaje.htm";
+	}
+	
+	
+}
+</script>
 </html>

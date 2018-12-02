@@ -85,6 +85,17 @@ public class Fichaje {
 			String horCm,String horCs,String dia,String mes,String ano,String estado) {
 				dao.editarFichaje(dni,horAh,horAm,horAs,horCh,horCm,horCs,dia,mes,ano,estado,this); 
 			}
+	
+	public boolean fichajesAbiertos(String id) {
+		boolean est=false;
+		List<Document> fichajes;
+		fichajes=fichajesEmpleado(id);
+		for(int i=0;i<fichajes.size();i++) {
+			if(fichajes.get(i).get("estado").equals("Abierto"))est=true;
+		}
+		return est;
+		
+	}
 
 	
 }
