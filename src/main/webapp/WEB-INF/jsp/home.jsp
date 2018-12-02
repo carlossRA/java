@@ -1,177 +1,208 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html; charset=utf-8"
 	import="com.avengers.proyecto.loginController"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
-<script src=" https://code.jquery.com/jquery.js ">
+
+<link href="src/main/webapp/WEB-INF/css/bootstrap.min.css"
+	rel="stylesheet" media="screen">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	rel="stylesheet" media="screen">
+
+<script src=" https://code.jquery.com/jquery.js">
 	
 </script>
-<script type="text/javascript"
+<script
 	src=" https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
 	
 </script>
-<link rel="stylesheet" href="css/estilos.css">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"
-	rel="stylesheet" media="screen">
+
+
 <title>Home</title>
 </head>
 <style>
-html, body {
-	height: auto;
+body {
+	/* Aquí el origen de la imagen */
+	background-image:
+		url(https://i2.wp.com/plagi.es/wp-content/uploads/2016/01/FONDO-Web-2016-OK-1.jpg);
+	/* Fijar la imagen de fondo este vertical y
+    horizontalmente y centrado */
+	background-position: center center;
+	/* Esta imagen no debe de repetirse */
+	background-repeat: no-repeat;
+	/* COn esta regla fijamos la imagen en la pantalla. */
+	background-attachment: fixed;
+	/* La imagen ocupa el 100% y se reescala */
+	background-size: cover;
+	/* Damos un color de fondo mientras la imagen está cargando  */
+	background-color: #464646;
+}
+
+.body1 {
 	width: 100%;
-	margin: 0;
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
+	heigth: 100%;
+	background-image:
+		url(https://i2.wp.com/plagi.es/wp-content/uploads/2016/01/FONDO-Web-2016-OK-1.jpg);
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	font-family: helvetica;
 }
 
-.boton-personalizado {
+.button {
+	font-family: Arial;
+	color: black;
+	font-size: 40px;
+	padding: 40px;
 	text-decoration: none;
-	font-weight: 600;
-	font-size: 20px;
-	color: white;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	padding-left: 40px;
-	padding-right: 40px;
-	background-color: #FFD27D;
-	border-color: #d8d8d8;
-	border-width: 3px;
-	border-style: solid;
-	border-radius: 35px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	-webkit-box-shadow: 10px 10px 10px #666666;
+	-moz-box-shadow: 10px 10px 10px #666666;
+	box-shadow: 10px 10px 10px #666666;
+	text-shadow: 0px 1px 3px #666666;
+	border: solid #31384A 14px;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#517499),
+		to(#a4b8eb));
+	background: -moz-linear-gradient(top, #517499, #a4b8eb);
 }
 
-.boton-contrasena {
-	text-decoration: none;
-	font-weight: 600;
-	font-size: 20px;
-	color: white;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	padding-left: 40px;
-	padding-right: 40px;
-	background-color: #5DE7DA;
-	border-color: #d8d8d8;
-	border-width: 3px;
-	border-style: solid;
-	border-radius: 35px;
+.button:hover {
+	background: white;
 }
 
-.boton-salir {
-	text-decoration: none;
-	font-weight: 600;
-	font-size: 20px;
+.button1 {
+	background-image:
+		url(https://st.depositphotos.com/2546551/4088/i/950/depositphotos_40887211-stock-photo-wood-floor-surface-parquet-wall.jpg);
+	color: black;
+	width: 250px;
+	height: 100px;
+}
+
+.divFichajes {
+	background-color: rgba(0, 0, 0, 0.8);;
+	font-size: 14px;
+	border: outset;
+	margin: 20px auto 40px auto;
+	height: 350px;
+	width: 500px;
+	overflow: hidden;
+	position: relative;
 	color: white;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	padding-left: 40px;
-	padding-right: 40px;
-	background-color: red;
-	border-color: #d8d8d8;
-	border-width: 3px;
-	border-style: solid;
-	border-radius: 35px;
+	text-align: center;
+	padding: 20px;
+}
+
+.cabecera {
+	border-radius: 0px 0px 0px 0px;
+	-moz-border-radius: 0px 0px 0px 0px;
+	-webkit-border-radius: 0px 0px 0px 0px;
+	height: 120px;
+	background-image:
+		url(https://st.depositphotos.com/2546551/4088/i/950/depositphotos_40887211-stock-photo-wood-floor-surface-parquet-wall.jpg);
+}
+
+.centerTable {
+	text-align: center;
+}
+
+.centerTable table {
+	margin: 0 auto;
+	text-align: left;
 }
 </style>
+<jsp:include page="menu.jsp" />
 <body>
 
-	<h1 align="center">Bienvenido a AvengersLive Web</h1>
-	<h3 style="padding-right: 20px;" align="right">
-		Usuario:
-		<c:out value="${email}" />
-	</h3>
-	</br>
+	<div class="body">
 
-	<p>
-	<form style="padding-left: 20px;" action="vistaCambiarContrasena.htm"
-		method="post" align="left">
-		<input class="btn boton-contrasena" type="submit"
-			id="cambiarContraseña" value="Cambiar Contraseña" />
-	</form>
-	</p>
+		<div class="cabecera">
+			<h1 align="center">Bienvenido a AvengersLive Web</h1>
+		</div>
 
-	<form name="abr" method="post">
-	<p>
-	<input name="est" id="est" value="${est}" style="display: none">
-	<input type="submit" value="Abrir Fichaje" id="consulta"
-				onClick="verEstado()" class="btn boton-personalizado"></input>
-	</p>
-	
-    </form>
-	
+		</br>
+		<div class="divFichajes">
 
-	<p>
-	<form action="cerrarFichaje.htm" method="post" align="center">
-		<input class="btn boton-personalizado" type="submit"
-			id="cerrarFichaje" value="Cerrar Fichaje" align="center" />
-	</form>
-	</p>
+			<br></br>
 
-	<script language="JavaScript" type="text/javascript">
-		if ("${estado}" == "Abierto"){
-			abrirFichaje.disabled = true;
-			cerrarFichaje.disabled = false;
-		}else{
-			abrirFichaje.disabled = false;
-			cerrarFichaje.disabled = true;
-		}
-	</script>
+			<div class="centerTable">
+				<tr>
+					<td colspan="2" style="text-align: center;">
 
-	<p>
-	<form action="consulta.htm" method="post" align="center">
-		<input class="btn boton-personalizado" type="submit" name="consulta"
-			value="Consulta de Fichajes" />
-	</form>
-	</p>
+						<form name="abr" method="post">
 
-	<p>
-		<form action="crearIncidencia.htm" method="post" align="center">
-		<input class="btn boton-personalizado" type="submit"
-			name="crearIncidencia" value="Crear incidencia" />
-	</form>
-	</p>
-	<p>
-		<form action="incidenciasGestorUsuario.htm" method="post" align="center">
-		<input class="btn boton-personalizado" type="submit"
-			name="ConsultarIncidencia" value="Consultar incidencias" />
-	</form>
-	</p>
-	<p>
-	
-	<h4 align="center">
-		Estado:
-		<c:out value="${mensaje}" />
-	</h4>
-	</p>
-	<form style="padding-left: 20px;" action="login.htm" method="post">
-		<input class="btn boton-salir" value="Logout" type="submit"
-			name="BtnSalir">
-	</form>
+							<input name="est" id="est" value="${est}" style="display: none">
+							<input type="submit" value="ABRIR FICHAJE" id="consulta"
+								onClick="verEstado()" class="btn button:hover button button1"></input>
+
+						</form> </br>
+
+						<form action="cerrarFichaje.htm" method="post" align="center">
+							<input class="btn button:hover button button1" type="submit"
+								id="cerrarFichaje" value="CERRAR FICHAJE" align="center" />
+						</form>
+
+					</td>
+				</tr>
+			</div>
+
+			<div>
+				<br>
+				<h4 style="color: white" align="center">
+					Estado:
+					<c:out value="${mensaje}" />
+				</h4>
+
+			</div>
+
+		</div>
+
+
+		<script language="JavaScript" type="text/javascript">
+			if ("${estado}" == "Abierto") {
+				abrirFichaje.disabled = true;
+				cerrarFichaje.disabled = false;
+			} else {
+				abrirFichaje.disabled = false;
+				cerrarFichaje.disabled = true;
+			}
+		</script>
+		<br></br>
+
+
+
+		<p></p>
+
+	</div>
 </body>
+<jsp:include page="pieDePagina.jsp" />
 <script type="text/javascript">
-function verEstado(){
-	if(document.getElementById("est").value=="true"){
-		
-	
-		
-	
-		var mensaje;
-		var opcion = confirm("Tiene otro fichaje abierto, ¿desea continuar?");
-		if (opcion == true) {
-			document.abr.action = "CrearIncYCerrarFich.htm";
+	function verEstado() {
+		if (document.getElementById("est").value == "true") {
+
+			var mensaje;
+			var opcion = confirm("Tiene otro fichaje abierto, ¿desea continuar?");
+			if (opcion == true) {
+				document.abr.action = "CrearIncYCerrarFich.htm";
+			} else {
+
+				document.abr.action = "IrHome.htm";
+			}
 		} else {
-			
-			document.abr.action = "IrHome.htm";
+			document.abr.action = "abrirFichaje.htm";
 		}
-}else
-	{
-	document.abr.action="abrirFichaje.htm";
+
 	}
-	
-	
-}
 </script>
 </html>

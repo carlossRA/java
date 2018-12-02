@@ -510,4 +510,69 @@ public class loginController {
 		empleado.cambiarRol(email, rol);		
 		return new ModelAndView("modificarEmpleado");
 	}
+	
+	
+	
+	
+	//////////////METODOS GET PARA NAVEGACION DEL MENU////////////////7
+	@RequestMapping(method = RequestMethod.GET, value = "home.htm")
+	public ModelAndView home(HttpServletRequest request, ModelMap model)throws Exception{
+			String estado=null;
+			model.addAttribute("email", empleado.getEmail());
+			model.addAttribute("estado", estado);
+			if (empleado.getRol().equals("usuario"))
+				return new ModelAndView("home");
+			else if(empleado.getRol().equals("gestor"))return new ModelAndView("gestor");//unica línea añadida
+			else return new ModelAndView("admin");
+
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "consulta.htm")
+	public ModelAndView consultaFichajes(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
+		String idEmpleado = empleado.getDni();
+		model.addAttribute("email", empleado.getEmail());
+		List<Document> listaFichajes = new ArrayList<Document>();
+		listaFichajes = fichaje.fichajesEmpleado(idEmpleado);
+		model.addAttribute("fichajes", listaFichajes);
+
+		return new ModelAndView("consulta", "fichajes", listaFichajes);
+	} 
+	
+	@RequestMapping(method = RequestMethod.GET, value = "crearIncidencia.htm")
+	public ModelAndView crearIncidencias(HttpServletRequest request, HttpServletResponse response, ModelMap model){
+		model.addAttribute("id", empleado.getDni());
+		model.addAttribute("email", empleado.getEmail());
+		return new ModelAndView("crearIncidencia");
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "incidenciasGestorUsuario.htm")
+	public ModelAndView consultarIncidencias(HttpServletRequest request, ModelMap model)throws Exception{
+		model.addAttribute("id", empleado.getDni());
+		model.addAttribute("email", empleado.getEmail());
+		List<Incidencia> listaIncidencias=new ArrayList<Incidencia>();
+		Incidencia auxIncidencia = new Incidencia();
+		listaIncidencias =  auxIncidencia.incidenciasFiltradas(null, null, empleado.getRol(), empleado.getDni());
+		model.addAttribute("incidenciasUsuario", listaIncidencias);
+		model.addAttribute("incidenciasGestor", listaIncidencias);
+		if(empleado.getRol().equals("gestor"))
+			return new ModelAndView("consultaIncidenciasGestor", "incidencias", listaIncidencias);
+		else
+			return new ModelAndView("consultaIncidenciasUsuario", "incidencias", listaIncidencias);
+	}
+
+	
+	@RequestMapping(method = RequestMethod.GET, value = "vistaCambiarContrasena.htm")
+	public ModelAndView recuperarPassword(HttpServletRequest request, HttpServletResponse response, ModelMap model) {
+		model.addAttribute("id", empleado.getDni());
+		model.addAttribute("email", empleado.getEmail());
+		return new ModelAndView("contrasena");
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "recuperarContrasena.htm")
+	public ModelAndView passwordOlvidada(HttpServletRequest request, HttpServletResponse response, ModelMap model) {
+		model.addAttribute("id", empleado.getDni());
+		model.addAttribute("email", empleado.getEmail());
+		return new ModelAndView("recuperarContrasena");
+	}
+	
 }

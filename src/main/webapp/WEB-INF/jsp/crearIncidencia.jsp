@@ -66,14 +66,25 @@
 
 </head>
 <style>
-.body {
+body {
+	/* Aquí el origen de la imagen */
 	background-image:
 		url(https://i2.wp.com/plagi.es/wp-content/uploads/2016/01/FONDO-Web-2016-OK-1.jpg);
-	background-size: 100% 100%;
+	/* Fijar la imagen de fondo este vertical y
+    horizontalmente y centrado */
+	background-position: center center;
+	/* Esta imagen no debe de repetirse */
+	background-repeat: no-repeat;
+	/* COn esta regla fijamos la imagen en la pantalla. */
 	background-attachment: fixed;
-	margin: 0;
+	/* La imagen ocupa el 100% y se reescala */
+	background-size: cover;
+	/* Damos un color de fondo mientras la imagen está cargando  */
+	background-color: #464646;
 	font-family: helvetica;
 }
+	
+
 
 .form {width 450px;
 	margin: auto;
@@ -172,7 +183,7 @@
 	font-size: 14px;
 	border: outset;
 	margin: 20px auto 40px auto;
-	height: 100px;
+	height: 200px;
 	width: 500px;
 	overflow: hidden;
 	width: 230px;
@@ -189,16 +200,16 @@
 	border: none;
 }
 </style>
-
+<jsp:include page="menu.jsp" />
 <body>
-	<div class="body">
+	
 
 		<form action="registrarIncidencia.htm" class="form" method="post">
 			<h2 class="h2">INCIDENCIAS</h2>
 			<br></br>
 			<div class="caja caja::after">
-				<select name="tipoIncidencia" class="select select:focus" required>
-					<option></option>
+				<select name="tipoIncidencia" class="select select:focus">
+					<option>--Tipo de incidencia--</option>
 					<option value="Vacaciones">Solicitar vacaciones</option>
 					<option value="Bajas Medicas">Comunicar bajas médicas</option>
 					<option value="Ausencias">Justificar ausencias</option>
@@ -210,19 +221,20 @@
 
 			<div class="fechas">
 				<label>Fecha de inicio</label> 
-				<input type="text" name="fechaInicio" id="fechaInicio" placeholder="dd/mm/yy" required><br></br> 
+				<input type="text" name="fechaInicio" id="fechaInicio" placeholder="dd/mm/yy"><br></br> 
 				<label>Fecha de fin</label> 
-				<input type="text" name="fechaFin" id="fechaFin" placeholder="dd/mm/yy" required>
+				<input type="text" name="fechaFin" id="fechaFin" placeholder="dd/mm/yy">
 			</div>
 			<br></br>
 			<textarea class="textarea" name="comentario"
-				placeholder="Observaciones" required></textarea>
+				placeholder="Observaciones"></textarea>
 
 			<input type="submit" class="boton boton:hover" value="ENVIAR"
 				name="botonEnviar">
 
 		</form>	
 			
-	</div>
+	
 </body>
+
 </html>

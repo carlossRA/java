@@ -1,5 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,29 +18,22 @@
 </head>
 <style>
 html, body {
-	height: auto;
-	width: 100%;
-	margin: 0;
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
+	/* Aquí el origen de la imagen */
+	background-image:
+		url(https://i2.wp.com/plagi.es/wp-content/uploads/2016/01/FONDO-Web-2016-OK-1.jpg);
+	/* Fijar la imagen de fondo este vertical y
+    horizontalmente y centrado */
+	background-position: center center;
+	/* Esta imagen no debe de repetirse */
+	background-repeat: no-repeat;
+	/* COn esta regla fijamos la imagen en la pantalla. */
+	background-attachment: fixed;
+	/* La imagen ocupa el 100% y se reescala */
+	background-size: cover;
+	/* Damos un color de fondo mientras la imagen está cargando  */
+	background-color: #464646;
 }
 
-.boton-salir {
-	text-decoration: none;
-	font-weight: 600;
-	font-size: 20px;
-	color: white;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	padding-left: 40px;
-	padding-right: 40px;
-	background-color: red;
-	border-color: #d8d8d8;
-	border-width: 3px;
-	border-style: solid;
-	border-radius: 35px;
-}
 
 tr:hover {
 	background-color: #D5D5D5;
@@ -50,32 +44,33 @@ table {
 	width: 50%;
 	height: 150px;
 	text-align: center;
+	border: 3px solid black;
 }
 
-.boton-salir {
-	text-decoration: none;
-	font-weight: 600;
-	font-size: 20px;
-	color: white;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	padding-left: 40px;
-	padding-right: 40px;
-	background-color: red;
-	border-color: #d8d8d8;
-	border-width: 3px;
-	border-style: solid;
-	border-radius: 35px;
+
+.centerTable{
+        text-align: center;
 }
+
+ 
+
+.centerTable table {
+       margin: 0 auto;
+       text-align: left;
+}
+
 </style>
+<jsp:include page="menu.jsp" />
 <body>
 	<p>
 	<h2 align="center">Listado de fichajes</h2>
 	</p>
 	<p>
+	
+	<div class="centerTable">
 	<form action="consulta.htm" method="post">
-		<table align="center" border="1">
-			<thead bgcolor="#FFFD86">
+		<table>
+			<thead bgcolor="#c0d6e4">
 				<tr>
 					<th>Fecha</th>
 					<th>Apertura</th>
@@ -83,7 +78,7 @@ table {
 					<th>Estado</th>
 				</tr>
 			</thead>
-			<tbody bgcolor="#FFD27D">
+			<tbody bgcolor="#f5f5f5">
 				<c:forEach var="fich" items="${fichajes}">
 					<tr>
 						<td>${fich.fechaFichaje}</td>
@@ -95,11 +90,8 @@ table {
 		</table>
 	</form>
 	</p>
-
-	<p>
-		<input class="btn boton-salir" type="button" value="Atrás"
-			onclick="history.back()">
-	</p>
+	</div>
 
 </body>
+<jsp:include page="pieDePagina.jsp" />
 </html>
