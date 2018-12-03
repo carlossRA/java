@@ -608,8 +608,6 @@ public class loginController {
 	
 	
 	
-	
-	
 	@RequestMapping( value = "AlmFich.htm")
 	public ModelAndView AlmFich(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
 		

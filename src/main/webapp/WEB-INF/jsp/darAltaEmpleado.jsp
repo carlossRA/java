@@ -88,7 +88,7 @@ button:hover {
 	color: #fff
 }
 </style>
-<jsp:include page="menu.jsp" />
+
 <body>
 
 </body>
