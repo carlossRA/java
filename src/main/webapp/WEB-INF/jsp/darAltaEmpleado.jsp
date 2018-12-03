@@ -88,6 +88,7 @@ button:hover {
 	color: #fff
 }
 </style>
+<jsp:include page="menu.jsp" />
 <body>
 
 </body>
@@ -108,6 +109,8 @@ button:hover {
 		<input id="rol" type="radio" name="rol" value="administrador">Administrador 
 		<input id="rol" type="radio" name="rol" value="gestor">Gestor
 	</p>
+	
+	<br></br>
 	<button class="btn"	OnClick="atras()" type="submit">Dar de alta</button>
 
 </form>

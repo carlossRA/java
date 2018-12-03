@@ -62,6 +62,22 @@
 	background-color: #464646;
 
 }
+body {
+	/* Aquí el origen de la imagen */
+	background-image:
+		url(https://i2.wp.com/plagi.es/wp-content/uploads/2016/01/FONDO-Web-2016-OK-1.jpg);
+	/* Fijar la imagen de fondo este vertical y
+    horizontalmente y centrado */
+	background-position: center center;
+	/* Esta imagen no debe de repetirse */
+	background-repeat: no-repeat;
+	/* COn esta regla fijamos la imagen en la pantalla. */
+	background-attachment: fixed;
+	/* La imagen ocupa el 100% y se reescala */
+	background-size: cover;
+	/* Damos un color de fondo mientras la imagen está cargando  */
+	background-color: #464646;
+}
 
 
 
@@ -314,7 +330,7 @@ header {
 
 <body>
 
-<div class="body1">
+<div >
 	
 		<!-- HEADER -->
 		<div class="wrapper">

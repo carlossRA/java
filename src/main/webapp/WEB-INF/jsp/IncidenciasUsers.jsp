@@ -14,6 +14,8 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" media="screen">
   
   </head>
+  
+  <jsp:include page="menu.jsp" />
 
   <body class="bg-light">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
