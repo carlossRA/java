@@ -45,7 +45,7 @@
           Incidencias
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="crearIncidencia.htm" method="get">Crear incidencia</a>
+          <a class="dropdown-item" href="crearIncidencia.htm">Crear incidencia</a>
           <a class="dropdown-item" href="incidenciasGestorUsuario.htm">Consultar incidencias</a>
         </div>
       </li>
@@ -61,7 +61,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="login.htm" method="get">Salir</a>
+        <a class="nav-link disabled" href="login.htm">Salir</a>
       </li>
     </ul>
   </div>

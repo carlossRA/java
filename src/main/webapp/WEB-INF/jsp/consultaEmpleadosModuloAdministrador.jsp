@@ -27,25 +27,33 @@
 <style>
 
 html, body {
-	height: auto;
-	width: 100%;
-	margin: 0;
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
+	/* Aquí el origen de la imagen */
+	background-image:
+		url(https://i2.wp.com/plagi.es/wp-content/uploads/2016/01/FONDO-Web-2016-OK-1.jpg);
+	/* Fijar la imagen de fondo este vertical y
+    horizontalmente y centrado */
+	background-position: center center;
+	/* Esta imagen no debe de repetirse */
+	background-repeat: no-repeat;
+	/* COn esta regla fijamos la imagen en la pantalla. */
+	background-attachment: fixed;
+	/* La imagen ocupa el 100% y se reescala */
+	background-size: cover;
+	/* Damos un color de fondo mientras la imagen está cargando  */
+	background-color: #464646;
 }
 
 .boton-personalizado {
 	text-decoration: none;
 	font-weight: 600;
 	font-size: 20px;
-	color: white;
+	color: black;
 	padding-top: 15px;
 	padding-bottom: 15px;
 	padding-left: 40px;
 	padding-right: 40px;
-	background-color: #FFD27D;
-	border-color: #d8d8d8;
+	background-color: #c0d6e4;
+	border-color: black;
 	border-width: 3px;
 	border-style: solid;
 	border-radius: 35px;
@@ -56,17 +64,32 @@ table {
 	width: 60%;
 	height: 150px;
 	text-align: center;
+	text-align: center;
+	border: 3px solid black;
+}
+
+.centerTable{
+        text-align: center;
+}
+
+ 
+
+.centerTable table {
+       margin: 0 auto;
+       text-align: left;
 }
 
 </style>
+<jsp:include page="menu.jsp" />
 <body>
-
+<br>
 	<h2 align="center">Listado de empleados</h2>
 	
 	<br>
+	<div class="centerTable">
 	<form name="normal" method="post">
 		<table align="center" border="1" id="table">
-			<thead bgcolor="#FFFD86">
+			<thead bgcolor="#c0d6e4">
 				<tr>
 					<th width="30">DNI</th>
 					<th width="30">Email</th>
@@ -74,7 +97,7 @@ table {
 					<th width="30">Rol</th>
 				</tr>
 			</thead>
-			<tbody bgcolor="#FFD27D">
+			<tbody bgcolor="#f5f5f5">
 				<c:forEach items="${Empleados}" var="proyecto">
 					<tr>
 						<td>${proyecto.dni}</td>
@@ -85,7 +108,19 @@ table {
 				</c:forEach>
 			</tbody>
 		</table>
+		<br></br>
+
+			<div class="centerTable">
+				<tr>
+					<td colspan="3" style="text-align: center;">
+
+					<!-- Añadir aquí loos botones para alinearlos -->
+
+					</td>
+				</tr>
+			</div>
 		
+	
 		<input name="dni" id="dni" value="" style="display: none">
 		<input name="emailEmpleado" id="email" value="" style="display: none">
 		<input name="nombre" id="nombre" value="" style="display: none">
@@ -103,12 +138,12 @@ table {
 	</form>
 	
 		
-	
 	<form action="direccionAltaEmpleado.htm" method="post" >
 		<input class="btn boton-personalizado" type="submit" onClick="darAltaEmpleado()"
 			name="darAltaEmpleado" value="Dar de alta" />
 	</form>	
 		
+	</div>
 	
 </body>
 <script type="text/javascript">
@@ -121,7 +156,7 @@ table {
 		} else {
 			if (seleccionado != null)
 				seleccionado.style.backgroundColor = "transparent";
-			this.style.backgroundColor = "#e1b";
+			this.style.backgroundColor = "#D5D5D5";
 			seleccionado = this;
 		}
 	}
