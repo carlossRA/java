@@ -644,5 +644,24 @@ public class loginController {
 		    
 		return new ModelAndView("formFich");
 	}
-	
+	@RequestMapping(method = RequestMethod.POST, value = "IncidenciasUsers.htm")
+	public ModelAndView consulIncidenciasUsers(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
+		String id = request.getParameter("idEmpleado");
+		String tip = request.getParameter("tipo");
+		String email=request.getParameter("emailEmpleado");
+		String men = request.getParameter("mensaje");
+		String fechaIn = request.getParameter("fechaInicio");
+		String fechaFin = request.getParameter("fechaFin");
+		String comentario = request.getParameter("comentario");
+		inc=new Incidencia(id,tip,email,men,fechaIn,fechaFin,comentario);
+
+		model.addAttribute("id", id);
+		model.addAttribute("tip", tip);
+		model.addAttribute("email", email);
+		model.addAttribute("men", men);
+		model.addAttribute("fechaIn", fechaIn);
+		model.addAttribute("fechaFin", fechaFin);
+		model.addAttribute("comentario", comentario);
+		return new ModelAndView("IncidenciasUsers");
+	}
 }
