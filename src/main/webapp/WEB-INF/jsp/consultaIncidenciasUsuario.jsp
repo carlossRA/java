@@ -1,5 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="iso-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +36,7 @@
 </head>
 <style>
 html, body {
-	/* Aqu√≠ el origen de la imagen */
+	/* AquÌ el origen de la imagen */
 	background-image:
 		url(https://i2.wp.com/plagi.es/wp-content/uploads/2016/01/FONDO-Web-2016-OK-1.jpg);
 	/* Fijar la imagen de fondo este vertical y
@@ -48,7 +48,7 @@ html, body {
 	background-attachment: fixed;
 	/* La imagen ocupa el 100% y se reescala */
 	background-size: cover;
-	/* Damos un color de fondo mientras la imagen est√° cargando  */
+	/* Damos un color de fondo mientras la imagen est· cargando  */
 	background-color: #464646;
 }
 
@@ -158,8 +158,8 @@ background-color: #c0d6e4;
 	</p>
 	
 	<p align="center">
-		<b>*Seleccione una fila haciendo click sobre ella y despu√©s, pulse el bot√≥n "Consultar" 
-		para mostrar la informaci√≥n m√°s detallada </b>
+		<b>*Seleccione una fila haciendo click sobre ella y despuÈs, pulse el botÛn "Consultar" 
+		para mostrar la informaciÛn m·s detallada </b>
 	</p>
 	
 	<div class="divCentrado">
@@ -185,7 +185,7 @@ background-color: #c0d6e4;
 			<select name="tipoIncidencia" class="select select:focus">
 				<option></option>
 				<option value="Vacaciones">Solicitar vacaciones</option>
-				<option value="Bajas Medicas">Comunicar bajas m√©dicas</option>
+				<option value="Bajas Medicas">Comunicar bajas mÈdicas</option>
 				<option value="Ausencias">Justificar ausencias</option>
 				<option value="Errores">Comunicar errores en el marcaje</option>
 			</select>
@@ -337,12 +337,12 @@ jQuery.fn.animateAuto = function(prop, speed, callback){
 		document.getElementById("com").value = comentario;
 		document.getElementById("fechIn").value = fechaInicio;
 		document.getElementById("fechFin").value = fechaFin;
-		document.normal.action = "Incidencias.htm";
+		document.normal.action = "IncidenciasUsers.htm";
 
 	}
 	function retroceder() {
 
-		document.addTarea.action = "home.htm";
+		document.addTarea.action = "IrHome.htm";
 
 	}
 </script>

@@ -1,5 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="iso-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +20,7 @@
 <div class="container">
   <div class="row">
     <div class="span12">
-      <form class="form-horizontal span6">
+      <form name="form" class="form-horizontal span6" method="post">
         <fieldset>
           <legend>Fichaje</legend>
        
@@ -89,7 +89,7 @@
                 
                 </div>
                 <div class="span3">
-                  <input type="number" name="mes" value= "${ano}"  class="input-block-level" autocomplete="off" min="2000" max="2030" step="1"   required>
+                  <input type="number" name="ano" value= "${ano}"  class="input-block-level" autocomplete="off" min="2000" max="2030" step="1"   required>
                 
                 </div>
               </div>
@@ -110,13 +110,19 @@
           </div>
        
           <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Almacenar</button>
+            <button type="submit" onClick="modificar()" class="btn btn-primary">Almacenar</button>
             
           
           </div>
           
           
         </fieldset>
+        
+        <input type="text" name="idEmpleado" style="display: none" value= "${dni}" class="form-control">
+					 <input type="text" name="emailEmpleado" style="display:none"   value= "${emailEmpleado}"  class="form-control" >
+					 <input
+					type="text" name="idEmpleado" style="display: none" value= "${dni}" class="form-control">
+					 <input type="text" name="emailEmpleado" style="display:none"   value= "${emailEmpleado}"  class="form-control" >
       </form>
     </div>
   </div>
@@ -137,10 +143,9 @@
 </body>
 
 <script>
-
 function modificar(){
 	
-	
+	document.form.action = "AlmFich.htm";
 }
 </script>
 </html>

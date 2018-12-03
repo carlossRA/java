@@ -1,5 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="iso-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,18 +75,15 @@ html, body {
 	border-style: solid;
 	border-radius: 35px;
 }
-
 tr:hover {
 	background-color: #D5D5D5;
 }
-
 table {
 	font-size: 15px;
 	width: 50%;
 	height: 150px;
 	text-align: center;
 }
-
 .boton-salir {
 	text-decoration: none;
 	font-weight: 600;
@@ -145,7 +142,7 @@ table {
 			onclick="gestionarFichajes()">
 			</p>
 			<p>
-		<input class="btn boton-salir" type="submit" value="AtrÃ¡s"
+		<input class="btn boton-salir" type="submit" value="Atrás"
 			onclick="atras()">
 			
 	</p>
@@ -157,7 +154,6 @@ table {
 </body>
 <script type="text/javascript">
 var seleccionado = null; //tendremos la fila necesaria
-
 function onclickHandler() {
 	if (seleccionado == this) {
 		this.style.backgroundColor = "transparent";
@@ -168,22 +164,16 @@ function onclickHandler() {
 		this.style.backgroundColor = "#e1b";
 		seleccionado = this;
 	}
-
 }
-
 var fil = document.getElementById("tab").getElementsByTagName("tr");
 for (var i = 0; i < fil.length; i++) {
 	fil[i].onclick = onclickHandler;
-
 }
-
-
 function gestionarFichajes(){
 	
 	if (seleccionado == null) {
 		alert("Seleccione una fila haciendo click sobre ella");
 		document.fichs.action="incis.htm";
-
 	}
 	else{
 	var f = seleccionado.getElementsByTagName('td');
@@ -204,7 +194,5 @@ function gestionarFichajes(){
 		
 		}
 		
-
-
 </script>
 </html>
