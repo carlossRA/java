@@ -1,5 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page contentType="text/html; charset=utf-8"
+<%@ page contentType="text/html" pageEncoding="iso-8859-1"
 	import="com.avengers.proyecto.loginController"%>
 <!DOCTYPE html>
 <html>
@@ -43,7 +43,7 @@
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> Fichajes</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="home.htm">Abrir/Cerrar fichajes<span
+						<a class="dropdown-item" href="IrHome.htm">Abrir/Cerrar fichajes<span
 							class="sr-only">(current)</span></a> <a class="dropdown-item"
 							href="consulta.htm">Consultar fichajes</a>
 						<!-- <div class="dropdown-divider"></div> -->
@@ -63,7 +63,7 @@
 					aria-expanded="false"> Cuenta </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="vistaCambiarContrasena.htm">Cambiar
-							contraseÃ±a</a>
+							contraseña</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href=""><c:out value="${email}" /></a>
 

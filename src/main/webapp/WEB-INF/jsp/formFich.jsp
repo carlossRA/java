@@ -46,10 +46,10 @@
             <div class="controls">
               <div class="row-fluid">
                 <div class="span2">
-              <input type="number" name="horAh" value= "${horAh}" class="input-block-level" autocomplete="off" min="0" max="23" step="1"   required>
+              <input type="number" name="horAh" value= "${horAh}" class="input-block-level" id="horAh" autocomplete="off" min="0" max="23" step="1"   required>
                 </div>
                 <div class="span2">
-                 <input type="number" name="horAm" value= "${horAm}" class="input-block-level" autocomplete="off" min="0" max="59" step="1"  required>
+                 <input type="number" name="horAm" value= "${horAm}" class="input-block-level" id="horAm" autocomplete="off" min="0" max="59" step="1"  required>
                 </div>
                <div class="span2">
                  <input type="number" name="horAs" readonly=”readonly”  value= "${horAs}"  class="input-block-level" autocomplete="off" min="0" max="59" step="1"  required>
@@ -62,10 +62,10 @@
             <div class="controls">
               <div class="row-fluid">
                 <div class="span2">
-              <input type="number" name="horCh" value= "${horCh}"  class="input-block-level" autocomplete="off" min="0" max="59" step="1"   required>
+              <input type="number" name="horCh" value= "${horCh}"  class="input-block-level" id="horCh" autocomplete="off" min="0" max="59" step="1"   required>
                 </div>
                 <div class="span2">
-                 <input type="number" name="horCm" value= "${horCm}"  class="input-block-level" autocomplete="off" min="0" max="59" step="1"  required>
+                 <input type="number" name="horCm" value= "${horCm}"  class="input-block-level" id="horCm" autocomplete="off" min="0" max="59" step="1"  required>
                 </div>
                <div class="span2">
                  <input type="number" name="horCs" readonly=”readonly”  value= "${horCs}" class="input-block-level" autocomplete="off" min="0" max="59" step="1"  required>
@@ -80,16 +80,16 @@
               <div class="row-fluid">
               <div class="span2">
                   
-                         <input type="number" name="dia" value= "${dia}" class="input-block-level" autocomplete="off" min="1" max="31" step="1"   required>
+                         <input type="number" name="dia" value= "${dia}" class="input-block-level" id="dia" autocomplete="off" min="1" max="31" step="1"   required>
                  
                 </div>
                 <div class="span2">
                  
-                         <input type="number" name="mes" value= "${mes}"  class="input-block-level" autocomplete="off" min="1" max="12" step="1"   required>
+                         <input type="number" name="mes" value= "${mes}"  class="input-block-level" id="mes" autocomplete="off" min="1" max="12" step="1"   required>
                 
                 </div>
                 <div class="span3">
-                  <input type="number" name="ano" value= "${ano}"  class="input-block-level" autocomplete="off" min="2000" max="2030" step="1"   required>
+                  <input type="number" name="ano" value= "${ano}"  class="input-block-level" id="ano" autocomplete="off" min="2000" max="2030" step="1"   required>
                 
                 </div>
               </div>
@@ -144,7 +144,11 @@
 
 <script>
 function modificar(){
-	
+	if(document.getElementById("horAh").value!=""&&document.getElementById("horAm").value!=""&&document.getElementById("horCh").value!=""
+			&&document.getElementById("horCm").value!=""&&document.getElementById("dia").value!=""&&document.getElementById("mes").value!=""
+			&&document.getElementById("ano").value!=""){
+	alert("Fichaje editado");
+	}
 	document.form.action = "AlmFich.htm";
 }
 </script>

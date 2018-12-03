@@ -232,7 +232,7 @@
 				</form>
 				
 				<div class="foot-lnk">
-							<a href="home.htm">Volver al inicio</a>
+							<a href="IrHome.htm">Volver al inicio</a>
 				</div>
 			</div>
 		</div>

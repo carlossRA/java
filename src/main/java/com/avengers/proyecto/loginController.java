@@ -142,10 +142,14 @@ public class loginController {
 		mensaje = "Fichaje Cerrado";
 		fichaje.cerrarFichaje(hora.format(new Date()), empleado);
 		model.addAttribute("estado", fichaje.getEstado());
-		if(empleado.getRol().equals("usuario"))
+		if(empleado.getRol().equals("Usuario"))
 			return new ModelAndView("home", "mensaje", mensaje);
-		else 
+		else if(empleado.getRol().equals("administrador")){
 			return new ModelAndView("admin", "mensaje", mensaje);
+		}else
+		{
+			return new ModelAndView("gestor", "mensaje", mensaje);
+		}
 	} 
 
 	@RequestMapping(value = "vistaCambiarContrasena.htm", method = RequestMethod.POST)
@@ -334,7 +338,7 @@ public class loginController {
 			return new ModelAndView("consultaIncidenciasUsuario", "incidencias", listaIncidenciasFiltradas);
 	}
 
-	@RequestMapping(value = "IrHome.htm", method = RequestMethod.POST)
+	@RequestMapping(value = "IrHome.htm", method = RequestMethod.GET)
 	public ModelAndView IrHome(HttpServletRequest request, ModelMap model)throws Exception{
 		
 		
