@@ -189,6 +189,7 @@ public class Empleado {
 	public void modificarEmpleado(String[] arrayTipo, String[] arrayValor, String idEmpleado) {
 		for(int i = 0; i < arrayTipo.length; i++)
 			try {
+				System.out.println(arrayTipo[i]+" "+arrayValor[i]);
 				dao.modificarEmpleado(arrayTipo[i], arrayValor[i], idEmpleado);
 			}catch(Exception e) {
 			}

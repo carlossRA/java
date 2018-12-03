@@ -1,9 +1,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page contentType="text/html; charset=utf-8"
-	import="com.avengers.proyecto.loginController"%>
+<%@ page contentType="text/html" pageEncoding="iso-8859-1" 
+import="com.avengers.proyecto.loginController"%>
 <!DOCTYPE html>
 <html>
 <head>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 <script src=" https://code.jquery.com/jquery.js ">
 	
 </script>
@@ -27,7 +34,6 @@ html, body {
 	flex-direction: column;
 	flex-wrap: wrap;
 }
-
 .boton-personalizado {
 	text-decoration: none;
 	font-weight: 600;
@@ -44,7 +50,57 @@ html, body {
 	border-radius: 35px;
 }
 </style>
+
+
 <body>
+
+<form class="form-horizontal">
+<fieldset>
+
+         
+<legend></legend>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="nombre">DNI</label>  
+  <div class="col-md-5">
+      <input type="text" style="height:30px" name="idEmpleado" readonly=”readonly” value= "${dni}"  class="form-control" id="email" >
+  </div>
+</div>
+<div class="form-group">
+  <label class="col-md-4 control-label" for="nombre">Nombre</label>  
+  <div class="col-md-5">
+  <input id="nombree" name="nombree" type="text" placeholder="Nombre" class="form-control input-md"  value ="" pattern="[A-Za-z ]{1,20}" title="Ej:Jose Luis" required >
+    
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="apellido">Apellido</label>  
+  <div class="col-md-5">
+  <input id="apellido" name="apellido" type="text" placeholder="apellidos" class="form-control input-md" value ="" pattern="[A-Za-z]{1,15} [A-Za-z]{1,15}" title="Ej: Rodriguez Esi" required >
+    
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="email">Email</label>  
+  <div class="col-md-5">
+  <input id="email" name="email" type="text" placeholder="email@esi.uclm.es" class="form-control input-md" value ="${emailEmpleado}" required>
+    
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="enviar"></label>
+  <div class="col-md-4">
+     <button type="submit" class="btn boton-personalizado">Editar</button>
+  </div>
+</div>
+
+</fieldset>
 
 	<h2 align="center">Modificación de rol del empleado</h2>
 	<p align="center">
@@ -56,35 +112,46 @@ html, body {
 
 	<br>
 	<br>
-	<div class="col-sm-12 col-xs-12" align="center">
+	<input name="emailEmpleado" id="email" value="${emailEmpleado}" style="display: none"> 
+    <input name="dni" id="email" value="${dni}" style="display: none"> 
+	<input name="nombre" id="email" value="${nombre}" style="display: none"> 
+    <input name="rol" id="email" value="${rol}" style="display: none"> 
+	</form>
+	<div  align="center">
 
 		<form action="promocionarEmpleado.htm" method="post">
-			<p>
-				<input type="submit" value="Promocionar a admin" id="promocionar"
-					class="btn boton boton-personalizado"></input>
-			</p>			
+			
+		<p>
+				
 			<input name="emailEmpleado" id="email" value="${emailEmpleado}" style="display: none"> 
 			<input name="rol" id="rol" value="Administrador" style="display: none">
+			<input class="btn boton-personalizado" type="submit" name="consulta"
+			value="Promocionar a administrador" />
+		</p>
 		</form>
 
 		<form action="promocionarEmpleado.htm" method="post">
-			<p>
-				<input type="submit" value="Degradar a usuario" id="degradar"
-					class="btn boton boton-personalizado"></input>
-			</p>
 			<input name="emailEmpleado" id="email" value="${emailEmpleado}" style="display: none"> 
 			<input name="rol" id="rol" value="Usuario" style="display: none">
+			<p>
+			<input class="btn boton-personalizado" type="submit" name="consulta"
+			value="Degradar a usuario"  />
+				
+			</p>
+			
 		</form>
 		
 		<form action="promocionarEmpleado.htm" method="post">
-			<p>
-				<input type="submit" value="Promocionar a gestor" id="degradar"
-					class="btn boton boton-personalizado"></input>
-			</p>
 			<input name="emailEmpleado" id="email" value="${emailEmpleado}" style="display: none"> 
 			<input name="rol" id="rol" value="Gestor" style="display: none">
+			<p>
+				<input class="btn boton-personalizado" type="submit" name="consulta"
+			value="Promocionar a gestor"  />
+			</p>
+			
 		</form>
 	</div>
+	
 </body>
 
 </html>

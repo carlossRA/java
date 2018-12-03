@@ -490,25 +490,30 @@ public class loginController {
 	}
 
 	
-	@RequestMapping(method = RequestMethod.POST, value = "modificarEmpleado.htm")
+	@RequestMapping( value = "modificarEmpleado.htm")
 	public ModelAndView modificarEmpleado(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
 		String email = request.getParameter("emailEmpleado");
 		String dni=request.getParameter("dni");
+		String nombre= request.getParameter("nombre");
+		String rol=request.getParameter("rol");
 		model.addAttribute("dni",dni);
 		model.addAttribute("emailEmpleado", email);
+		model.addAttribute("nombre",nombre);
+		model.addAttribute("rol", rol);
 		String mail="";
-		String nombre="";
+		String nombree="";
 		String apellido="";
 		mail=request.getParameter("email");
-		 nombre=request.getParameter("nombree");
+		 nombree=request.getParameter("nombree");
 		apellido=request.getParameter("apellido");
+	
+		if(mail!=null&&nombree!=null&&apellido!=null) 
+		{
+		Empleado empl=new Empleado();
+		String [] tipos= {"email","nombre"};
+		String [] valores= {mail,nombree+apellido};
+		empl.modificarEmpleado(tipos, valores, dni);
 		
-		if(mail!=null&&nombre!=null&&apellido!=null) {
-			
-			System.out.println(mail+nombre+apellido);
-		model.addAttribute("email","");
-		model.addAttribute("apellido","");
-		model.addAttribute("nombree","");
 		}
 		
 		return new ModelAndView("modificarEmpleado");

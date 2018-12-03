@@ -127,28 +127,27 @@ table {
 		<input name="rol" id="rol" value="" style="display: none">
 		
 		<p>
-			<input class="btn boton-personalizado" type="submit" onClick="eliminarEmpleado()"
-				id="eliminarEmpleado" value="Dar de baja"></input>
+			<input type="submit" value="Dar de baja" id="consulta"
+				onClick="eliminarEmpleado()" class="btn boton-personalizado"></input>
+		</p>
+		<p>
+			<input type="submit" value="Modificar Empleado" id="consulta"
+				onClick="modificar()" class="btn boton-personalizado"></input>
 		</p>
 		
-		<p>
-			<input class="btn boton-personalizado" type="submit" onClick="modificar()"
-			name="modificar" value="Modificar Empleado">
-		</p>
 	</form>
 	
 		
+	
 	<form action="direccionAltaEmpleado.htm" method="post" >
 		<input class="btn boton-personalizado" type="submit" onClick="darAltaEmpleado()"
 			name="darAltaEmpleado" value="Dar de alta" />
 	</form>	
 		
-	</div>
 	
 </body>
 <script type="text/javascript">
 	var seleccionado = null; 
-
 	function onclickHandler() {
 		if (seleccionado == this) {
 			this.style.backgroundColor = "transparent";
@@ -156,7 +155,7 @@ table {
 		} else {
 			if (seleccionado != null)
 				seleccionado.style.backgroundColor = "transparent";
-			this.style.backgroundColor = "#D5D5D5";
+			this.style.backgroundColor = "#e1b";
 			seleccionado = this;
 		}
 	}
@@ -166,7 +165,6 @@ table {
 		fil[i].onclick = onclickHandler;
 	
 	}
-
 	function eliminarEmpleado() {
 		if (seleccionado == null) {
 			alert("Seleccione una fila haciendo click sobre ella");
@@ -190,6 +188,7 @@ table {
 		if (seleccionado == null) {
 			alert("Seleccione una fila haciendo click sobre ella");
 		}
+		
 		var f = seleccionado.getElementsByTagName('td');
 		var dni= f[0].textContent;
 		var email= f[1].textContent;

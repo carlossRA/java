@@ -142,7 +142,7 @@ public class DAOEmpleado {
 		Document documento = new Document();
 		Document filtro = new Document();
 		Document cambio = new Document();
-		filtro.put("dni", idEmpleado);
+		filtro.put("_id", idEmpleado);
 		cambio.put(tipo, valor);
 		documento.put("$set", cambio);
 		db.actualizarDocumento(coleccion, filtro, documento);
