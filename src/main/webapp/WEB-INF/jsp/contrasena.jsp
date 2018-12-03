@@ -25,7 +25,6 @@
 	margin: 0;
 	color: #6a6f8c;
 	background: #c8c8c8;
-	font: 600 16px/18px 'Open Sans', sans-serif;
 }
 
 *, :after, :before {
@@ -181,9 +180,6 @@
 }
 </style>
 
-<jsp:include page="menu.jsp" />
-
-
 <body>
 	<div style="background: #1161ee; background-color: transparent">
 		<p></p>
@@ -233,6 +229,10 @@
 						<c:out value="${mensaje}" />
 					</h4>
 				</form>
+				
+				<div class="foot-lnk">
+							<a href="home.htm">Volver al inicio</a>
+				</div>
 			</div>
 		</div>
 	</div>

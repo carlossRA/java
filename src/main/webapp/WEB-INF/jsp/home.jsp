@@ -102,7 +102,15 @@ body {
 	height: 120px;
 	background-image:
 		url(https://st.depositphotos.com/2546551/4088/i/950/depositphotos_40887211-stock-photo-wood-floor-surface-parquet-wall.jpg);
+		width: 100%;
+
+	position: relative;
+	top: 0;
+	transition: all 0.5s ease;
+	box-shadow: 0px 2px 10px #fff inset;
 }
+
+
 
 .centerTable {
 	text-align: center;
@@ -116,7 +124,7 @@ body {
 <jsp:include page="menu.jsp" />
 <body>
 
-	<div class="body">
+	<div>
 
 		<div class="cabecera">
 			<h1 align="center">Bienvenido a AvengersLive Web</h1>

@@ -209,7 +209,7 @@ header {
 	color: #fff;
 	background: #1161ee;
 	line-height: 80px;
-	position: fixed;
+	position: relative;
 	top: 0;
 	transition: all 0.5s ease;
 	box-shadow: 0px 2px 10px #fff inset;
