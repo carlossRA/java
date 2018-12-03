@@ -23,7 +23,7 @@ import="com.avengers.proyecto.loginController"%>
 <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"
 	rel="stylesheet" media="screen">
-<title>Resolución Incidencias Gestor</title>
+<title>Resolucion Incidencias Gestor</title>
 </head>
 <style>
 html, body {
@@ -102,7 +102,7 @@ html, body {
 
 </fieldset>
 
-	<h2 align="center">Modificación de rol del empleado</h2>
+	<h2 align="center">Modificacion de rol del empleado</h2>
 	<p align="center">
 		<b>*Promocione o deniegue al empleado </b>
 	</p>
