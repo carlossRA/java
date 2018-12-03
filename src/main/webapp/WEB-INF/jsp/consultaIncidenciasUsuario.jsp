@@ -59,48 +59,13 @@ tr:hover {
 
 table {
 	font-size: 15px;
-	width: 50%;
+	width: 100%;
+	padding: 20px;
 	height: 150px;
 	text-align: center;
+	color:black;
 }
 
-.boton-personalizado::before, ..boton-personalizado::after {
-	content: '';
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	bottom: 0;
-	left: 0;
-	z-index: 1;
-	transition: all 0.3s;
-	border: 3px solid rgba(255, 255, 255, 0.5);
-	color: black;
-}
-
-.boton-personalizado:hover::after, .boton-personalizado:hover::before {
-	left: 96px;
-	width: 64px;
-	color: black;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
-}
-
-.boton-personalizado {
-	text-decoration: none;
-	font-weight: 600;
-	font-size: 20px;
-	color: black;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	padding-left: 40px;
-	padding-right: 40px;
-	background-color: #c0d6e4;
-	border-color: #d8d8d8;
-	border-width: 3px;
-	border-style: solid;
-	border-radius: 35px;
-	text-align: center;
-}
 
 
 .boton {
@@ -109,6 +74,7 @@ table {
 	color: black;
 	padding: 20px;
 	font-size: 17px;
+	
 }
 
 .boton:hover {
@@ -139,8 +105,8 @@ background-color: #c0d6e4;
 	font-size: 14px;
 	border: outset;
 	margin: 20px auto 40px auto;
-	height: 350px;
-	width: 500px;
+	height: 300px auto;
+	width: 900px;
 	overflow: hidden;
 	position: relative;
 	color: white;
@@ -165,7 +131,7 @@ background-color: #c0d6e4;
 	<div class="divCentrado">
 	
 	
-	<h4>FILTROS <span class="dashicons dashicons-arrow-down-alt"></span></h4>
+	<h4>*Seleccionar filtros* <span class="dashicons dashicons-arrow-down-alt"></span></h4>
 	
 	
 	<div class="plegable">

@@ -587,6 +587,28 @@ public class loginController {
 		return new ModelAndView("recuperarContrasena");
 	}
 	
+	@RequestMapping(method = RequestMethod.GET, value = "accesoModulo.htm")
+	public ModelAndView gestionEmpleados(HttpServletRequest request, HttpServletResponse response, ModelMap model)
+			throws Exception {
+		model.addAttribute("id", empleado.getDni());
+		model.addAttribute("email", empleado.getEmail());
+		List<Empleado> listaEmpleados = new ArrayList<Empleado>();
+		listaEmpleados = empleado.consultarEmpleados();
+		model.addAttribute("Empleados", listaEmpleados);
+		if (empleado.getRol().equals("administrador")) {	
+			return new ModelAndView("consultaEmpleadosModuloAdministrador");
+		} else
+			mensaje = "administrador";
+			return new ModelAndView("permisoDenegado", "mensaje", mensaje);
+
+	}
+	
+	///////////////////////////////////////////////////
+	
+	
+	
+	
+	
 	
 	@RequestMapping( value = "AlmFich.htm")
 	public ModelAndView AlmFich(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
