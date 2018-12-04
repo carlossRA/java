@@ -96,7 +96,7 @@ button:hover {
 <body>
 
 <div class="divCentro">
-<form action="darAltaEmpleado.htm" class="form" method="post">
+<form name="form" action="darAltaEmpleado.htm" class="form" method="post">
 	<h2>Dar de alta</h2>
 	<p type="DNI:">
 		<input id="dni" name="dni" placeholder="DNI del empleado" required></input>
@@ -120,7 +120,7 @@ button:hover {
 	
 	<button class="btn"	OnClick="atras()" type="submit">Dar de alta</button>
 		<div class="foot-lnk">
-							<a href="accesoModulo.htm">Volver</a>
+							<a href="retroceder.htm">Volver</a>
 				</div>
 
 </form>
@@ -141,7 +141,8 @@ button:hover {
 		
 	}
 	function atras(){
-		document.normal.action="irHome.htm";
+		
+		
 	}
 
 

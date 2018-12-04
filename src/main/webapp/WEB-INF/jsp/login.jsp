@@ -372,7 +372,11 @@ header {
 						<div class="hr"></div>
 						
 					</div>
-
+<div>
+				<ul>
+					<li>Estado : <c:out value=" ${error}" /></li>
+				</ul>
+			</div>
 				</form>
 				
 				<div class="foot-lnk">
@@ -380,6 +384,7 @@ header {
 				</div>
 				
 			</div>
+			
 		</div>	
 	</div>
 	<br></br>

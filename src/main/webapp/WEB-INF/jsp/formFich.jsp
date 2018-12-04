@@ -101,7 +101,7 @@
             <div class="controls">
               <div class="row-fluid">
                 <select name ="estado" class="input-block-level">
-                    <option>${estado}</option>
+                 
                     <option>Abierto</option>
                     <option>Cerrado</option>                   
                   </select>
@@ -137,7 +137,7 @@
 				
 &nbsp;&nbsp;
 				<button class="btn  btn-primary "
-					type="submit">Atrás</button>
+					type="submit">Atras</button>
 					
 			</form>
 </body>

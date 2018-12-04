@@ -100,7 +100,7 @@ body {
 
 <body>
 <div class="divCentro1">
-<form class="form-horizontal">
+<form  name="form" class="form-horizontal">
 <fieldset>
 
          
@@ -116,27 +116,21 @@ body {
   </div>
 </div>
 <div class="form-group">
-  <label class="col-md-4 control-label" for="nombre">Nombre</label>  
+  <label class="col-md-4 control-label" for="nombre">Nombre y Apellidos</label>  
   <div class="col-md-5">
-  <input id="nombree" name="nombree" type="text" style="height:30px; width: 700px;" placeholder="Nombre" class="form-control input-md"  value ="" pattern="[A-Za-z ]{1,20}" title="Ej:Jose Luis" required >
+  <input id="nombree" name="nombre" type="text" style="height:30px; width: 700px;" placeholder="Nombre" class="form-control input-md"  value ="${nombre}" pattern="[A-Za-z ]{1,20}" title="Ej:Jose Luis" required >
     
   </div>
 </div>
 
 
-<div class="form-group">
-  <label class="col-md-4 control-label" for="apellido">Apellido</label>  
-  <div class="col-md-5">
-  <input id="apellido" name="apellido" type="text" style="height:30px; width: 700px;" placeholder="apellidos" class="form-control input-md" value ="" pattern="[A-Za-z]{1,15} [A-Za-z]{1,15}" title="Ej: Rodriguez Esi" required >
-    
-  </div>
-</div>
+
 
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="email">Email</label>  
   <div class="col-md-5">
-  <input id="email" name="email" type="text" style="height:30px; width: 700px;" placeholder="email@esi.uclm.es" class="form-control input-md" value ="${emailEmpleado}" required>
+  <input id="email" name="emailEmpleado" type="text" style="height:30px; width: 700px;" placeholder="email@esi.uclm.es" class="form-control input-md" value ="${emailEmpleado}" required>
     
   </div>
 </div>
@@ -145,7 +139,7 @@ body {
 <div class="form-group">
   <label class="col-md-4 control-label" for="enviar"></label>
   <div class="col-md-4">
-     <button type="submit" style="width: 700px;" class="btn boton-personalizado">Editar</button>
+     <button type="submit" onClick="modificar()"  style="width: 700px;" class="btn boton-personalizado">Editar</button>
   </div>
 </div>
 
@@ -166,9 +160,9 @@ body {
 
 	<br>
 	<br>
-	<input name="emailEmpleado" id="email" value="${emailEmpleado}" style="display: none"> 
+	<input name="email" id="email" value="${emailEmpleado}" style="display: none"> 
     <input name="dni" id="email" value="${dni}" style="display: none"> 
-	<input name="nombre" id="email" value="${nombre}" style="display: none"> 
+	<input name="nombree" id="email" value="${nombr}" style="display: none"> 
     <input name="rol" id="email" value="${rol}" style="display: none"> 
 	</form>
 	<div  align="center">
@@ -178,7 +172,7 @@ body {
 		<p>
 				
 			<input name="emailEmpleado" id="email" value="${emailEmpleado}" style="display: none"> 
-			<input name="rol" id="rol" value="Administrador" style="display: none">
+			<input name="rol" id="rol" value="administrador" style="display: none">
 			<input class="btn boton-personalizado" type="submit" name="consulta"
 			value="Promocionar a administrador" />
 		</p>
@@ -186,7 +180,7 @@ body {
 
 		<form action="promocionarEmpleado.htm" method="post">
 			<input name="emailEmpleado" id="email" value="${emailEmpleado}" style="display: none"> 
-			<input name="rol" id="rol" value="Usuario" style="display: none">
+			<input name="rol" id="rol" value="usuario" style="display: none">
 			<p>
 			<input class="btn boton-personalizado" type="submit" name="consulta"
 			value="Degradar a usuario"  />
@@ -197,7 +191,7 @@ body {
 
 		<form action="promocionarEmpleado.htm" method="post">
 			<input name="emailEmpleado" id="email" value="${emailEmpleado}" style="display: none"> 
-			<input name="rol" id="rol" value="Gestor" style="display: none">
+			<input name="rol" id="rol" value="gestor" style="display: none">
 			<p>
 				<input class="btn boton-personalizado" type="submit" name="consulta"
 			value="Promocionar a gestor"  />
@@ -207,5 +201,10 @@ body {
 	</div>
 	</div>
 </body>
-
+<script>
+function modificar(){
+	
+	document.form.action = "modEmpleado.htm";
+}
+</script>
 </html>

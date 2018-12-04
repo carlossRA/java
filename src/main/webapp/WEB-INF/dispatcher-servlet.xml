@@ -50,6 +50,8 @@
 				<prop key="CrearIncYCerrarFich.htm">loginController</prop>
 				<prop key="AlmFich.htm">loginController</prop>
                 <prop key="IncidenciasUsers.htm">loginController</prop>
+               <prop key="modEmpleado.htm">loginController</prop>
+                 <prop key="retroceder.htm">loginController</prop>
 			</props>
 		</property>
 	</bean>

@@ -68,7 +68,7 @@ public class loginController {
 		email = request.getParameter("inputEmail");
 		contrasena = DigestUtils.md5Hex(request.getParameter("inputPassword"));	
 		List<Document> listaFichajes = new ArrayList<Document>();
-
+        System.out.println(contrasena);
 		if(empleado.credencialesCorrectas(email, contrasena)) {
 			empleado = new Empleado(email, contrasena);
 			listaFichajes = fichaje.fichajesEmpleado(empleado.getDni());
@@ -128,7 +128,7 @@ public class loginController {
 		boolean est=fichaje.fichajesAbiertos(empleado.getDni());
 		
 		model.addAttribute("est",est);
-		if(empleado.getRol().equals("Usuario"))
+		if(empleado.getRol().equals("usuario"))
 			return new ModelAndView("home", "mensaje", mensaje);
 		else if(empleado.getRol().equals("gestor"))return new ModelAndView("gestor", "mensaje", mensaje);
 			return new ModelAndView("admin", "mensaje", mensaje);
@@ -136,13 +136,13 @@ public class loginController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "cerrarFichaje.htm")
 	public ModelAndView cerrarFichaje(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
-		String mensaje;
+		
 		DateFormat hora = new SimpleDateFormat("HH:mm:ss");
 		model.addAttribute("email", empleado.getEmail());		
 		mensaje = "Fichaje Cerrado";
 		fichaje.cerrarFichaje(hora.format(new Date()), empleado);
 		model.addAttribute("estado", fichaje.getEstado());
-		if(empleado.getRol().equals("Usuario"))
+		if(empleado.getRol().equals("usuario"))
 			return new ModelAndView("home", "mensaje", mensaje);
 		else if(empleado.getRol().equals("administrador")){
 			return new ModelAndView("admin", "mensaje", mensaje);
@@ -195,6 +195,8 @@ public class loginController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "registrarIncidencia.htm")
 	public ModelAndView registrarIncidencia(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
+		boolean est=fichaje.fichajesAbiertos(empleado.getDni());
+		model.addAttribute("est",est);
 		String idEmpleado, tipo, fechaInicio, fechaFin, comentario, mensajeEstado, mensaje;
 		idEmpleado = empleado.getDni();
 		tipo = request.getParameter("tipo");	
@@ -281,8 +283,12 @@ public class loginController {
 		String email = request.getParameter("email");
 		String nombre = request.getParameter("nombre");
 		String rol = request.getParameter("rol");
-		Empleado altaEmpleado = new Empleado(id, email, nombre, rol);	
-		return new ModelAndView("darAltaEmpleado");
+		Empleado altaEmpleado = new Empleado(id, email, nombre, rol);
+		List<Empleado> listaEmpleados = new ArrayList<Empleado>();
+		listaEmpleados = empleado.consultarEmpleados();
+		model.addAttribute("Empleados", listaEmpleados);
+		
+		return new ModelAndView("consultaEmpleadosModuloAdministrador");
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "filtro.htm")
@@ -338,7 +344,7 @@ public class loginController {
 			return new ModelAndView("consultaIncidenciasUsuario", "incidencias", listaIncidenciasFiltradas);
 	}
 
-	@RequestMapping(value = "IrHome.htm", method = RequestMethod.GET)
+	@RequestMapping(value = "IrHome.htm")
 	public ModelAndView IrHome(HttpServletRequest request, ModelMap model)throws Exception{
 		
 		
@@ -348,7 +354,7 @@ public class loginController {
 			boolean est=fichaje.fichajesAbiertos(empleado.getDni());
 			model.addAttribute("est",est);
 			model.addAttribute("mensaje",mensaje);
-			if (empleado.getRol().equals("Usuario"))
+			if (empleado.getRol().equals("usuario"))
 				return new ModelAndView("home");
 			else if(empleado.getRol().equals("gestor"))return new ModelAndView("gestor");//unica línea añadida
 			else return new ModelAndView("admin");
@@ -444,7 +450,7 @@ public class loginController {
 		return new ModelAndView("Incidencias");
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "accesoModulo.htm")
+	@RequestMapping(value = "retroceder.htm")
 	public ModelAndView accesoModulo(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
 		List<Empleado> listaEmpleados = new ArrayList<Empleado>();
 		listaEmpleados = empleado.consultarEmpleados();
@@ -504,31 +510,66 @@ public class loginController {
 		model.addAttribute("emailEmpleado", email);
 		model.addAttribute("nombre",nombre);
 		model.addAttribute("rol", rol);
-		String mail="";
-		String nombree="";
-		String apellido="";
-		mail=request.getParameter("email");
-		 nombree=request.getParameter("nombree");
-		apellido=request.getParameter("apellido");
+		
+		
+		
+		
+		
+		String mail=request.getParameter("emailEmpleado");
+		 String nombree=request.getParameter("nombre");
+		System.out.println(nombree);
 	
-		if(mail!=null&&nombree!=null&&apellido!=null) 
+		if(mail!=null&&nombre!=null) 
 		{
 		Empleado empl=new Empleado();
 		String [] tipos= {"email","nombre"};
-		String [] valores= {mail,nombree+apellido};
+		String [] valores= {mail,nombree};
 		empl.modificarEmpleado(tipos, valores, dni);
 		
 		}
 		
 		return new ModelAndView("modificarEmpleado");
 	}
+	@RequestMapping( value = "modEmpleado.htm")
+	public ModelAndView modEmpleado(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
+	
+		String dni=request.getParameter("dni");
+		
+	
+		System.out.println("hola");
+		
+		
+		
+		
+		String mail=request.getParameter("emailEmpleado");
+		 String nombree=request.getParameter("nombre");
+		System.out.println(nombree);
+	
+		
+		Empleado empl=new Empleado();
+		String [] tipos= {"email","nombre"};
+		String [] valores= {mail,nombree};
+		empl.modificarEmpleado(tipos, valores, dni);
+		
+		
+		
+		List<Empleado> listaEmpleados = new ArrayList<Empleado>();
+		listaEmpleados = empleado.consultarEmpleados();
+		model.addAttribute("Empleados", listaEmpleados);
+		
+		return new ModelAndView("consultaEmpleadosModuloAdministrador");
+	}
+	
 	
 	@RequestMapping(method = RequestMethod.POST, value = "promocionarEmpleado.htm")
 	public ModelAndView promocionarEmpleado(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {		
 		String email = request.getParameter("emailEmpleado");
 		String rol = request.getParameter("rol");
 		empleado.cambiarRol(email, rol);		
-		return new ModelAndView("modificarEmpleado");
+		List<Empleado> listaEmpleados = new ArrayList<Empleado>();
+		listaEmpleados = empleado.consultarEmpleados();
+		model.addAttribute("Empleados", listaEmpleados);
+		return new ModelAndView("consultaEmpleadosModuloAdministrador");
 	}
 	
 	
