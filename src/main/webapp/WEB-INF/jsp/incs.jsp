@@ -1,20 +1,19 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page contentType="text/html" pageEncoding="iso-8859-1"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<script src=" https://code.jquery.com/jquery.js">
-	
-</script>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" media="screen">
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
 <script src=" https://code.jquery.com/jquery.js">	
 </script>
 <script
 	src=" https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
 	
 </script>
+
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+
 <link rel="stylesheet"
 	href=" https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <meta http-equiv="content-Type" content="text/html; charset=ISO-8859-1">
@@ -23,43 +22,38 @@
 </head>
 <style>
 html, body {
-	height: auto;
-	width: 100%;
-	margin: 0;
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
+	/* Aquí el origen de la imagen */
+	background-image:
+		url(https://i2.wp.com/plagi.es/wp-content/uploads/2016/01/FONDO-Web-2016-OK-1.jpg);
+	/* Fijar la imagen de fondo este vertical y
+    horizontalmente y centrado */
+	background-position: center center;
+	/* Esta imagen no debe de repetirse */
+	background-repeat: no-repeat;
+	/* COn esta regla fijamos la imagen en la pantalla. */
+	background-attachment: fixed;
+	/* La imagen ocupa el 100% y se reescala */
+	background-size: cover;
+	/* Damos un color de fondo mientras la imagen está cargando  */
+	background-color: #464646;
 }
+
 .boton-resolver {
 	text-decoration: none;
 	font-weight: 600;
 	font-size: 20px;
-	color: white;
+	color: black;
 	padding-top: 15px;
 	padding-bottom: 15px;
 	padding-left: 40px;
 	padding-right: 40px;
-	background-color: green;
+	background-color: #c0d6e4;
 	border-color: #d8d8d8;
 	border-width: 3px;
 	border-style: solid;
 	border-radius: 35px;
 }
-.boton-salir {
-	text-decoration: none;
-	font-weight: 600;
-	font-size: 20px;
-	color: white;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	padding-left: 40px;
-	padding-right: 40px;
-	background-color: red;
-	border-color: #d8d8d8;
-	border-width: 3px;
-	border-style: solid;
-	border-radius: 35px;
-}
+
 .boton-cerrar {
 	text-decoration: none;
 	font-weight: 600;
@@ -75,43 +69,46 @@ html, body {
 	border-style: solid;
 	border-radius: 35px;
 }
+
+
 tr:hover {
 	background-color: #D5D5D5;
 }
+
 table {
 	font-size: 15px;
 	width: 50%;
 	height: 150px;
 	text-align: center;
+	border: 3px solid black;
 }
-.boton-salir {
-	text-decoration: none;
-	font-weight: 600;
-	font-size: 20px;
-	color: white;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	padding-left: 40px;
-	padding-right: 40px;
-	background-color: red;
-	border-color: #d8d8d8;
-	border-width: 3px;
-	border-style: solid;
-	border-radius: 35px;
+
+
+.centerTable{
+        text-align: center;
 }
+
+ 
+
+.centerTable table {
+       margin: 0 auto;
+       text-align: left;
+}
+
 </style>
-  <body class="bg-light">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+<jsp:include page="menu.jsp" />
+
+  <body>
   
 <p>
 	<h2 align="center">Listado de fichajes</h2>
 	</p>
-	
+	<p>
+	<div class="centerTable">
 	<form name="fichs" method="post">
 		<table align="center" border="1"width: 100% id="tab">
-			<thead bgcolor="#FFFD86">
+			<thead bgcolor="#c0d6e4">
 				<tr>
 					<th>Fecha</th>
 					<th>Apertura</th>
@@ -119,7 +116,7 @@ table {
 					<th>Estado</th>
 				</tr>
 			</thead>
-			<tbody bgcolor="#FFD27D">
+			<tbody bgcolor="#f5f5f5">
 				<c:forEach var="fich" items="${fichajes}">
 					<tr>
 					
@@ -130,7 +127,7 @@ table {
 				</c:forEach>
 			</tbody>
 		</table>
-		
+		<br></br>
 		<input name="fechaFichaje" id="fechaFich" value="" style="display: none">
 		<input name="horaEntrada" id="horaEnt" value="" style="display: none">
 		<input name="horaCierre" id="horaCierr" value="" style="display: none">
@@ -141,12 +138,10 @@ table {
 		<input class="btn boton-resolver" type="submit" value="Editar fichaje"
 			onclick="gestionarFichajes()">
 			</p>
-			<p>
-		<input class="btn boton-salir" type="submit" value="Atr�s"
-			onclick="atras()">
-			
-	</p>
+
 	</form>
+	
+	</div>
 	
 
 	
@@ -161,7 +156,7 @@ function onclickHandler() {
 	} else {
 		if (seleccionado != null)
 			seleccionado.style.backgroundColor = "transparent";
-		this.style.backgroundColor = "#e1b";
+		this.style.backgroundColor = "#D5D5D5";
 		seleccionado = this;
 	}
 }
@@ -187,12 +182,6 @@ function gestionarFichajes(){
 	}
 }
 	
-	function atras(){
-		
-		
-		document.fichs.action ="RellenarIncidencia.htm";
-		
-		}
-		
+
 </script>
 </html>

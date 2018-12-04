@@ -116,10 +116,6 @@
 				onClick="gestionarFichajes()" class="btn boton-resolver"></input>
 		
 	
-		
-		
-			<input type="submit" value="Atras" id="resol"
-				onClick="atras()" class="btn boton-resolver"></input>
 		</p>
 		</form>
       <footer class="my-5 pt-5 text-muted text-center text-small">

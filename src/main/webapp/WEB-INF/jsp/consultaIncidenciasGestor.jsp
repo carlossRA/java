@@ -142,6 +142,7 @@ background-color: #c0d6e4;
 			<input type="text" name="filtroDni">
 			Email 
 			<input type="text" name="filtroEmail"> 
+			<br><br> 
 			Fecha Inicio 
 			<input type="text" id="datepickerInicio" name="filtroFechaInicio" onChange="copiar()"> 
 			Fecha Fin 
@@ -273,7 +274,7 @@ jQuery.fn.animateAuto = function(prop, speed, callback){
 		} else {
 			if (seleccionado != null)
 				seleccionado.style.backgroundColor = "transparent";
-			this.style.backgroundColor = "#e1b";
+			this.style.backgroundColor = "#D5D5D5";
 			seleccionado = this;
 		}
 
