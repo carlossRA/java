@@ -19,10 +19,14 @@
 <title>Dar alta empleado</title>
 </head>
 <style>
+
+
 body {
 	background: #59ABE3;
 	margin: 0
 }
+
+
 
 .form {
 	width: 340px;
@@ -77,7 +81,7 @@ button {
 	margin: 8px 0 0;
 	font-family: 'Montserrat', sans-serif;
 	border: 2px solid #78788c;
-	background: 0;
+	background: #78788c;
 	color: #5a5a6e;
 	cursor: pointer;
 	transition: all .3s
@@ -91,7 +95,7 @@ button:hover {
 
 <body>
 
-</body>
+<div class="divCentro">
 <form action="darAltaEmpleado.htm" class="form" method="post">
 	<h2>Dar de alta</h2>
 	<p type="DNI:">
@@ -110,10 +114,19 @@ button:hover {
 		<input id="rol" type="radio" name="rol" value="gestor">Gestor
 	</p>
 	
-	<br></br>
+	<br>
+	
+
+	
 	<button class="btn"	OnClick="atras()" type="submit">Dar de alta</button>
+		<div class="foot-lnk">
+							<a href="accesoModulo.htm">Volver</a>
+				</div>
 
 </form>
+
+</div>
+</body>
 <script type="text/javascript">
 
 	function mandarInfoAlta(){

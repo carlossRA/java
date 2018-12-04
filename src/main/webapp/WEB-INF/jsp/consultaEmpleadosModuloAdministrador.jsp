@@ -57,6 +57,7 @@ html, body {
 	border-width: 3px;
 	border-style: solid;
 	border-radius: 35px;
+	width: 200px;
 }
 
 table {
@@ -155,7 +156,7 @@ table {
 		} else {
 			if (seleccionado != null)
 				seleccionado.style.backgroundColor = "transparent";
-			this.style.backgroundColor = "#e1b";
+			this.style.backgroundColor = "#D5D5D5";
 			seleccionado = this;
 		}
 	}
