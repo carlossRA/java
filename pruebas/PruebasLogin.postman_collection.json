@@ -1,0 +1,1112 @@
+{
+	"info": {
+		"_postman_id": "293bb359-ffc0-47f4-820f-3d7a746b6cd6",
+		"name": "PruebasLogin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login.htm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c084c034-1fe7-4059-8682-0013f8732d5b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://avengerslive.herokuapp.com/login.htm",
+					"protocol": "https",
+					"host": [
+						"avengerslive",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"login.htm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "home.htm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "10c46aa8-230f-4e80-bea2-8682e0bc1326",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "inputEmail",
+							"value": "Ruben.perez7@alu.uclm.es",
+							"type": "text"
+						},
+						{
+							"key": "inputPassword",
+							"value": "Ruben123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://avengerslive.herokuapp.com/home.htm",
+					"protocol": "https",
+					"host": [
+						"avengerslive",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"home.htm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recuperarContrasena.htm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5e5c45e7-9caf-4e10-9210-1475b7234a48",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://avengerslive.herokuapp.com/recuperarContrasena.htm",
+					"protocol": "https",
+					"host": [
+						"avengerslive",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"recuperarContrasena.htm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "enviarPeticionContrasena.htm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9cbe411d-6fec-430d-9b3f-61367457a085",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "inputEmail",
+							"value": "carlos.rodriguez24@alu.uclm.es",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://avengerslive.herokuapp.com/enviarPeticionContrasena.htm",
+					"protocol": "https",
+					"host": [
+						"avengerslive",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"enviarPeticionContrasena.htm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Incidencias.htm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3bad462e-e945-4ca2-994e-9b373e5587ee",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "idEmpleado",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "tipo",
+							"value": "vacaciones",
+							"type": "text"
+						},
+						{
+							"key": "mensaje",
+							"value": "En espera",
+							"type": "text"
+						},
+						{
+							"key": "fechaInicio",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "fechaFin",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "comentario",
+							"value": "Estoy Enfermo",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://avengerslive.herokuapp.com/Incidencias.htm",
+					"protocol": "https",
+					"host": [
+						"avengerslive",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"Incidencias.htm"
+					]
+				},
+				"description": "-idEmpleado=clases de equivalencia [-999,0]-(0,999)\nvalores--->0,-1,1\n-tipo=clases de equivalencia,tipo que existe|tipo que no existe\n    |-->\"vacaciones\"\n    |-->\"1234\"\n-mensaje=clases de equivalencia, existente|no existente\n    |-->\"En espera\"\n    |-->\"1234\"\n-fechas=claves de equivalencia,una fecha cualquiera\n    |-->23/10/2018\n-comentario=clases de equivalencia,un comentario cualquiera\n    |-->\"estoy enfermo\"\n    |-->\"\"<---conjetura"
+			},
+			"response": []
+		},
+		{
+			"name": "Incidencias9.htm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3bad462e-e945-4ca2-994e-9b373e5587ee",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "idEmpleado",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "tipo",
+							"value": "vacaciones",
+							"type": "text"
+						},
+						{
+							"key": "mensaje",
+							"value": "En espera",
+							"type": "text"
+						},
+						{
+							"key": "fechaInicio",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "fechaFin",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "comentario",
+							"value": "Estoy Enfermo",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://avengerslive.herokuapp.com/Incidencias.htm",
+					"protocol": "https",
+					"host": [
+						"avengerslive",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"Incidencias.htm"
+					]
+				},
+				"description": "-idEmpleado=clases de equivalencia [-999,0]-(0,999)\nvalores--->0,-1,1\n-tipo=clases de equivalencia,tipo que existe|tipo que no existe\n    |-->\"vacaciones\"\n    |-->\"1234\"\n-mensaje=clases de equivalencia, existente|no existente\n    |-->\"En espera\"\n    |-->\"1234\"\n-fechas=claves de equivalencia,una fecha cualquiera\n    |-->23/10/2018\n-comentario=clases de equivalencia,un comentario cualquiera\n    |-->\"estoy enfermo\"\n    |-->\"\"<---conjetura"
+			},
+			"response": []
+		},
+		{
+			"name": "Incidencias5.htm ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3bad462e-e945-4ca2-994e-9b373e5587ee",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "idEmpleado",
+							"value": "-1",
+							"type": "text"
+						},
+						{
+							"key": "tipo",
+							"value": "vacaciones",
+							"type": "text"
+						},
+						{
+							"key": "mensaje",
+							"value": "En espera",
+							"type": "text"
+						},
+						{
+							"key": "fechaInicio",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "fechaFin",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "comentario",
+							"value": "Estoy Enfermo",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://avengerslive.herokuapp.com/Incidencias.htm",
+					"protocol": "https",
+					"host": [
+						"avengerslive",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"Incidencias.htm"
+					]
+				},
+				"description": "-idEmpleado=clases de equivalencia [-999,0]-(0,999)\nvalores--->0,-1,1\n-tipo=clases de equivalencia,tipo que existe|tipo que no existe\n    |-->\"vacaciones\"\n    |-->\"1234\"\n-mensaje=clases de equivalencia, existente|no existente\n    |-->\"En espera\"\n    |-->\"1234\"\n-fechas=claves de equivalencia,una fecha cualquiera\n    |-->23/10/2018\n-comentario=clases de equivalencia,un comentario cualquiera\n    |-->\"estoy enfermo\"\n    |-->\"\"<---conjetura"
+			},
+			"response": []
+		},
+		{
+			"name": "Incidencias2.htm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a997ca55-a1ec-4368-8a27-5880b5e2e68f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "idEmpleado",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "tipo",
+							"value": "vacaciones",
+							"type": "text"
+						},
+						{
+							"key": "mensaje",
+							"value": "En espera",
+							"type": "text"
+						},
+						{
+							"key": "fechaInicio",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "fechaFin",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "comentario",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://avengerslive.herokuapp.com/Incidencias.htm",
+					"protocol": "https",
+					"host": [
+						"avengerslive",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"Incidencias.htm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Incidencias10.htm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9a79e234-b0f1-4dce-983f-e7a80205a40d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "idEmpleado",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "tipo",
+							"value": "vacaciones",
+							"type": "text"
+						},
+						{
+							"key": "mensaje",
+							"value": "En espera",
+							"type": "text"
+						},
+						{
+							"key": "fechaInicio",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "fechaFin",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "comentario",
+							"value": "Estoy Enfermo",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://avengerslive.herokuapp.com/Incidencias.htm",
+					"protocol": "https",
+					"host": [
+						"avengerslive",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"Incidencias.htm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Incidencias6.htm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8a3d8c58-2e93-4972-8f81-169893e7153f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "idEmpleado",
+							"value": "-1",
+							"type": "text"
+						},
+						{
+							"key": "tipo",
+							"value": "vacaciones",
+							"type": "text"
+						},
+						{
+							"key": "mensaje",
+							"value": "En espera",
+							"type": "text"
+						},
+						{
+							"key": "fechaInicio",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "fechaFin",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "comentario",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://avengerslive.herokuapp.com/Incidencias.htm",
+					"protocol": "https",
+					"host": [
+						"avengerslive",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"Incidencias.htm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Incidencias3.htm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ae6e8afb-348e-4311-aeec-2b12deb381f5",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "idEmpleado",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "tipo",
+							"value": "1234",
+							"type": "text"
+						},
+						{
+							"key": "mensaje",
+							"value": "En espera",
+							"type": "text"
+						},
+						{
+							"key": "fechaInicio",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "fechaFin",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "comentario",
+							"value": "Estoy Enfermo",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://avengerslive.herokuapp.com/Incidencias.htm",
+					"protocol": "https",
+					"host": [
+						"avengerslive",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"Incidencias.htm"
+					]
+				},
+				"description": "valores:\n\"\",\"1234\",\"\""
+			},
+			"response": []
+		},
+		{
+			"name": "Incidencias11.htm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1fc9cf10-62bc-4b5c-af01-f6c8f9f2bbc9",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "idEmpleado",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "tipo",
+							"value": "1234",
+							"type": "text"
+						},
+						{
+							"key": "mensaje",
+							"value": "En espera",
+							"type": "text"
+						},
+						{
+							"key": "fechaInicio",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "fechaFin",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "comentario",
+							"value": "Estoy Enfermo",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://avengerslive.herokuapp.com/Incidencias.htm",
+					"protocol": "https",
+					"host": [
+						"avengerslive",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"Incidencias.htm"
+					]
+				},
+				"description": "valores:\n\"\",\"1234\",\"\""
+			},
+			"response": []
+		},
+		{
+			"name": "Incidencias7.htm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fbd54c72-dbac-467e-a97a-7d1a829201c2",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "idEmpleado",
+							"value": "-1",
+							"type": "text"
+						},
+						{
+							"key": "tipo",
+							"value": "1234",
+							"type": "text"
+						},
+						{
+							"key": "mensaje",
+							"value": "En espera",
+							"type": "text"
+						},
+						{
+							"key": "fechaInicio",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "fechaFin",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "comentario",
+							"value": "Estoy Enfermo",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://avengerslive.herokuapp.com/Incidencias.htm",
+					"protocol": "https",
+					"host": [
+						"avengerslive",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"Incidencias.htm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Incidencias4.htm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4f7136b5-a8eb-4ea1-85ce-6270de67f1c8",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "idEmpleado",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "tipo",
+							"value": "1234",
+							"type": "text"
+						},
+						{
+							"key": "mensaje",
+							"value": "1234",
+							"type": "text"
+						},
+						{
+							"key": "fechaInicio",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "fechaFin",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "comentario",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://avengerslive.herokuapp.com/Incidencias.htm",
+					"protocol": "https",
+					"host": [
+						"avengerslive",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"Incidencias.htm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Incidencias12.htm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "82c5ee2a-feb0-4c96-b40c-d1d4eb106322",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "idEmpleado",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "tipo",
+							"value": "1234",
+							"type": "text"
+						},
+						{
+							"key": "mensaje",
+							"value": "1234",
+							"type": "text"
+						},
+						{
+							"key": "fechaInicio",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "fechaFin",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "comentario",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://avengerslive.herokuapp.com/Incidencias.htm",
+					"protocol": "https",
+					"host": [
+						"avengerslive",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"Incidencias.htm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Incidencias8.htm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2e415631-765c-4b9a-85f0-bc0c52fe8239",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "idEmpleado",
+							"value": "-1",
+							"type": "text"
+						},
+						{
+							"key": "tipo",
+							"value": "1234",
+							"type": "text"
+						},
+						{
+							"key": "mensaje",
+							"value": "1234",
+							"type": "text"
+						},
+						{
+							"key": "fechaInicio",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "fechaFin",
+							"value": "23/10/2018",
+							"type": "text"
+						},
+						{
+							"key": "comentario",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://avengerslive.herokuapp.com/Incidencias.htm",
+					"protocol": "https",
+					"host": [
+						"avengerslive",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"Incidencias.htm"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

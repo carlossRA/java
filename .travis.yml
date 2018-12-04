@@ -9,7 +9,7 @@ before_script:
   - node_modules/.bin/newman --version
 script: 
   - mvn test -B
-  - node_modules/.bin/newman run pruebas/bitcoinz.postman_collection.json -e pruebas/tests.postman_environment.json
+  - node_modules/.bin/newman run pruebas/PruebasLogin.postman_collection.json -e pruebas/tests.postman_environment.json
  
 deploy:
   provider: heroku
