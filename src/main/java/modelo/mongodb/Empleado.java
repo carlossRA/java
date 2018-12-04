@@ -107,10 +107,14 @@ public class Empleado {
 		if(!dao.empleadoExiste(emailDni))
 			return false;
 		emailDestino = emailEmpleado(emailDni);
-		if(!emailDestino.equals(null))
-			destinatario = emailDestino;
-		else
+		try{
+			if(!emailDestino.equals(null))
+				destinatario = emailDestino;
+			else
+				destinatario = emailDni;
+		}catch(Exception e) {
 			destinatario = emailDni;
+		}
 		contrasena = GeneradorContrasena.getContrasenaAleatoria(20);
 		cambiarContrasena("recuperar credenciales", destinatario, contrasena);
 		return true;
