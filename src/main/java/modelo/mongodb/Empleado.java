@@ -62,6 +62,7 @@ public class Empleado {
 		enviarEmail(tipo, email, contrasena);
 		dao.cambiarContrasena(email, DigestUtils.md5Hex(contrasena));
 	}
+	
 
 	public boolean requisitosContrasena(String contrasenaNueva) {
 		boolean size = false, numeros = false, minuscula = false, mayuscula = false;
