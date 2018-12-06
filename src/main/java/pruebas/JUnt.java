@@ -7,7 +7,7 @@ import org.junit.Test;
 import modelo.mongodb.Empleado;
 import modelo.mongodb.Fichaje;
 
-public class JUnit {
+public class JUnt {
 
 	/*probar metodo credenciales correctas, con criterio de cobertura: n-wise
 	 * 
@@ -355,3 +355,4 @@ public void ComprobarCambiarContrasenaCadenaBlanco_CadenaExigida() {
 	
 	
 }
+
